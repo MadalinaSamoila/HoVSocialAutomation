@@ -24,7 +24,7 @@ public class FacebookOperations {
 	
 	public static void createTestUser () throws Exception, IOException {
 		
-		URL url = new URL("https://graph.facebook.com/364649920320790/accounts/test-users?installed=false&name=MuddyAutomatedTester&permissions=read_stream&method=post&access_token=364649920320790|MtEaC2DBqjCULEKteBAgFjfE0i8");
+		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=MuddyAutomatedTester&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -56,11 +56,20 @@ public class FacebookOperations {
 	    
 	    System.out.println("user login link"+userLogin);
 	    System.out.println("user id"+userId);
+	    
+	    screen.paste("https://developers.facebook.com/apps/600712740047839/payments/");
+		screen.type(Key.ENTER);
+	    
+		screen.click("browser//facebook_canvas_payments_click.png");
+		
+		screen.paste(userId);
+		screen.type(Key.END);
+		screen.click("browser//facebook_save_changes.png");
 	}
 	
 	public static void deleteTestUser () throws Exception {
 		
-		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userId+"?method=delete&access_token=364649920320790|MtEaC2DBqjCULEKteBAgFjfE0i8");
+		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userId+"?method=delete&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		HttpURLConnection con = (HttpURLConnection) deleteUrl.openConnection();
 
 		// optional default is GET
@@ -78,5 +87,6 @@ public class FacebookOperations {
 		screen.type(Key.ENTER);
 		screen.click("browser//login_as_button.png");
 		screen.wait(0.5);
+		screen.click("browser//login_confirmation.png");
 	}
 }

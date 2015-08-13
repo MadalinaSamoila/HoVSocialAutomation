@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Muddy Test Suite" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
+    <groups>
+    </groups>
+    <test name="Youtube test" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
+    </test> <!-- Youtube test -->
+  </suite> <!-- Muddy Test Suite -->
+</testng-results>

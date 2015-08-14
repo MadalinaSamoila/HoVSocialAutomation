@@ -141,11 +141,11 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[testprogress] Time Bonus Enabled - OK");
 			
-			if (LobbyOperations.clickCollect())
+			if (LobbyOperations.clickCollectTimeBonus())
 			{
 				System.out.println("[testprogress] Time Bonus Clicked - OK");
 				
-				if (LobbyOperations.isCollected())
+				if (LobbyOperations.isCollectedTimeBonus())
 				{
 					System.out.println("[teststat] Time Bonus Collected - OK");
 				}

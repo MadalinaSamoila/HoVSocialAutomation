@@ -24,7 +24,7 @@ public class LobbyOperations
 						
 	}
 	
-	public static boolean clickCollect() throws FindFailed
+	public static boolean clickCollectTimeBonus() throws FindFailed
 	{
 	
 		try
@@ -42,7 +42,7 @@ public class LobbyOperations
 		}
 	}
 	
-	public static boolean isCollected() throws FindFailed
+	public static boolean isCollectedTimeBonus() throws FindFailed
 	{
 	
 		try

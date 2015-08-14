@@ -7,6 +7,8 @@ public class LobbyOperations
 {
 	static Screen s = new Screen();
 	
+	//TIME BONUS
+	
 	public static boolean isTimeBonusEnabled() throws FindFailed // works if time bonus is filled on approx 50%
 	{
 		
@@ -56,6 +58,9 @@ public class LobbyOperations
 			return false;
 		}
 	}
+	
+	
+	//SHOP
 	
 	public static boolean isBuyButtonPresentAndClick() throws FindFailed
 	{
@@ -193,6 +198,8 @@ public class LobbyOperations
 	}
 	
 	
+	//FAN PAGE
+	
 	public static boolean isLobbyReturned() throws FindFailed
 	 {
 		   try
@@ -222,4 +229,64 @@ public class LobbyOperations
 			    return false;
 		   }
 	  }
+	  
+	  
+	  //TUTORIAL
+	  
+	  public static boolean isTimeBonusTutorialStepPresentAndClick() throws FindFailed
+		{
+			try
+			{
+							
+				s.find("lobby//Tutorial_collectBonusStep.png");
+				
+				s.click("lobby//Tutorial_collectBonusStep.png");
+				
+				s.wait(5.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isChooseMachineTutorialStepPresentAndClick() throws FindFailed
+		{
+			try
+			{
+							
+				s.find("lobby//Tutorial_chooseMachineStep.png");
+				
+				s.click("lobby//Tutorial_chooseMachineStep.png");
+				
+				s.wait(3.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isSelectBetTutorialStepPresentAndClick() throws FindFailed
+		{
+			try
+			{
+							
+				s.find("lobby//Tutorial_selectBetStep.png");
+				
+				s.click("lobby//Tutorial_selectBetStep.png");
+				
+				s.wait(30.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
 }

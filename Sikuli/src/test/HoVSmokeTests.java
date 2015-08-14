@@ -15,6 +15,57 @@ public class HoVSmokeTests {
 	
 	@Test
 	public void TutorialInstigates() {
+		
+		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
+		{
+			System.out.println("[testprogress] Tutorial Time Bonus Step is Present and Clicked - OK");
+			
+			if (LobbyOperations.isChooseMachineTutorialStepPresentAndClick())
+			{
+				System.out.println("[testprogress] Tutorial Choose Machine Step is Present and Clicked - OK");
+				
+				if (LobbyOperations.isSelectBetTutorialStepPresentAndClick())
+				{
+					System.out.println("[testprogress] Tutorial Select Bet Step is Present and Clicked - OK");										
+					
+					switch (SlotOperations.specifySlot())
+					{
+						case 0:
+						{
+							System.out.println("[teststat] Tutorial - The User was not placed into the Slot - FAILED");
+							break;
+						}
+						case 1:
+						{
+							System.out.println("[teststat] Tutorial - The User Placed into NexGen Slot - OK");
+							break;
+						}
+						case 2:
+						{
+							System.out.println("[teststat] Tutorial - The User Placed into GAN Slot - OK");
+							break;
+						}
+						case 3:
+						{
+							System.out.println("[teststat] Tutorial - The User Placed into GDK Slot - OK");
+							break;
+						}
+					}
+				}
+				else
+				{
+					System.out.println("[teststat] Tutorial Select Bet Step is Absent - FAILED");
+				}
+			}
+			else
+			{
+				System.out.println("[teststat] Tutorial Choose Machine Step is Absent - FAILED");
+			}
+		}
+		else
+		{
+			System.out.println("[teststat] Tutorial Time Bonus Step is Absent - FAILED");
+		}
 	
 	}
 	

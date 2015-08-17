@@ -2,6 +2,7 @@ package test;
 
 import java.io.IOException;
 
+import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.testng.annotations.*;
 
@@ -9,12 +10,12 @@ public class HoVSmokeTests {
 	static Screen screen= new Screen();
 	
 	@Test
-	public void FreshInstallTest() {
+	public void FreshInstallTest() throws FindFailed {
 		
 	}
 	
 	@Test
-	public void TutorialInstigates() {
+	public void TutorialInstigates() throws FindFailed {
 		
 		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
 		{
@@ -101,7 +102,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void PlacedInLobby() {
+	public void PlacedInLobby() throws FindFailed {
 		
 		if (LobbyOperations.isLobbyReturned(0) == true)
 		{
@@ -116,7 +117,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test 
-	public void DailyBonusPresent() {
+	public void DailyBonusPresent() throws FindFailed {
 		if (LobbyOperations.isDailyWheelPresent())
 		{
 			System.out.println("[testprogress] Daily Wheel is Present - OK");
@@ -162,12 +163,12 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void EnabledCRMsAppear() {
+	public void EnabledCRMsAppear() throws FindFailed {
 		
 	}
 	
 	@Test
-	public void HelpFanPageOpen() {
+	public void HelpFanPageOpen() throws FindFailed {
 		if (LobbyOperations.clickFanPage() == true)
 		{
 			System.out.println("[testprogress] Fan page button is found and clicked - OK");
@@ -243,7 +244,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void BuyAllCoinPackages() {
+	public void BuyAllCoinPackages() throws FindFailed {
 		
 		if (LobbyOperations.isBuyButtonPresentAndClick())
 		{
@@ -334,7 +335,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void QuickBuyFunctional() {
+	public void QuickBuyFunctional() throws FindFailed {
 		if (LobbyOperations.isQuickBuyPanelPresent())
 		{
 			System.out.println("[testprogress] QuickBuy Panel is Present - OK");
@@ -433,7 +434,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void CollectHourlyBonus() {
+	public void CollectHourlyBonus() throws FindFailed {
 		
 		if (LobbyOperations.isTimeBonusEnabled())
 		{
@@ -465,7 +466,7 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void SlotMachinesPresent() {
+	public void SlotMachinesPresent() throws FindFailed {
 		
 	}
 	

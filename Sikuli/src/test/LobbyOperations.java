@@ -115,11 +115,11 @@ public class LobbyOperations
 		{
 			if (isUpsale)
 			{
-				s.find("lobby//Shop_fbConfirmPaymentGeneral.png");
+				s.find("lobby//Shop_fbConfirmPaymentUpsale.png");
 			}
 			else
 			{
-				s.find("lobby//Shop_fbConfirmPaymentUpsale.png");
+				s.find("lobby//Shop_fbConfirmPaymentGeneral.png");
 			}
 			s.find("lobby//Shop_fbConfirmPaymentBuyButton.png");
 			
@@ -192,7 +192,87 @@ public class LobbyOperations
 			return false;
 		}
 	}
+	//SHOP_QUICKBUY
 	
+	public static boolean isQuickBuyPanelPresent() throws FindFailed
+	{
+		try
+		{
+			s.find("lobby//Shop_quickbuy.png");					
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	
+	
+	public static boolean quickBuyDownClick() throws FindFailed
+	{
+		try
+		{
+			s.find("lobby//Shop_quickbuyDownButton.png");					
+			
+			s.click("lobby//Shop_quickbuyDownButton.png");
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	
+	public static boolean quickBuyUpClick() throws FindFailed
+	{
+		try
+		{
+			s.find("lobby//Shop_quickbuyUpButton.png");					
+			
+			s.click("lobby//Shop_quickbuyUpButton.png");
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	
+	
+	public static boolean isQuickBuyDropDownPresent() throws FindFailed
+	{
+		try
+		{
+			s.find("lobby//Shop_quickbuyDropDownLess98.png");					
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	
+	public static boolean quickBuyBuyClick() throws FindFailed
+	{
+		try
+		{
+			s.find("lobby//Shop_quickbuyBuyButton.png");					
+			
+			s.click("lobby//Shop_quickbuyBuyButton.png");
+			
+			s.wait(5.0);
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
 	
 	//FAN PAGE
 	

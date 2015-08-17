@@ -182,6 +182,100 @@ public class HoVSmokeTests {
 	
 	@Test
 	public void QuickBuyFunctional() {
+		if (LobbyOperations.isQuickBuyPanelPresent())
+		{
+			System.out.println("[testprogress] QuickBuy Panel is Present - OK");
+			
+			if (LobbyOperations.quickBuyDownClick())
+			{
+				System.out.println("[testprogress] QuickBuy Down Button is Present and Clicked - OK");
+				
+				if (LobbyOperations.isQuickBuyDropDownPresent())
+				{
+					System.out.println("[testprogress] QuickBuy DropDown List is Present - OK");
+					
+					if (LobbyOperations.quickBuyUpClick())
+					{
+						System.out.println("[testprogress] QuickBuy Up Button is Present and Clicked - OK");
+						
+						if (LobbyOperations.quickBuyBuyClick())
+						{
+							System.out.println("[testprogress] QuickBuy Buy Button is Present and Clicked - OK");
+							////////////////////SPEC_QUICKBUY////////////////////////////////
+							if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(false))
+							{
+								System.out.println("[testprogress] FB Popup (General) is Present and Buy button has been clicked - OK");
+								
+								if (LobbyOperations.isUpsalePopupPresentAndClickSpinButton())
+								{
+									System.out.println("[testprogress] Upsale Popup is Present and Spin has been clicked - OK");
+									
+									if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(true))
+									{
+										System.out.println("[testprogress] FB Popup (Upsale) is Present and Buy button has been clicked - OK");
+										
+										if (LobbyOperations.isUpsalePopupCompletedPresentAndClickCollectButton())
+										{
+											System.out.println("[testprogress] Upsale Completed and Collect button has been clicked - OK");
+											
+											if (LobbyOperations.isCongratulationPopupPresentAndClickOkayButton())
+											{
+												System.out.println("[teststat] Congratulation Popup is Present and Okay button has been clicked - OK");
+											}
+											else
+											{
+												System.out.println("[testprogress] Congratulation Popup is Absent or Okay button is Absent - Failed");
+											}
+										}
+										else
+										{
+											System.out.println("[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED");
+										}
+									}
+									else
+									{
+										System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED");
+									}
+								}
+								else
+								{
+									System.out.println("[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED");
+								}
+								
+							}
+							else
+							{
+								System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED");
+							}
+							
+							
+							////////////////////SPEC_QUICKBUY////////////////////////////////
+						}
+						else
+						{
+							System.out.println("[teststat] QuickBuy Buy Button is Absent - FAILED");
+						}
+					}
+					else
+					{
+						System.out.println("[teststat] QuickBuy Up Button is Absent - FAILED");
+					}
+				}
+				else
+				{
+					System.out.println("[teststat] QuickBuy DropDown List is Absent - FAILED");
+				}
+			}
+			else
+			{
+				System.out.println("[teststat] QuickBuy Down Button is Absent - FAILED");
+			}
+		}
+		else
+		{
+			System.out.println("[testprogress] QuickBuy Panel is Absent - UNABLE_TO_CONTINUE");
+		}
+		
 		
 	}
 	

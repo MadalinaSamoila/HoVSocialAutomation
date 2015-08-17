@@ -276,35 +276,117 @@ public class LobbyOperations
 	
 	//FAN PAGE
 	
-	public static boolean isLobbyReturned() throws FindFailed
-	 {
-		   try
-		   {
-			   s.find("lobby//Lobby_top.png");
-		    
-			   return true;
-		   }
-		   catch (FindFailed e)
-		   {
-			   return false;
-		   }
-	  }
-	  
-	  
-	  public static boolean isFanPageOpened() throws FindFailed
-	  {
-		   try
-		   {
-			    s.find("externalPages//FanPage.png");
-			    
-			    return true;
-		    
-		   }
-		   catch (FindFailed e)
-		   {
-			    return false;
-		   }
-	  }
+	public static boolean isLobbyReturned(int wheel) throws FindFailed  //Accepts 1 to PageDown, 2 for PageUp
+	{
+		try
+		{
+			s.wait(4.0);
+			
+			switch  (wheel)
+			{
+			
+				default:
+				{
+					s.find("lobby//FanPageTopBarButton.png");
+					
+					break;
+				}
+			
+				case 1:
+				{
+					//s.type(Key.PAGE_DOWN);
+					
+					s.wheel("lobby//FanPageTopBarButton.png", 1, 2);
+					
+					break;
+					
+				}
+				case 2:
+				{
+					//s.type(Key.PAGE_UP);
+					
+					s.wheel("lobby//SupportLinkFooter.png", -1, 2);
+					
+					break;
+				}
+			}
+			
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	
+	
+	public static boolean isFanPageOpened()  throws FindFailed
+	{
+		try
+		{
+			s.wait(4.0);
+			
+			s.find("externalPages//FanPageLogo.png");
+			
+			return true;
+			
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}	
+		
+	public static boolean isHelpPageOpened()  throws FindFailed
+	{
+		try
+		{
+			s.wait(4.0);
+			
+			s.find("externalPages//SupportPage.png");
+			
+			return true;
+			
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}	
+	
+	public static boolean clickFanPage()  throws FindFailed
+	{
+		try
+		{
+			s.click("lobby//FanPageTopBarButton.png");
+			
+			s.wait(4.0);
+			
+			return true;
+			
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}	
+	
+	public static boolean clickSupportPage()  throws FindFailed
+	{
+		try
+		{
+			s.click("lobby//SupportLinkFooter.png");
+			
+			s.wait(4.0);
+			
+			return true;
+			
+		}
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}	
 	  
 	  
 	  //TUTORIAL

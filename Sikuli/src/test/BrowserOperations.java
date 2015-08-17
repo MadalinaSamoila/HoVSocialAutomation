@@ -53,5 +53,13 @@ public class BrowserOperations {
 		}
 	}
 	
+	public static void closeTab (String name) {
+		try {
+			screen.click("browser/"+name+"_close_tab.png");
+		} catch (FindFailed e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

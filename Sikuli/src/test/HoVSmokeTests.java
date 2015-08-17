@@ -127,7 +127,78 @@ public class HoVSmokeTests {
 	
 	@Test
 	public void HelpFanPageOpen() {
-		
+		if (LobbyOperations.clickFanPage() == true)
+		{
+			System.out.println("[testprogress] Fan page button is found and clicked - OK");
+								
+			if (LobbyOperations.isFanPageOpened() == true)
+			{
+				System.out.println("[testprogress] Fan page from top bar is opened - OK");
+				
+				BrowserOperations.closeTab();
+				
+				//s.click("browserFFButtons//closeTabFFButton.png"); // Will be changed to Maddy`s tab closing method
+				
+				if (LobbyOperations.isLobbyReturned(1) == true)
+				{
+					System.out.println("[testprogress] Lobby is returned from Fan Page - OK");
+					
+					if (LobbyOperations.clickSupportPage() == true)
+					{
+						System.out.println("[testprogress] Support page is found and clicked - OK");
+						
+						if (LobbyOperations.isHelpPageOpened() == true)
+						{
+							System.out.println("[testprogress] Support page from the bottom is opened - OK");
+							
+							BrowserOperations.closeTab();
+							
+							//s.click("browserFFButtons//closeTabFFButton.png");  // Will be changed to Maddy`s tab closing method
+							
+							//s.wait(4.0);
+							
+							//s.wheel("lobby//SupportLinkFooter.png", -1, 2);
+							
+							if (LobbyOperations.isLobbyReturned(2) == true)
+							{
+								System.out.println("[teststat] Lobby is returned from Support Page - OK");
+							}
+							
+							else
+							{
+								System.out.println("[teststat] Lobby is not returned from Support Page - Failed");
+							}
+							
+						}
+						
+						else 
+						{
+							System.out.println("[teststat] Support page from the bottom is not opened - FAILED");
+						}
+					}
+					
+					
+					else
+					{
+						System.out.println("[teststat] Support page is not found and clicked - FAILED");
+					}
+					
+				}
+				
+				else
+				{
+					System.out.println("[teststat] Lobby is not returned from Fan Page - FAILED");
+				}
+			}
+			else
+			{
+				System.out.println("[teststat] Fan page from top bar is not opened - FAILED");
+			}
+		}
+		else
+		{
+			System.out.println("[teststat] Fan page button cannot be found - FAILED");
+		}
 	}
 	
 	@Test

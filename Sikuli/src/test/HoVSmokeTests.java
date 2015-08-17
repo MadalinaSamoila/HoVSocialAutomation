@@ -96,11 +96,11 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[testprogress] Lobby Buy Button is Present and Clicked - OK");
 			
-			if (LobbyOperations.isShopOpened())
-			{
+			//if (LobbyOperations.isShopOpened())   //The Shop popup was changed, performing recognition via "PURCHASE" button only
+			//{
 				
 				
-				System.out.println("[testprogress] Shop Opened - OK");
+				//System.out.println("[testprogress] Shop Opened - OK");
 				
 				if (LobbyOperations.isPurchaseButtonPresentAndClick())
 				{
@@ -168,11 +168,11 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Can't Click Shop Purchase Button - FAILED");
 				}
-			}
-			else
-			{
-				System.out.println("[teststat] Shop Popup is Absent - FAILED");
-			}
+			//}
+			//else
+			//{
+			//	System.out.println("[teststat] Shop Popup is Absent - FAILED");
+			//}
 		}
 		else
 		{

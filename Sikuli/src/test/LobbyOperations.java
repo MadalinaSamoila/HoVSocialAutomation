@@ -10,11 +10,9 @@ public class LobbyOperations
 	//TIME BONUS
 	
 	public static boolean isTimeBonusEnabled() throws FindFailed // works if time bonus is filled on approx 50%
-	{
-		
+	{		
 		try
-		{
-						
+		{						
 			s.find("lobby//TB_full.png");
 			
 			return true;
@@ -27,8 +25,7 @@ public class LobbyOperations
 	}
 	
 	public static boolean clickCollectTimeBonus() throws FindFailed
-	{
-	
+	{	
 		try
 		{
 						
@@ -45,8 +42,7 @@ public class LobbyOperations
 	}
 	
 	public static boolean isCollectedTimeBonus() throws FindFailed
-	{
-	
+	{	
 		try
 		{				
 			s.find("lobby//TB_empty_005957_remaining.png");					

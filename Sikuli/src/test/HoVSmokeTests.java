@@ -76,6 +76,47 @@ public class HoVSmokeTests {
 	
 	@Test 
 	public void DailyBonusPresent() {
+		if (LobbyOperations.isDailyWheelPresent())
+		{
+			System.out.println("[testprogress] Daily Wheel is Present - OK");
+			
+			if (LobbyOperations.clickDailyWheelSpin())
+			{
+				System.out.println("[testprogress] Daily Wheel Spin Complete - OK");
+				
+				if (LobbyOperations.isDailyWheelSharePresent())
+				{
+					System.out.println("[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK");
+					
+					if (LobbyOperations.untickDailyWheelShare())
+					{
+						System.out.println("[testprogress] Daily Wheel Share is Unticked - OK");
+					}
+					else
+					{
+						System.out.println("[testprogress] Unable to Untick Daily Wheel Share");
+					}
+				}
+				
+				if (LobbyOperations.clickDailyWheelCollect())
+				{
+					System.out.println("[teststat] Daily Wheel Collect Button is Clicked - OK");
+				}
+				else
+				{
+					System.out.println("[teststat] Daily Wheel Collect Button is not Clicked - FAILED");
+				}
+				
+			}
+			else
+			{
+				System.out.println("[teststat] Unable to Spin Daily Wheel - FAILED");
+			}
+		}
+		else
+		{
+			System.out.println("[teststat] Daily Wheel is Absent - FAILED");
+		}
 		
 	}
 	

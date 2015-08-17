@@ -365,4 +365,113 @@ public class LobbyOperations
 				return false;
 			}
 		}
+		
+		
+		
+		//DAILY_WHEEL
+		
+		public static boolean isDailyWheelPresent() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//DW_Unspinned.png");					
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean clickDailyWheelSpin() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//DW_ClickSpin.png");	
+				
+				s.click("lobby//DW_ClickSpin.png");					
+
+				s.wait(10.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean clickDailyWheelCollect() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//DW_CollectButton.png");	
+				
+				s.click("lobby//DW_CollectButton.png");					
+
+				s.wait(3.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isDailyWheelSharePresent() throws FindFailed 
+		{
+			try
+			{
+				s.find("lobby//DW_ShareTicked.png");	
+										
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		
+		public static boolean untickDailyWheelShare() throws FindFailed 
+		{
+			try
+			{
+				s.find("lobby//DW_ShareTicked.png");	
+				
+				s.click("lobby//DW_ShareTick.png");	
+				
+				s.find("lobby//DW_ShareUnticked.png");	
+				
+				s.wait(3.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean tickDailyWheelShare() throws FindFailed 
+		{
+			try
+			{
+				s.find("lobby//DW_ShareUnticked.png");	
+				
+				s.click("lobby//DW_ShareUntick.png");	
+				
+				s.find("lobby//DW_ShareTicked.png");	
+				
+				s.wait(3.0);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
 }

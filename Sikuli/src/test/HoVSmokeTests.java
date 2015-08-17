@@ -103,6 +103,16 @@ public class HoVSmokeTests {
 	@Test
 	public void PlacedInLobby() {
 		
+		if (LobbyOperations.isLobbyReturned(0) == true)
+		{
+			System.out.println("[teststat] User is placed in the Lobby - OK");
+		}
+		
+		else
+		{
+			System.out.println("[teststat] User is not placed in the Lobby - Failed");
+		}
+		
 	}
 	
 	@Test 

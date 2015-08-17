@@ -32,22 +32,53 @@ public class HoVSmokeTests {
 					{
 						case 0:
 						{
-							System.out.println("[teststat] Tutorial - The User was not placed into the Slot - FAILED");
+							System.out.println("[teststat] The User was not placed into the Slot - FAILED");
+							
 							break;
 						}
 						case 1:
 						{
-							System.out.println("[teststat] Tutorial - The User Placed into NexGen Slot - OK");
+							System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
+							
+							if (LobbyOperations.returnToLobby())
+							{
+								System.out.println("[teststat] Returned to the Lobby - OK");
+							}
+							else
+							{
+								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+							}
+							
 							break;
 						}
 						case 2:
 						{
-							System.out.println("[teststat] Tutorial - The User Placed into GAN Slot - OK");
+							System.out.println("[testprogress] The User Placed into GAN Slot - OK");
+							
+							if (LobbyOperations.returnToLobby())
+							{
+								System.out.println("[teststat] Returned to the Lobby - OK");
+							}
+							else
+							{
+								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+							}
+							
 							break;
 						}
 						case 3:
 						{
-							System.out.println("[teststat] Tutorial - The User Placed into GDK Slot - OK");
+							System.out.println("[testprogress] The User Placed into GDK Slot - OK");
+							
+							if (LobbyOperations.returnToLobby())
+							{
+								System.out.println("[teststat] Returned to the Lobby - OK");
+							}
+							else
+							{
+								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+							}
+							
 							break;
 						}
 					}
@@ -135,7 +166,7 @@ public class HoVSmokeTests {
 			{
 				System.out.println("[testprogress] Fan page from top bar is opened - OK");
 				
-				BrowserOperations.closeTab();
+				BrowserOperations.closeTab(BrowserOperations.getBrowserName());
 				
 				//s.click("browserFFButtons//closeTabFFButton.png"); // Will be changed to Maddy`s tab closing method
 				
@@ -151,7 +182,7 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[testprogress] Support page from the bottom is opened - OK");
 							
-							BrowserOperations.closeTab();
+							BrowserOperations.closeTab(BrowserOperations.getBrowserName());
 							
 							//s.click("browserFFButtons//closeTabFFButton.png");  // Will be changed to Maddy`s tab closing method
 							

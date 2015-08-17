@@ -448,7 +448,21 @@ public class LobbyOperations
 			}
 		}
 		
-		
+		public static boolean returnToLobby()
+		{
+			try
+			{						
+				s.find("slot//Slot_LobbyButton.png");						
+				
+				s.click("slot//Slot_LobbyButton.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
 		
 		//DAILY_WHEEL
 		

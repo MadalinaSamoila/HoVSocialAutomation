@@ -23,9 +23,13 @@ enum Browsers {
 public class BrowserOperations {
 	public static App browser;
 	static Screen screen= new Screen();
+	private static String browserName;
+	
+	
 	
 	public static void openBrowser(String name) {
 		browser = new App(Browsers.valueOf(name).getBrowserAddress()).open();
+		browserName = name;
 		
 	}
 
@@ -60,6 +64,11 @@ public class BrowserOperations {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static String getBrowserName()
+	{
+		return browserName;
 	}
 	
 }

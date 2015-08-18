@@ -165,6 +165,95 @@ public class HoVSmokeTests {
 	@Test
 	public void EnabledCRMsAppear() throws FindFailed {
 		
+		if (clickCentralSlot() == true)
+		{
+			System.out.println("[testprogress] Cabinet successfully clicked - OK");
+			
+			if (isCRMOpened() == true)
+			{
+				System.out.println("[testprogress] CRM is opened - OK");
+				
+				if (clickCloseButtonCRM() == true)
+				{
+					System.out.println("[testprogress] CRM close button clicked - OK");
+					
+					if (isCRMClosed() == true)
+					{
+						System.out.println("[testprogress] CRM successfully closed - OK");
+						
+						if (clickCentralSlot() == true)
+						{
+							System.out.println("[testprogress] Cabinet successfully clicked - OK");
+							
+							if (isCRMOpened() == true)
+							{
+								System.out.println("[testprogress] CRM is opened - OK");
+								
+								if (clickCRM() == true)
+								{
+									System.out.println("[testprogress] CRM body is clicked - OK");
+									
+									if (isCongratulationPopupPresentAndClickOkayButton() == true)
+									{
+										System.out.println("[testprogress] Congratulation popup is present and Okay button is clicked - OK");
+										
+										if (isCRMClosed() == true)
+										{
+											System.out.println("[teststat] Congratulation popup is closed - OK");
+										}
+										
+										else
+										{
+											System.out.println("[teststat] Congratulation popup is not closed - Failed");
+										}
+									}
+									
+									else
+									{
+										System.out.println("[teststat] Congratulation popup is absent OR Okay button is not clicked - Failed");
+									}
+								}
+								
+								else
+								{
+									System.out.println("[teststat] CRM body is not clicked - Failed");
+								}
+							}
+							
+							else
+							{
+								System.out.println("[teststat] CRM is not opened - Failed");
+							}
+						}
+						
+						else
+						{
+							System.out.println("[teststat] Cabinet is not clicked - Failed");
+						}
+					}
+					
+					else
+					{
+						System.out.println("[teststat] CRM is not closed - Failed");
+					}
+				}
+				
+				else
+				{
+					System.out.println("[teststat] CRM is not clicked - Failed");
+				}
+			}
+			
+			else
+			{
+				System.out.println("[teststat] CRM is not opened - Failed");
+			}
+		}
+				
+		else
+		{
+			System.out.println("[teststat] Cabinet is not clicked - Failed");
+		}
 	}
 	
 	@Test

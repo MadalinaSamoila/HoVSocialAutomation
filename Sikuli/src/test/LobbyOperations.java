@@ -175,8 +175,8 @@ public class LobbyOperations
 		}
 	}
 	
-	public static boolean isCongratulationPopupPresentAndClickOkayButton() throws FindFailed
-	{
+	public static boolean isCongratulationPopupPresentAndClickOkayButton() throws FindFailed //this method is using for 																				
+	{                                                                                        // CRM Congratulation popup too
 		try
 		{
 			s.find("lobby//Shop_congratulation.png");
@@ -570,4 +570,74 @@ public class LobbyOperations
 				return false;
 			}
 		}
+		
+		// IsEnabledCRMAppears
+		
+		// Method that used for clicking Slot is writen in SlotMachinesPresent - clickCentralSlot()
+		public static boolean isCRMOpened() throws FindFailed
+		 {
+		  try
+		  {   
+			  s.wait(4.0);
+			  
+			  s.find("lobby//Lobby_CRM_body.png");
+		   
+		   return true;
+		  }
+		  catch (FindFailed e)
+		  {
+		   return false;
+		  }
+		 } 
+		
+		public static boolean clickCloseButtonCRM() throws FindFailed
+		 {
+		  try
+		  {      
+			  s.click("lobby//Lobby_CRM_Close_Button.png");
+		   
+		   return true;
+		  }
+		  catch (FindFailed e)
+		  {
+		   return false;
+		  }
+		 } 
+		
+		public static boolean isCRMClosed() throws FindFailed
+		 {
+		  try
+		  {      
+			  s.wait(4.0);
+			  
+			  s.find("lobby//FanPageTopBarButton.png");
+		   
+		   return true;
+		  }
+		  catch (FindFailed e)
+		  {
+		   return false;
+		  }
+		 } 
+		
+		public static boolean clickCRM() throws FindFailed
+		 {
+		  try
+		  {      
+			  s.click("lobby//Lobby_CRM_body.png");
+			  
+			  s.wait(5.0);
+		   
+		   return true;
+		  }
+		  catch (FindFailed e)
+		  {
+		   return false;
+		  }
+		 } 
+		
+		// Close CRM Congratulation popup mecthod is in SHOP - isCongratulationPopupPresentAndClickOkayButton()
+
+		
+		// SlotMachinesPresent
 }

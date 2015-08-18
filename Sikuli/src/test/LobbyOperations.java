@@ -1,11 +1,14 @@
 package test;
 
+import java.io.IOException;
+
 import org.sikuli.script.*;
 
 
 public class LobbyOperations 
 {
 	static Screen s = new Screen();
+	static String startRegion;
 	
 	//TIME BONUS
 	
@@ -640,4 +643,185 @@ public class LobbyOperations
 
 		
 		// SlotMachinesPresent
+		public static boolean clickCentralSlot() throws FindFailed
+		{
+			try
+			{
+				Region r = s.find("lobby//Lobby_HR_Button.png");
+				r.h += 500;
+				r.click("lobby//Lobby_slotCabinetButtons.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean clickNextSlot() throws FindFailed
+		{
+			try
+			{
+				Region r = s.find("lobby//Lobby_JP_Button.png");
+				
+				r.h += 500;
+				r.w += 70;
+				//r.highlight();
+				r.click("lobby//Lobby_slotCabinetButtonsNext.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isNextSlotComingSoon() throws FindFailed
+		{
+			try
+			{
+				Region r = s.find("lobby//Lobby_JP_Button.png");
+				r.h += 500;
+				r.w += 100;
+				r.find("lobby//Lobby_ComingSoon.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isNextSlotEarlyAccess() throws FindFailed
+		{
+			try
+			{
+				Region r = s.find("lobby//Lobby_JP_Button.png");
+				r.h += 500;
+				r.w += 100;
+				r.find("lobby//Lobby_EarlyAccess.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean clickCabinetPlayButton() throws FindFailed
+		{
+			try
+			{						
+				s.find("lobby//Lobby_CabinetPlayBetButton.png");						
+				
+				s.click("lobby//Lobby_CabinetPlayBetButton.png");
+				
+				s.wait(65.5);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		
+		
+		
+		public static boolean clickAfterNextSlot() throws FindFailed
+		{
+			try
+			{						
+				Region r = s.find("lobby//Lobby_JP_Button.png");
+				r.h += 500;
+				r.x += 250;
+				r.click("lobby//Lobby_slotCabinetButtonsNext.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static void skipNextEarlyAccessAndComingSoonSlots() throws FindFailed
+		{
+			while (true)
+			{
+				try
+				{
+					Region r = s.find("lobby//Lobby_JP_Button.png");
+					r.h += 500;
+					r.w += 50;
+					r.find("lobby//Lobby_ComingSoon.png");
+					r.click("lobby//Lobby_ComingSoon.png");
+					s.click("lobby//Lobby_CabinetCloseButton.png");
+					System.out.println("[teststat] Next Slot is in Comnig Soon Status - SKIPPING");
+				}
+				catch (FindFailed e)
+				{
+					try
+					{
+						Region r = s.find("lobby//Lobby_JP_Button.png");
+						r.h += 500;
+						r.w += 50;
+						r.find("lobby//Lobby_EarlyAccess.png");
+						r.click("lobby//Lobby_EarlyAccess.png");
+						s.click("lobby//Lobby_CabinetCloseButton.png");
+						System.out.println("[teststat] Next Slot is in Early Acces Status - SKIPPING");
+					}
+					catch (FindFailed ex)
+					{
+						System.out.println("[teststat] Next Slot is not in Early Acces or Comnig Soon Status - NOT SKIPPING");
+						break;
+						
+					}
+				}
+			}
+		}
+		
+		public static void saveCentralSlotRegion() throws FindFailed, IOException
+		{
+			try
+			{
+				Region r = s.find("lobby//Lobby_HR_Button.png");
+				r.y += 200;
+				r.h += 300;
+				// r.highlight();
+				startRegion = s.capture(r).getFilename();	
+				
+				System.out.println("[teststat] (Initial) Slot Region Stored - OK");
+			}
+			catch (FindFailed e)
+			{
+				System.out.println("[teststat] Can't Store the Region with Central (Initial) Slot");
+			}
+			catch (IOException ex)
+			{
+				System.out.println("[teststat] Can't Store the Region with Central (Initial) Slot");
+			}
+		}
+		
+		public static boolean isCentralSlotInitial() throws FindFailed
+		{
+			try
+			{	
+				Region r = s.find("lobby//Lobby_JP_Button.png");
+				r.y += 100;
+				r.h += 300;			
+				s.find(startRegion);
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
 }

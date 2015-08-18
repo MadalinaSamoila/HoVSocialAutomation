@@ -555,7 +555,143 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void SlotMachinesPresent() throws FindFailed {
+	public void SlotMachinesPresent() throws FindFailed, IOException {
+
+		int ngLoaded = 0;
+		int ganLoaded = 0;
+		int gdkLoaded = 0;
+		int errLoaded = 0;
+		
+		LobbyOperations.saveCentralSlotRegion();
+		
+		while(true)
+		{
+			if ((LobbyOperations.isNextSlotComingSoon()) || (LobbyOperations.isNextSlotEarlyAccess()))
+			{				
+				LobbyOperations.skipNextEarlyAccessAndComingSoonSlots();
+			}
+			else
+			{
+				System.out.println("[teststat] Next Slot is not in Early Acces or Comnig Soon Status - OK");
+				
+				if (LobbyOperations.clickNextSlot())
+				{
+					System.out.println("[teststat] Next Slot Clicked - OK");
+					
+					if (LobbyOperations.clickCabinetPlayButton())
+					{
+						System.out.println("[teststat] Starting the Slot - OK");
+																		
+						switch (SlotOperations.specifySlot())
+						{
+							case 0:
+							{
+								System.out.println("[teststat] The User was not placed into the Slot or the Slot Displays incorrectly - FAILED");
+								errLoaded++;
+								System.out.println("[teststat] FORCE TRYING TO RETURN TO THE LOBBY");
+								if (LobbyOperations.returnToLobby())
+								{
+									System.out.println("[testres] Returned to the Lobby - OK");		
+									
+								}
+								else
+								{
+									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								}
+								break;
+							}
+							case 1:
+							{
+								System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
+								ngLoaded++;
+								if (LobbyOperations.returnToLobby())
+								{
+									System.out.println("[teststat] Returned to the Lobby - OK");
+								}
+								else
+								{
+									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								}
+								
+								break;
+							}
+							case 2:
+							{
+								System.out.println("[testprogress] The User Placed into GAN Slot - OK");
+								ganLoaded++;
+								if (LobbyOperations.returnToLobby())
+								{
+									System.out.println("[teststat] Returned to the Lobby - OK");
+								}
+								else
+								{
+									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								}
+								
+								break;
+							}
+							case 3:
+							{
+								System.out.println("[testprogress] The User Placed into GDK Slot - OK");
+								gdkLoaded++;
+								if (LobbyOperations.returnToLobby())
+								{
+									System.out.println("[teststat] Returned to the Lobby - OK");
+								}
+								else
+								{
+									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								}
+								
+								break;
+							}
+							
+						}
+						if (LobbyOperations.isCentralSlotInitial())
+						{
+							System.out.println("[testres] The Slot is initial - STOP_TESTING");
+							
+							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
+							break;
+							
+						}
+						else
+						{
+							System.out.println("[testres] The Slot is not initial - CONTUNUE_TESTING");
+						}
+					}
+					else
+					{
+						System.out.println("[teststat] Play Button (Bet per line) Not Clicked - FAILED");
+					}
+				}
+				else
+				{
+					System.out.println("[teststat] Next Slot Not Clicked - FAILED");
+					System.out.println("[teststat] FORCE TRYING TO RETURN TO THE LOBBY");
+					if (LobbyOperations.returnToLobby())
+					{
+						System.out.println("[testres] Returned to the Lobby - OK");
+						if (LobbyOperations.isCentralSlotInitial())
+						{
+							System.out.println("[testres] The Slot is initial - STOP_TESTING");
+							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
+							break;
+							
+						}
+						else
+						{
+							System.out.println("[testres] The Slot is not initial - CONTUNUE_TESTING");
+						}
+						
+					}
+					else
+					{
+						System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+					}
+				}
+			}
+		}
 		
 	}
 	

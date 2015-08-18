@@ -165,39 +165,39 @@ public class HoVSmokeTests {
 	@Test
 	public void EnabledCRMsAppear() throws FindFailed {
 		
-		if (clickCentralSlot() == true)
+		if (LobbyOperations.clickCentralSlot() == true)
 		{
 			System.out.println("[testprogress] Cabinet successfully clicked - OK");
 			
-			if (isCRMOpened() == true)
+			if (LobbyOperations.isCRMOpened() == true)
 			{
 				System.out.println("[testprogress] CRM is opened - OK");
 				
-				if (clickCloseButtonCRM() == true)
+				if (LobbyOperations.clickCloseButtonCRM() == true)
 				{
 					System.out.println("[testprogress] CRM close button clicked - OK");
 					
-					if (isCRMClosed() == true)
+					if (LobbyOperations.isCRMClosed() == true)
 					{
 						System.out.println("[testprogress] CRM successfully closed - OK");
 						
-						if (clickCentralSlot() == true)
+						if (LobbyOperations.clickCentralSlot() == true)
 						{
 							System.out.println("[testprogress] Cabinet successfully clicked - OK");
 							
-							if (isCRMOpened() == true)
+							if (LobbyOperations.isCRMOpened() == true)
 							{
 								System.out.println("[testprogress] CRM is opened - OK");
 								
-								if (clickCRM() == true)
+								if (LobbyOperations.clickCRM() == true)
 								{
 									System.out.println("[testprogress] CRM body is clicked - OK");
 									
-									if (isCongratulationPopupPresentAndClickOkayButton() == true)
+									if (LobbyOperations.isCongratulationPopupPresentAndClickOkayButton() == true)
 									{
 										System.out.println("[testprogress] Congratulation popup is present and Okay button is clicked - OK");
 										
-										if (isCRMClosed() == true)
+										if (LobbyOperations.isCRMClosed() == true)
 										{
 											System.out.println("[teststat] Congratulation popup is closed - OK");
 										}

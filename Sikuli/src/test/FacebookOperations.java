@@ -89,4 +89,5 @@ public class FacebookOperations {
 		screen.wait(0.5);
 		screen.click("browser//login_confirmation.png");
 	}
+
 }

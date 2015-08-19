@@ -824,4 +824,58 @@ public class LobbyOperations
 				return false;
 			}
 		}
+		
+		// FreshInstallTest case methods - start (behind)
+		public static boolean findChangeURLAndAccessUATSocial(String browser)  throws FindFailed
+		{
+			try
+			{
+				s.find("browser//"+browser+"_facebook.com_url.png");
+				
+				s.click("browser//"+browser+"_facebook.com_url.png");
+				
+				s.paste("https://apps.facebook.com/hov_uat/");
+				
+				s.type(Key.ENTER);
+				
+				s.wait(5.0);
+				
+				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
+				
+				return true;
+				
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean areFreshInstallStepsCompleted()  throws FindFailed
+		{
+			try
+			{
+				s.find("browser//facebook_Play_Now_button.png");
+				
+				s.click("browser//facebook_Play_Now_button.png");
+				
+				s.wait(10.0);
+				
+				s.find("browser//facebook_OK_button.png");
+				
+				s.click("browser//facebook_OK_button.png");
+				
+				s.wait(10.0);
+				
+				s.find("lobby//Tutorial_collectBonusStep.png");
+				
+				return true;
+				
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		// FreshInstallTest case methods - finish (above)
 }

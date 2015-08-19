@@ -10,7 +10,27 @@ public class HoVSmokeTests {
 	static Screen screen= new Screen();
 	
 	@Test
-	public void FreshInstallTest() throws FindFailed {
+	public void FreshInstallTest(String browser) throws FindFailed {
+		
+		if (LobbyOperations.findChangeURLAndAccessUATSocial(browser) == true)
+		{
+			System.out.println("[testprogress] Find, URL change and Access UAT are complete - OK");
+			
+			if (LobbyOperations.areFreshInstallStepsCompleted() == true)
+			{
+				System.out.println("[teststat] Find and tap Play Now are complete - OK");
+			}
+			
+			else
+			{
+				System.out.println("[teststat] Find or tap Play Now is not complete - Failed");
+			}
+		}
+		
+		else
+		{
+			System.out.println("[teststat] Find, URL change or Access UAT is not complete - Failed");
+		}
 		
 	}
 	

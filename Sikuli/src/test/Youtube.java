@@ -1,16 +1,21 @@
 package test;
 
+import java.io.IOException;
+
 import org.sikuli.script.*;
+
+import com.gurock.testrail.APIException;
 
 public class Youtube {
 
-public static void main(String[] args) throws FindFailed, InterruptedException {
+public static void main(String[] args) throws FindFailed, InterruptedException, APIException, IOException {
  // TODO Auto-generated method stub
 Screen s= new Screen();
 String[] browsers = {"chrome", "firefox", "iexplore"};
-
-for (String i: browsers) {
-	
+////////////////////////
+/*for (String i: browsers) {
+	https://developers.facebook.com/apps/600712740047839/payments/
+		
 	try {
 		FacebookOperations.createTestUser();
 		
@@ -24,8 +29,11 @@ for (String i: browsers) {
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
+////////////////////////////
 
+HoVSmokeTests smoke = new HoVSmokeTests();
+smoke.TutorialInstigates();
 	/*BrowserOperations.openBrowser(i);
 	s.wait(1.5);
 	
@@ -49,5 +57,4 @@ for (String i: browsers) {
 	BrowserOperations.closeBrowser(i);*/
 }
  
-}
 }

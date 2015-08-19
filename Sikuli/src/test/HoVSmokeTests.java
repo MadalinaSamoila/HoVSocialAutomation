@@ -6,6 +6,8 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.testng.annotations.*;
 
+import com.gurock.testrail.APIException;
+
 public class HoVSmokeTests {
 	static Screen screen= new Screen();
 	
@@ -35,39 +37,50 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void TutorialInstigates() throws FindFailed {
-		
+	public void TutorialInstigates() throws FindFailed, APIException, IOException {
+		String testRailTitle = "Via a fresh account, the tutorial instigates and successfully walks the player through the relevant steps without any core concerns";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailComment = "";
 		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
 		{
 			System.out.println("[testprogress] Tutorial Time Bonus Step is Present and Clicked - OK");
+			testRailComment += "[testprogress] Tutorial Time Bonus Step is Present and Clicked - OK \n";
 			
 			if (LobbyOperations.isChooseMachineTutorialStepPresentAndClick())
 			{
 				System.out.println("[testprogress] Tutorial Choose Machine Step is Present and Clicked - OK");
+				testRailComment += "[testprogress] Tutorial Choose Machine Step is Present and Clicked - OK \n";
 				
 				if (LobbyOperations.isSelectBetTutorialStepPresentAndClick())
 				{
 					System.out.println("[testprogress] Tutorial Select Bet Step is Present and Clicked - OK");										
+					testRailComment += "[testprogress] Tutorial Select Bet Step is Present and Clicked - OK \n";
 					
 					switch (SlotOperations.specifySlot())
 					{
 						case 0:
 						{
 							System.out.println("[teststat] The User was not placed into the Slot - FAILED");
-							
+							testRailComment += "[teststat] The User was not placed into the Slot - FAILED \n";
+							TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							break;
 						}
 						case 1:
 						{
 							System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
+							testRailComment += "[testprogress] The User Placed into NexGen Slot - OK \n";
 							
 							if (LobbyOperations.returnToLobby())
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
+								testRailComment += "[teststat] Returned to the Lobby - OK \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -75,14 +88,19 @@ public class HoVSmokeTests {
 						case 2:
 						{
 							System.out.println("[testprogress] The User Placed into GAN Slot - OK");
+							testRailComment += "[testprogress] The User Placed into GAN Slot - OK \n";
 							
 							if (LobbyOperations.returnToLobby())
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
+								testRailComment += "[teststat] Returned to the Lobby - OK \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -90,14 +108,19 @@ public class HoVSmokeTests {
 						case 3:
 						{
 							System.out.println("[testprogress] The User Placed into GDK Slot - OK");
+							testRailComment += "[testprogress] The User Placed into GDK Slot - OK \n";
 							
 							if (LobbyOperations.returnToLobby())
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
+								testRailComment += "[teststat] Returned to the Lobby - OK \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
+								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -107,16 +130,25 @@ public class HoVSmokeTests {
 				else
 				{
 					System.out.println("[teststat] Tutorial Select Bet Step is Absent - FAILED");
+					
+					testRailComment += "[teststat] Tutorial Select Bet Step is Absent - FAILED \n";
+					TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			else
 			{
 				System.out.println("[teststat] Tutorial Choose Machine Step is Absent - FAILED");
+				
+				testRailComment += "[teststat] Tutorial Choose Machine Step is Absent - FAILED \n";
+				TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
 		{
 			System.out.println("[teststat] Tutorial Time Bonus Step is Absent - FAILED");
+			
+			testRailComment += "[teststat] Tutorial Time Bonus Step is Absent - FAILED \n";
+			TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	
 	}

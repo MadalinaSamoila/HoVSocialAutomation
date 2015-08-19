@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Automation/Sikuli-IDE/sikuli-script.jar"/>
 	<classpathentry kind="lib" path="lib/apache-mime4j-0.6.jar"/>
 	<classpathentry kind="lib" path="lib/bsh-1.3.0.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-nodep-2.1_3.jar"/>
@@ -44,5 +43,7 @@
 	<classpathentry kind="lib" path="lib/xalan-2.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="lib/sikuli-script.jar"/>
+	<classpathentry kind="lib" path="lib/testrail-api-v2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

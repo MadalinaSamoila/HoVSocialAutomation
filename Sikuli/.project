@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/test/global.properties</name>
-			<type>1</type>
-			<location>C:/useful stuff/eclipse workspace/Sikuli/src/test/global.properties</location>
-		</link>
-	</linkedResources>
 </projectDescription>

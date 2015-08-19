@@ -15,7 +15,7 @@ import org.json.simple.parser.JSONParser;
 
 public class FacebookOperations {
 	public static URL userLogin;
-	public static String userId;
+	public static String userFacebookId;
 	public static String userEmail;
 	public static String userPassword;
 	
@@ -52,24 +52,24 @@ public class FacebookOperations {
 	    String id = (String) object.get("id");
 	    
 	    userLogin = new URL(loginUrl);
-	    userId = id;
+	    userFacebookId = id;
 	    
 	    System.out.println("user login link"+userLogin);
-	    System.out.println("user id"+userId);
+	    System.out.println("user id"+userFacebookId);
 	    
 	    screen.paste("https://developers.facebook.com/apps/600712740047839/payments/");
 		screen.type(Key.ENTER);
 	    
 		screen.click("browser//facebook_canvas_payments_click.png");
 		
-		screen.paste(userId);
+		screen.paste(userFacebookId);
 		screen.type(Key.END);
 		screen.click("browser//facebook_save_changes.png");
 	}
 	
 	public static void deleteTestUser () throws Exception {
 		
-		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userId+"?method=delete&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userFacebookId+"?method=delete&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		HttpURLConnection con = (HttpURLConnection) deleteUrl.openConnection();
 
 		// optional default is GET

@@ -12,7 +12,7 @@ import org.sikuli.script.*;
 public class AdminOperations {
 	
 	
-	public static void resetDailyWheel (String browser, String UAID) {
+	public static void resetDailyWheel (String browser, String GAID) {
 		
 		WebDriver driver;
 		
@@ -27,13 +27,20 @@ public class AdminOperations {
 						break;
 		}
 		
-		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+UAID+"#summary");
-		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-		driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-		driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
-
-		driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
-
+		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
+		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+			
+			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				
+				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+				
+			}
+			
+		}
 
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li[2]/a")).click();
 		
@@ -47,7 +54,7 @@ public class AdminOperations {
 		
 	}
 	
-	public static void resetUserLevel (String browser, String UAID, int level) {
+	public static void resetUserLevel (String browser, String GAID, int level) {
 		
 		WebDriver driver;
 		
@@ -62,12 +69,21 @@ public class AdminOperations {
 						break;
 		}
 		
-		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+UAID+"#summary");
-		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-		driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-		driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
-
-		driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
+		
+		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+			
+			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				
+				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+				
+			}
+			
+		}
 		
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
@@ -77,7 +93,7 @@ public class AdminOperations {
 		
 	}
 	
-	public static void resetUserBalance (String browser, String UAID, double balance) {
+	public static void resetUserBalance (String browser, String GAID, double balance) {
 		
 		WebDriver driver;
 		
@@ -92,12 +108,21 @@ public class AdminOperations {
 						break;
 		}
 		
-		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+UAID+"#summary");
-		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-		driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-		driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
-
-		driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
+		
+		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+			
+			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				
+				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+				
+			}
+			
+		}
 		
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
@@ -110,7 +135,7 @@ public class AdminOperations {
 		
 	}
 	
-public static double getUserBalance (String browser, String UAID) {
+public static double getUserBalance (String browser, String GAID) {
 		
 		WebDriver driver;
 		
@@ -125,12 +150,21 @@ public static double getUserBalance (String browser, String UAID) {
 						break;
 		}
 		
-		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+UAID+"#summary");
-		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-		driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-		driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 
-		driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+			
+			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				
+				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+				
+			}
+			
+		}
 		
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
@@ -143,7 +177,7 @@ public static double getUserBalance (String browser, String UAID) {
 	}
 
 
-public static void resetHourlyBonus (String browser, String UAID) {
+public static void resetHourlyBonus (String browser, String GAID) {
 	
 	WebDriver driver;
 	
@@ -158,12 +192,21 @@ public static void resetHourlyBonus (String browser, String UAID) {
 					break;
 	}
 	
-	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+UAID+"#summary");
-	driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-	driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-	driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
-
-	driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
+	
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+		
+		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			
+			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+		}
+		
+	}
 
 
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li[2]/a")).click();
@@ -174,7 +217,7 @@ public static void resetHourlyBonus (String browser, String UAID) {
 		
 }
 
-public static void addUAIDToCRM (String browser, String UAID) {
+public static void addGAIDToCRM (String browser, String GAID) {
 	
 	WebDriver driver;
 	
@@ -193,21 +236,30 @@ public static void addUAIDToCRM (String browser, String UAID) {
 	Actions action = new Actions(driver);
 	
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/crm/actions/1683/edit");
-	driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-	driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-	driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
 
-	driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+		
+		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			
+			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+		}
+		
+	}
 	
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
 	
-	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(UAID);
+	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(GAID);
 	
 	driver.findElement(By.xpath("(//div[2]/button")).click();
 	
 }	
 
-public static void removeUAIDFromCRM (String browser, String UAID) {
+public static void removeGAIDFromCRM (String browser, String GAID) {
 	
 	WebDriver driver;
 	
@@ -226,11 +278,20 @@ public static void removeUAIDFromCRM (String browser, String UAID) {
 	Actions action = new Actions(driver);
 	
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/crm/actions/1683/edit");
-	driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
-	driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-	driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
 
-	driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+		
+		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			
+			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+		}
+		
+	}
 	
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
 	
@@ -238,6 +299,45 @@ public static void removeUAIDFromCRM (String browser, String UAID) {
 	
 	driver.findElement(By.xpath("(//div[2]/button")).click();
 	
+}
+
+
+public static String getGAID (String browser, String userFacebookID) {
+	
+	WebDriver driver;
+	
+	switch(browser) {
+	case "chrome": 	driver = new ChromeDriver();
+					break;
+	case "firefox": driver = new FirefoxDriver();
+					break;
+	case "iexplore":driver = new InternetExplorerDriver();
+					break;
+	default:		driver = new ChromeDriver();
+					break;
+	}
+		
+	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts?utf8=%E2%9C%93&search_type=social_network_id&search_value[]="+userFacebookID+"&commit=Search");
+
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+		
+		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			
+			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+		}
+		
+	}
+	
+	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
+	
+	String GAID = driver.findElement(By.xpath("//div/div/div/div/table/tbody/tr/td[2]")).getText();
+	
+	return GAID;
 }
 	
 	

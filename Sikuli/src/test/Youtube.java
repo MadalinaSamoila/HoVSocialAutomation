@@ -2,16 +2,18 @@ package test;
 
 import java.io.IOException;
 
+import org.json.simple.parser.ParseException;
 import org.sikuli.script.*;
 
 import com.gurock.testrail.APIException;
 
 public class Youtube {
 
-public static void main(String[] args) throws FindFailed, InterruptedException, APIException, IOException {
+	public static void main(String[] args) throws FindFailed, InterruptedException, APIException, IOException, ParseException 
+	{
  // TODO Auto-generated method stub
-Screen s= new Screen();
-String[] browsers = {"chrome", "firefox", "iexplore"};
+	Screen s= new Screen();
+	String[] browsers = {"chrome", "firefox", "iexplore"};
 ////////////////////////
 /*for (String i: browsers) {
 	https://developers.facebook.com/apps/600712740047839/payments/
@@ -32,8 +34,38 @@ String[] browsers = {"chrome", "firefox", "iexplore"};
 	}*/
 ////////////////////////////
 
-HoVSmokeTests smoke = new HoVSmokeTests();
-smoke.TutorialInstigates();
+//HoVSmokeTests smoke = new HoVSmokeTests();
+//smoke.TutorialInstigates();
+	
+	
+	String pathToFile = "config.json";  //replace "C:/config.json" with args[0] before export to jar
+	if (CommonOperations.areFieldsPresentInConfigurationFile(pathToFile).equals("ok") && (CommonOperations.fillFieldsFromConfigFile(pathToFile))) 
+	{
+		try 
+		{
+			
+			BrowserOperations.openBrowser(browsers[2]);
+			s.wait(5.0);				
+			FacebookOperations.loginFacebook(browsers[2]); // done
+			s.wait(5.0);	
+			FacebookOperations.createTestUser();
+			s.wait(5.0);
+			FacebookOperations.loginTestUser();
+			s.wait(5.0);
+			
+		} 
+		catch (Exception e) 
+		{			
+			e.printStackTrace();
+		}
+	}
+	else
+	{
+		System.out.println(CommonOperations.areFieldsPresentInConfigurationFile(pathToFile)); 
+	}
+	
+
+
 	/*BrowserOperations.openBrowser(i);
 	s.wait(1.5);
 	
@@ -55,6 +87,6 @@ smoke.TutorialInstigates();
 		s.click("lobby//daily_wheel_collect.png");
 	}
 	BrowserOperations.closeBrowser(i);*/
-}
+	}
  
 }

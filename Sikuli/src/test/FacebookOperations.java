@@ -24,7 +24,7 @@ public class FacebookOperations {
 	
 	public static void createTestUser () throws Exception, IOException {
 		
-		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=MuddyAutomatedTester&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=AutomatedTester&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -57,14 +57,22 @@ public class FacebookOperations {
 	    System.out.println("user login link"+userLogin);
 	    System.out.println("user id"+userFacebookId);
 	    
+	    BrowserOperations.clickSearch();
 	    screen.paste("https://developers.facebook.com/apps/600712740047839/payments/");
 		screen.type(Key.ENTER);
-	    
+	    screen.wait(5.1);
 		screen.click("browser//facebook_canvas_payments_click.png");
 		
 		screen.paste(userFacebookId);
-		screen.type(Key.END);
-		screen.click("browser//facebook_save_changes.png");
+		screen.wait(2.1);
+		screen.type(Key.ENTER);
+		screen.wait(0.5);
+		/*screen.type(Key.TAB);
+		screen.type(Key.PAGE_DOWN);
+		screen.wait(5.1);
+		screen.type(Key.PAGE_DOWN);
+		screen.click("browser//facebook_save_changes.png");*/
+		screen.type(Key.ENTER);
 	}
 	
 	public static void deleteTestUser () throws Exception {
@@ -82,12 +90,39 @@ public class FacebookOperations {
 	}
 
 	public static void loginTestUser() throws Exception{
-		
+		BrowserOperations.clickSearch();
 		screen.paste(userLogin.toString());
 		screen.type(Key.ENTER);
 		screen.click("browser//login_as_button.png");
-		screen.wait(0.5);
+		screen.wait(2.5);
 		screen.click("browser//login_confirmation.png");
 	}
-
+	
+	public static void loginFacebook(String browser) throws Exception
+	{
+		BrowserOperations.clickSearch();
+		screen.paste("https://www.facebook.com/login.php");
+		screen.type(Key.ENTER);
+		screen.wait(5.0);
+		
+		if (browser.equals("iexplore"))
+		{
+			screen.click("browser//facebook_login.png");
+			screen.paste(CommonOperations.fbLogin);
+			screen.type(Key.TAB);
+			screen.paste(CommonOperations.fbPassword);
+			screen.type(Key.ENTER);
+		}
+		else
+		{
+			screen.type(Key.TAB);
+			screen.paste(CommonOperations.fbLogin);
+			screen.type(Key.TAB);
+			screen.paste(CommonOperations.fbPassword);
+			screen.type(Key.ENTER);
+		}
+		
+		
+	}
+	
 }

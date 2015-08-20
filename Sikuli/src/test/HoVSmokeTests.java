@@ -12,9 +12,9 @@ public class HoVSmokeTests {
 	static Screen screen= new Screen();
 	
 	@Test
-	public void FreshInstallTest(String browser) throws FindFailed {
+	public void FreshInstallTest(String browser) throws FindFailed, APIException, IOException {
 		String testRailTitle = "Fresh app install is successfull with no previous builds installed";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.findChangeURLAndAccessUATSocial(browser) == true)
@@ -46,7 +46,7 @@ public class HoVSmokeTests {
 	@Test
 	public void TutorialInstigates() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Via a fresh account, the tutorial instigates and successfully walks the player through the relevant steps without any core concerns";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
 		{
@@ -69,7 +69,7 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[teststat] The User was not placed into the Slot - FAILED");
 							testRailComment += "[teststat] The User was not placed into the Slot - FAILED \n";
-							TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							break;
 						}
 						case 1:
@@ -81,13 +81,13 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
 								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
 								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -101,13 +101,13 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
 								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
 								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -121,13 +121,13 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Returned to the Lobby - OK");
 								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							else
 							{
 								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
 								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							break;
@@ -139,7 +139,7 @@ public class HoVSmokeTests {
 					System.out.println("[teststat] Tutorial Select Bet Step is Absent - FAILED");
 					
 					testRailComment += "[teststat] Tutorial Select Bet Step is Absent - FAILED \n";
-					TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			else
@@ -147,7 +147,7 @@ public class HoVSmokeTests {
 				System.out.println("[teststat] Tutorial Choose Machine Step is Absent - FAILED");
 				
 				testRailComment += "[teststat] Tutorial Choose Machine Step is Absent - FAILED \n";
-				TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
@@ -155,15 +155,15 @@ public class HoVSmokeTests {
 			System.out.println("[teststat] Tutorial Time Bonus Step is Absent - FAILED");
 			
 			testRailComment += "[teststat] Tutorial Time Bonus Step is Absent - FAILED \n";
-			TestRailOperations.setResultToTest(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	
 	}
 	
 	@Test
-	public void PlacedInLobby() throws FindFailed {
+	public void PlacedInLobby() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User is successfully placed into the apps lobby";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isLobbyReturned(0) == true)
@@ -181,9 +181,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test 
-	public void DailyBonusPresent() throws FindFailed {
+	public void DailyBonusPresent() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Daily Bonus is present in build, opening upon load (if in a ready status) and functions as expected";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isDailyWheelPresent())
@@ -240,9 +240,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void EnabledCRMsAppear() throws FindFailed {
+	public void EnabledCRMsAppear() throws FindFailed, APIException, IOException {
 		String testRailTitle = "CRM's that are enabled appear and function as expected";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.clickCentralSlot() == true)
@@ -355,9 +355,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void HelpFanPageOpen() throws FindFailed {
+	public void HelpFanPageOpen() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Help & Fan page can be successfully loaded from within game";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.clickFanPage() == true)
@@ -370,7 +370,7 @@ public class HoVSmokeTests {
 				System.out.println("[testprogress] Fan page from top bar is opened - OK");
 				testRailComment += "[testprogress] Fan page from top bar is opened - OK \n";
 				
-				BrowserOperations.closeTab(BrowserOperations.getBrowserName());
+				BrowserOperations.closeTab();
 				
 				//s.click("browserFFButtons//closeTabFFButton.png"); // Will be changed to Maddy`s tab closing method
 				
@@ -389,7 +389,7 @@ public class HoVSmokeTests {
 							System.out.println("[testprogress] Support page from the bottom is opened - OK");
 							testRailComment += "[testprogress] Support page from the bottom is opened - OK \n";
 							
-							BrowserOperations.closeTab(BrowserOperations.getBrowserName());
+							BrowserOperations.closeTab();
 							
 							//s.click("browserFFButtons//closeTabFFButton.png");  // Will be changed to Maddy`s tab closing method
 							
@@ -447,9 +447,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void BuyAllCoinPackages() throws FindFailed {
+	public void BuyAllCoinPackages() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can successfully purchase all coin packages within the shop and they have the option to upsale their purchase";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isBuyButtonPresentAndClick())
@@ -552,9 +552,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void QuickBuyFunctional() throws FindFailed {
+	public void QuickBuyFunctional() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Quick Buy bar is functioning as intended";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isQuickBuyPanelPresent())
@@ -675,9 +675,9 @@ public class HoVSmokeTests {
 	}
 	
 	@Test
-	public void CollectHourlyBonus() throws FindFailed {
+	public void CollectHourlyBonus() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can collect their hourly bonus";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(TestRailOperations.testRailHostAdress,  TestRailOperations.testRailLogin,  TestRailOperations.testRailPassword,  TestRailOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isTimeBonusEnabled())
@@ -867,7 +867,7 @@ public class HoVSmokeTests {
 			
 			screen.wait(1.5);
 
-			BrowserOperations.clickSearch(browser);
+			BrowserOperations.clickSearch();
 			FacebookOperations.loginTestUser();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

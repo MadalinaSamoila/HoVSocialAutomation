@@ -17,12 +17,12 @@ public class TestRailOperations
 	public static String testRailLogin;
 	public static String testRailPassword;
 	public static String testRailRunId;
-	*/
+	
 	public static String testRailHostAdress = "https://productmadness.testrail.com/";
 	public static String testRailLogin = "a.hilchuk@a1qa.com";
 	public static String testRailPassword = "G6K8vVfKaAECBiAChQGU";
 	public static String testRailRunId = "27485";
-	
+	*/
 	public static String getTestIdByTitleInRun(String hostAdress, String login, String password, String runId, String title) throws APIException, IOException
 	{
 		try

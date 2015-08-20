@@ -1,0 +1,15 @@
+[
+	{
+		"fb_email":"a1qa_test@mail.ru",
+		"fb_password":"qwaszx@1",
+		"tr_host":"https://productmadness.testrail.com/",
+		"tr_email":"a.hilchuk@a1qa.com",
+		"tr_password":"G6K8vVfKaAECBiAChQGU",
+		"tr_run_id":"27485",
+		"chrome_path":"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+		"firefox_path":"C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe",
+		"iexplore_path":"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe",
+		"hov_load_time":"60.0",
+		"hov_slot_load_time":"60.0"
+	}
+]

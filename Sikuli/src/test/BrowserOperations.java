@@ -1,13 +1,11 @@
 package test;
 
 import org.sikuli.script.*;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Screen;
 
 
 
 enum Browsers {
-	chrome(System.getenv("CHROME_ADDRESS")), firefox(System.getenv("FIREFOX_ADDRESS")), iexplore(System.getenv("IEXPLORE_ADDRESS"));
+	chrome(CommonOperations.chromePath), firefox(CommonOperations.firefoxPath), iexplore(CommonOperations.iexplorePath);
 		
 	private String browserAddress;
 	
@@ -28,7 +26,8 @@ public class BrowserOperations {
 	
 	
 	public static void openBrowser(String name) {
-		browser = new App(Browsers.valueOf(name).getBrowserAddress()).open();
+		App.open(Browsers.valueOf(name).getBrowserAddress());
+		//browser = new App(Browsers.valueOf(name).getBrowserAddress()).open();
 		browserName = name;
 		
 	}
@@ -38,32 +37,56 @@ public class BrowserOperations {
 		
 	}
 	
-	public static void openNewTab (String name) {
-		try {
-			screen.click("browser/"+name+"_new_tab.png");
-		} catch (FindFailed e) {
+	public static void openNewTab (/*String name*/) {
+		//try {
+			//screen.click("browser/"+name+"_new_tab.png");
+			screen.keyDown(Key.CTRL);
+			screen.keyDown("t");
+			screen.keyUp(Key.CTRL);
+			screen.keyUp("t");
+		//} catch (FindFailed e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	e.printStackTrace();
+		//}
 		
 	}
 	
-	public static void clickSearch (String name) {
-		try {
+	public static void clickSearch (/*String name*/) {
+		/*try {
 			screen.click("browser/"+name+"_search.png");
 		} catch (FindFailed e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		screen.keyDown(Key.CTRL);
+		screen.keyDown("l");
+		screen.keyUp(Key.CTRL);
+		screen.keyUp("l");
 	}
 	
-	public static void closeTab (String name) {
-		try {
+	public static void closeTab (/*String name*/) {
+		/*try {
 			screen.click("browser/"+name+"_close_tab.png");
 		} catch (FindFailed e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		screen.keyDown(Key.CTRL);
+		screen.keyDown("w");
+		screen.keyUp(Key.CTRL);
+		screen.keyUp("w");
+	}
+	public static void refreshPage (/*String name*/) {
+		/*try {
+			screen.click("browser/"+name+"_close_tab.png");
+		} catch (FindFailed e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		screen.keyDown(Key.CTRL);
+		screen.keyDown("r");
+		screen.keyUp(Key.CTRL);
+		screen.keyUp("r");
 	}
 	
 	public static String getBrowserName()

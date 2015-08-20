@@ -50,7 +50,14 @@ public class AdminOperations {
 		
 		driver.findElement(By.xpath("//div[@id='bonuses']/form/div[2]/div/div[2]/button")).click();
 		
-
+		try {
+			driver.wait(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		driver.close();
 		
 	}
 	
@@ -90,6 +97,15 @@ public class AdminOperations {
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[3]/td[3]/form/div[3]/input")).sendKeys(new Integer(level).toString());
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[3]/td[3]/form/div[4]/button")).click();
+		
+		try {
+			driver.wait(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		driver.close();
 		
 	}
 	
@@ -131,7 +147,16 @@ public class AdminOperations {
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[3]/input")).sendKeys(String.valueOf(balance));
 		
-		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[4]/button")).click();		
+		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[4]/button")).click();	
+		
+		try {
+			driver.wait(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		driver.close();
 		
 	}
 	
@@ -170,6 +195,8 @@ public static double getUserBalance (String browser, String GAID) {
 		
 		String balanceString = driver.findElement(By.xpath("//div[2]/div/div/table/tbody/tr/td[2]")).getText();
 		double balance = Double.parseDouble(balanceString);
+		
+		driver.close();
 		
 		return balance;
 		
@@ -214,6 +241,15 @@ public static void resetHourlyBonus (String browser, String GAID) {
 	driver.findElement(By.xpath("//div[@id='bonuses']/form/table/tbody/tr[7]/td/input")).click();
 	
 	driver.findElement(By.xpath("//div[@id='bonuses']/form/div[2]/div/div[2]/button")).click();
+	
+	try {
+		driver.wait(2);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	driver.close();
 		
 }
 
@@ -257,6 +293,15 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("(//div[2]/button")).click();
 	
+	try {
+		driver.wait(2);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	driver.close();
+	
 }	
 
 public static void removeGAIDFromCRM (String browser, String GAID) {
@@ -299,6 +344,15 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("(//div[2]/button")).click();
 	
+	try {
+		driver.wait(2);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	driver.close();
+	
 }
 
 
@@ -336,6 +390,8 @@ public static String getGAID (String browser, String userFacebookID) {
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 	
 	String GAID = driver.findElement(By.xpath("//div/div/div/div/table/tbody/tr/td[2]")).getText();
+	
+	driver.close();
 	
 	return GAID;
 }

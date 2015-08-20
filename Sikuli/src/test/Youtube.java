@@ -34,7 +34,7 @@ public class Youtube {
 	}*/
 ////////////////////////////
 
-//HoVSmokeTests smoke = new HoVSmokeTests();
+HoVSmokeTests smoke = new HoVSmokeTests();
 //smoke.TutorialInstigates();
 	
 	
@@ -53,6 +53,31 @@ public class Youtube {
 			FacebookOperations.loginTestUser();
 			s.wait(5.0);
 			
+			smoke.FreshInstallTest(browsers[2]);
+			s.wait(60.0);
+			smoke.TutorialInstigates();
+			s.wait(5.0);
+			smoke.CollectHourlyBonus();
+			BrowserOperations.refreshPage();
+			s.wait(35.0);
+			smoke.DailyBonusPresent();
+			s.wait(5.0);
+			smoke.HelpFanPageOpen();
+			BrowserOperations.refreshPage();
+			s.wait(35.0);
+			smoke.PlacedInLobby();
+			s.wait(5.0);
+			smoke.BuyAllCoinPackages();
+			s.wait(5.0);
+			smoke.QuickBuyFunctional();
+			s.wait(5.0);
+			AdminOperations.addGAIDToCRM(browsers[2], AdminOperations.getGAID(browsers[2], FacebookOperations.userFacebookId));
+			BrowserOperations.refreshPage();
+			s.wait(35.0);
+			smoke.EnabledCRMsAppear();
+			s.wait(5.0);
+			AdminOperations.removeGAIDFromCRM(browsers[2], AdminOperations.getGAID(browsers[2], FacebookOperations.userFacebookId));
+			s.wait(5.0);
 		} 
 		catch (Exception e) 
 		{			

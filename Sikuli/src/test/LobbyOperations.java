@@ -855,6 +855,8 @@ public class LobbyOperations
 		{
 			try
 			{
+				s.wait(10.0);
+				
 				s.find("browser//facebook_Play_Now_button.png");
 				
 				s.click("browser//facebook_Play_Now_button.png");

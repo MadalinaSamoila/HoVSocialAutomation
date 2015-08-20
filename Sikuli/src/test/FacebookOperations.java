@@ -93,6 +93,7 @@ public class FacebookOperations {
 		BrowserOperations.clickSearch();
 		screen.paste(userLogin.toString());
 		screen.type(Key.ENTER);
+		screen.wait(5.5);
 		screen.click("browser//login_as_button.png");
 		screen.wait(2.5);
 		screen.click("browser//login_confirmation.png");

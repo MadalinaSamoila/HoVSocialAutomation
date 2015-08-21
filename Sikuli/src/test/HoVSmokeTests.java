@@ -274,7 +274,7 @@ public class HoVSmokeTests {
 						System.out.println("[testprogress] CRM successfully closed - OK");
 						testRailComment += "[testprogress] CRM successfully closed - OK \n";
 						
-						if (LobbyOperations.clickCentralSlot() == true)
+						if (LobbyOperations.clickNextSlot() == true)
 						{
 							System.out.println("[testprogress] Cabinet successfully clicked - OK");
 							testRailComment += "[testprogress] Cabinet successfully clicked - OK \n";

@@ -83,18 +83,22 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
-			
+			*/
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
-			*/
-			AdminOperations.addGAIDToCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
-			BrowserOperations.refreshPage(false);
+			
+			/*FacebookOperations.userFacebookId = "115326662150130"; //DEBUG
+			String fbId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
+			System.out.println("FBID = "+fbId);
+			AdminOperations.addGAIDToCRM(i, fbId);
+			s.wait(2.0);
+			BrowserOperations.refreshPage(true);
 			s.wait(35.0);
 			smoke.EnabledCRMsAppear();
 			s.wait(5.0);
-			AdminOperations.removeGAIDFromCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
+			AdminOperations.removeGAIDFromCRM(i, fbId);
 			s.wait(5.0);
-			/**//*
+			
 			smoke.SlotMachinesPresent();
 			
 			FacebookOperations.deleteTestUser();

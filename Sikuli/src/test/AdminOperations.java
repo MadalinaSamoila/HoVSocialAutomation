@@ -11,7 +11,7 @@ import org.sikuli.script.*;
 
 public class AdminOperations {
 	
-	
+	static Screen s = new Screen();
 	public static void resetDailyWheel (String browser, String GAID) {
 		
 		WebDriver driver;
@@ -34,6 +34,7 @@ public class AdminOperations {
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 			
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -51,7 +52,7 @@ public class AdminOperations {
 			}
 			
 		}
-
+		s.wait(2.1);
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li[2]/a")).click();
 		
 		driver.findElement(By.xpath("//div[@id='bonuses']/form/table/tbody/tr/td/input")).click();
@@ -93,6 +94,7 @@ public class AdminOperations {
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 			
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -110,7 +112,7 @@ public class AdminOperations {
 			}
 			
 		}
-		
+		s.wait(2.1);
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[3]/td[3]/form/div[3]/input")).sendKeys(new Integer(level).toString());
@@ -151,6 +153,7 @@ public class AdminOperations {
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 			
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -168,7 +171,7 @@ public class AdminOperations {
 			}
 			
 		}
-		
+		s.wait(2.1);
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
 		Select droplist  = new Select(driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[2]/select")));
@@ -212,6 +215,7 @@ public static double getUserBalance (String browser, String GAID) {
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 			
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -229,7 +233,7 @@ public static double getUserBalance (String browser, String GAID) {
 			}
 			
 		}
-		
+		s.wait(2.1);
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
 		String balanceString = driver.findElement(By.xpath("//div[2]/div/div/table/tbody/tr/td[2]")).getText();
@@ -266,6 +270,7 @@ public static void resetHourlyBonus (String browser, String GAID) {
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -284,7 +289,7 @@ public static void resetHourlyBonus (String browser, String GAID) {
 		
 	}
 
-
+	s.wait(2.1);
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li[2]/a")).click();
 	
 	driver.findElement(By.xpath("//div[@id='bonuses']/form/table/tbody/tr[7]/td/input")).click();
@@ -328,6 +333,7 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -335,23 +341,23 @@ public static void addGAIDToCRM (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			try {
+			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		}
 		
 	}
-	
+	s.wait(2.1);
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(GAID);
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//div[2]/button")).click();
-	
+	s.wait(7.1);
 	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
@@ -389,6 +395,7 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -396,30 +403,30 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			try {
+		/*	try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-		}
+		}*/
 		
 	}
-	
+	s.wait(2.1);
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(Keys.BACK_SPACE);
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//div[2]/button")).click();
 	
 	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
-	
+		e.printStackTrace();*/
+	}
+	s.wait(7.1);
 	driver.close();
 	
 }
@@ -448,6 +455,7 @@ public static String getGAID (String browser, String userFacebookID) {
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -465,7 +473,7 @@ public static String getGAID (String browser, String userFacebookID) {
 		}
 		
 	}
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 	
 	String GAID = driver.findElement(By.xpath("//div/div/div/div/table/tbody/tr/td[2]")).getText();
@@ -498,6 +506,7 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
@@ -515,7 +524,7 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 		}
 		
 	}
-	
+	s.wait(2.1);
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 	
 	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[3]/input")).sendKeys(Integer.toString(groupId));

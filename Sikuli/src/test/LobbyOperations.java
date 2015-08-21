@@ -618,7 +618,8 @@ public class LobbyOperations
 			  s.wait(14.0);
 			  
 			  s.find("lobby//FanPageTopBarButton.png");
-		   
+			  
+			  s.wait(14.0);
 		   return true;
 		  }
 		  catch (FindFailed e)

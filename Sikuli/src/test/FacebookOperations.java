@@ -11,6 +11,9 @@ import org.sikuli.script.*;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 
 public class FacebookOperations {
@@ -24,7 +27,7 @@ public class FacebookOperations {
 	
 	public static void createTestUser () throws Exception, IOException {
 		
-		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=AutomatedTester&language=en&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=AutomatedTester&language=en&region=uk&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -95,7 +98,7 @@ public class FacebookOperations {
 		screen.type(Key.ENTER);
 		screen.wait(5.5);
 		screen.click("browser//login_as_button.png");
-		screen.wait(2.5);
+		screen.wait(5.5);
 		screen.click("browser//login_confirmation.png");
 	}
 	
@@ -104,7 +107,7 @@ public class FacebookOperations {
 		BrowserOperations.clickSearch();
 		screen.paste("https://www.facebook.com/login.php");
 		screen.type(Key.ENTER);
-		screen.wait(5.0);
+		screen.wait(15.0);
 		
 		if (browser.equals("iexplore"))
 		{
@@ -124,6 +127,22 @@ public class FacebookOperations {
 		}
 		
 		
+	}
+	public static void changeLanguageFacebook(String browser) throws Exception
+	{
+		BrowserOperations.clickSearch();
+		screen.paste("https://www.facebook.com/settings?tab=language&section=primary&view");
+		screen.type(Key.ENTER);
+		screen.wait(15.0);
+		
+		screen.click("browser//"+browser+"_downArrow.png");
+		screen.type("e");
+		screen.type("n");
+		screen.type("g");
+		screen.type(Key.DOWN);
+		screen.type(Key.ENTER);
+		screen.type(Key.TAB);
+		screen.type(Key.ENTER);
 	}
 	
 }

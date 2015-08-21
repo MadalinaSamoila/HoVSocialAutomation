@@ -83,10 +83,10 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
-			*/
+			
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
-			/*
+			*/
 			AdminOperations.addGAIDToCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			BrowserOperations.refreshPage(false);
 			s.wait(35.0);
@@ -94,7 +94,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			s.wait(5.0);
 			AdminOperations.removeGAIDFromCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			s.wait(5.0);
-			*//*
+			/**//*
 			smoke.SlotMachinesPresent();
 			
 			FacebookOperations.deleteTestUser();

@@ -333,7 +333,7 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(GAID);
 	
-	driver.findElement(By.xpath("(//div[2]/button")).click();
+	driver.findElement(By.xpath("//div[2]/button")).click();
 	
 	try {
 		driver.wait(2);
@@ -391,7 +391,7 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(Keys.BACK_SPACE);
 	
-	driver.findElement(By.xpath("(//div[2]/button")).click();
+	driver.findElement(By.xpath("//div[2]/button")).click();
 	
 	try {
 		driver.wait(2);

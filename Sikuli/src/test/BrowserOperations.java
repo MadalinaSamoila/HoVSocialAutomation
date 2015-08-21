@@ -76,13 +76,14 @@ public class BrowserOperations {
 		screen.keyUp(Key.CTRL);
 		screen.keyUp("w");
 	}
-	public static void refreshPage (/*String name*/) {
+	public static void refreshPage (/*String name*/) throws FindFailed {
 		/*try {
 			screen.click("browser/"+name+"_close_tab.png");
 		} catch (FindFailed e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+		screen.click("browser//facebook_top.png");
 		screen.keyDown(Key.CTRL);
 		screen.keyDown("r");
 		screen.keyUp(Key.CTRL);

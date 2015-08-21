@@ -283,7 +283,7 @@ public class LobbyOperations
 	{
 		try
 		{
-			s.wait(4.0);
+			s.wait(8.0);
 			
 			switch  (wheel)
 			{
@@ -327,7 +327,7 @@ public class LobbyOperations
 	{
 		try
 		{
-			s.wait(4.0);
+			s.wait(14.0);
 			
 			s.find("externalPages//FanPageLogo.png");
 			
@@ -344,7 +344,7 @@ public class LobbyOperations
 	{
 		try
 		{
-			s.wait(4.0);
+			s.wait(14.0);
 			
 			s.find("externalPages//SupportPage.png");
 			
@@ -363,7 +363,7 @@ public class LobbyOperations
 		{
 			s.click("lobby//FanPageTopBarButton.png");
 			
-			s.wait(4.0);
+			s.wait(15.0);
 			
 			return true;
 			
@@ -380,7 +380,7 @@ public class LobbyOperations
 		{
 			s.click("lobby//SupportLinkFooter.png");
 			
-			s.wait(4.0);
+			s.wait(14.0);
 			
 			return true;
 			
@@ -855,19 +855,19 @@ public class LobbyOperations
 		{
 			try
 			{
-				s.wait(10.0);
+				s.wait(15.0);
 				
 				s.find("browser//facebook_Play_Now_button.png");
 				
 				s.click("browser//facebook_Play_Now_button.png");
 				
-				s.wait(10.0);
+				s.wait(15.0);
 				
 				s.find("browser//facebook_OK_button.png");
 				
 				s.click("browser//facebook_OK_button.png");
 				
-				s.wait(10.0);
+				s.wait(65.0);
 				
 				s.find("lobby//Tutorial_collectBonusStep.png");
 				

@@ -32,6 +32,7 @@ public class HoVSmokeTests {
 			{
 				System.out.println("[teststat] Find or tap Play Now is not complete - Failed");
 				testRailComment += "[teststat] Fresh install steps are not complete - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		
@@ -39,6 +40,7 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[teststat] Find, URL change or Access UAT is not complete - Failed");
 			testRailComment += "[teststat] URL change and access UAT Social were not executed - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
 	}
@@ -176,6 +178,7 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[teststat] User is not placed in the Lobby - Failed");
 			testRailComment += "[teststat] User is  not successfully placed into the apps lobby - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
 	}
@@ -209,7 +212,7 @@ public class HoVSmokeTests {
 					else
 					{
 						System.out.println("[testprogress] Unable to Untick Daily Wheel Share");
-						testRailComment += "[teststat] Unable to Untick Daily Wheel Shar - OK \n";
+						testRailComment += "[testprogress] Unable to Untick Daily Wheel Share - OK \n";
 					}
 				}
 				
@@ -222,6 +225,7 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Daily Wheel Collect Button is not Clicked - FAILED");
 					testRailComment += "[teststat] Daily Wheel Collect Button is not Clicked - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 				
 			}
@@ -229,12 +233,14 @@ public class HoVSmokeTests {
 			{
 				System.out.println("[teststat] Unable to Spin Daily Wheel - FAILED");
 				testRailComment += "[teststat] Unable to Spin Daily Wheel - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
 		{
 			System.out.println("[teststat] Daily Wheel is Absent - FAILED");
 			testRailComment += "[teststat] Daily Wheel is Absent - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
 	}
@@ -295,6 +301,8 @@ public class HoVSmokeTests {
 										{
 											System.out.println("[teststat] Congratulation popup is not closed - Failed");
 											testRailComment += "[teststat] Congratulation popup is not closed - FAILED \n";
+											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+											
 										}
 									}
 									
@@ -302,6 +310,7 @@ public class HoVSmokeTests {
 									{
 										System.out.println("[teststat] Congratulation popup is absent OR Okay button is not clicked - Failed");
 										testRailComment += "[teststat] Congratulation popup is absent OR Okay button is not clicked - FAILED \n";
+										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 									}
 								}
 								
@@ -309,6 +318,7 @@ public class HoVSmokeTests {
 								{
 									System.out.println("[teststat] CRM body is not clicked - Failed");
 									testRailComment += "[teststat] CRM body is not clicked - FAILED \n";
+									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 								}
 							}
 							
@@ -316,6 +326,7 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] CRM is not opened - Failed");
 								testRailComment += "[teststat] CRM is not opened - FAILED \n";
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 						}
 						
@@ -323,6 +334,7 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[teststat] Cabinet is not clicked - Failed");
 							testRailComment += "[teststat] Cabinet is not clicked - FAILED \n";
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 						}
 					}
 					
@@ -330,6 +342,7 @@ public class HoVSmokeTests {
 					{
 						System.out.println("[teststat] CRM is not closed - Failed");
 						testRailComment += "[teststat] CRM is not closed - FAILED \n";
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 					}
 				}
 				
@@ -337,6 +350,7 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] CRM is not clicked - Failed");
 					testRailComment += "[teststat] CRM is not clicked - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			
@@ -344,6 +358,7 @@ public class HoVSmokeTests {
 			{
 				System.out.println("[teststat] CRM is not opened - Failed");
 				testRailComment += "[teststat] CRM is not opened - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 				
@@ -351,6 +366,7 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[teststat] Cabinet is not clicked - Failed");
 			testRailComment += "[teststat] Cabinet is not clicked - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
 	
@@ -407,6 +423,8 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Lobby is not returned from Support Page - Failed");
 								testRailComment += "[teststat] Lobby is not returned from Support Page - FAILED \n";
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+								
 							}
 							
 						}
@@ -415,6 +433,7 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[teststat] Support page from the bottom is not opened - FAILED");
 							testRailComment += "[teststat] Support page from the bottom is not opened - FAILED \n";
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 						}
 					}
 					
@@ -423,6 +442,7 @@ public class HoVSmokeTests {
 					{
 						System.out.println("[teststat] Support page is not found and clicked - FAILED");
 						testRailComment += "[teststat] Support page is not found and clicked - FAILED \n";
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 					}
 					
 				}
@@ -431,18 +451,21 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Lobby is not returned from Fan Page - FAILED");
 					testRailComment += "[teststat] Lobby is not returned from Fan Page - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			else
 			{
 				System.out.println("[teststat] Fan page from top bar is not opened - FAILED");
 				testRailComment += "[teststat] Fan page from top bar is not opened - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
 		{
 			System.out.println("[teststat] Fan page button cannot be found - FAILED");
 			testRailComment += "[teststat] Fan page button cannot be found - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
 	
@@ -503,24 +526,29 @@ public class HoVSmokeTests {
 									{
 										System.out.println("[teststat] Congratulation Popup is Absent or Okay button is Absent - Failed");
 										testRailComment += "[teststat] Congratulation Popup is Absent or Okay button is Absent - FAILED \n";
+
+										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 									}
 								}
 								else
 								{
 									System.out.println("[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED");
 									testRailComment += "[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED \n";
+									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 								}
 							}
 							else
 							{
 								System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED");
 								testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED \n";
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 						}
 						else
 						{
 							System.out.println("[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED");
 							testRailComment += "[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED \n";
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 						}
 						
 					}
@@ -528,6 +556,7 @@ public class HoVSmokeTests {
 					{
 						System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED");
 						testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED \n";
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 					}
 					
 					
@@ -536,6 +565,7 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Can't Click Shop Purchase Button - FAILED");
 					testRailComment += "[teststat] Can't Click Shop Purchase Button - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			//}
 			//else
@@ -548,6 +578,8 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[teststat] Lobby Buy Button is Absent - UNABLE_TO_CONTINUE");
 			testRailComment += "[teststat] Lobby Buy Button is Absent - FAILED \n";
+
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
 	
@@ -611,24 +643,32 @@ public class HoVSmokeTests {
 											{
 												System.out.println("[teststat] Congratulation Popup is Absent or Okay button is Absent - Failed");
 												testRailComment += "[teststat] Congratulation Popup is Absent or Okay button is Absent - FAILED \n";
+
+												TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 											}
 										}
 										else
 										{
 											System.out.println("[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED");
 											testRailComment += "[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED \n";
+
+											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 										}
 									}
 									else
 									{
 										System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED");
 										testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED \n";
+
+										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 									}
 								}
 								else
 								{
 									System.out.println("[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED");
 									testRailComment += "[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED \n";
+
+									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 								}
 								
 							}
@@ -636,6 +676,8 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED");
 								testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED \n";
+
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 							
 							
@@ -645,30 +687,35 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[teststat] QuickBuy Buy Button is Absent - FAILED");
 							testRailComment += "[teststat] QuickBuy Buy Button is Absent - FAILED \n";
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 						}
 					}
 					else
 					{
 						System.out.println("[teststat] QuickBuy Up Button is Absent - FAILED");
 						testRailComment += "[teststat] QuickBuy Up Button is Absent - FAILED \n";
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 					}
 				}
 				else
 				{
 					System.out.println("[teststat] QuickBuy DropDown List is Absent - FAILED");
 					testRailComment += "[teststat] QuickBuy DropDown List is Absent - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			else
 			{
 				System.out.println("[teststat] QuickBuy Down Button is Absent - FAILED");
 				testRailComment += "[teststat] QuickBuy Down Button is Absent - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
 		{
 			System.out.println("[teststat] QuickBuy Panel is Absent - UNABLE_TO_CONTINUE");
 			testRailComment += "[teststat] QuickBuy Panel is Absent - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
 		
@@ -699,25 +746,30 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Time Bonus is not Collected - FAILED");
 					testRailComment += "[teststat] Time Bonus is not Collected - FAILED \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 				}
 			}
 			else
 			{
 				System.out.println("[teststat] Time Bonus Not Clicked - FAILED");
 				testRailComment += "[teststat] Time Bonus Not Clicked - FAILED \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 			}
 		}
 		else
 		{
 			System.out.println("[testprogress] Time Bonus Disabled - UNABLE_TO_CONTINUE");
 			testRailComment += "[teststat] Time Bonus Disabled - FAILED \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
 	}
 	
 	@Test
-	public void SlotMachinesPresent() throws FindFailed, IOException {
-		
+	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
+		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailComment = "";
 
 		int ngLoaded = 0;
 		int ganLoaded = 0;
@@ -759,6 +811,7 @@ public class HoVSmokeTests {
 								else
 								{
 									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+									
 								}
 								break;
 							}
@@ -814,6 +867,15 @@ public class HoVSmokeTests {
 							System.out.println("[testres] The Slot is initial - STOP_TESTING");
 							
 							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
+							testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded;
+							if (errLoaded != 0)
+							{
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+							}
+							else
+							{
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+							}
 							break;
 							
 						}
@@ -838,7 +900,17 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[testres] The Slot is initial - STOP_TESTING");
 							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
+							testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded;
+							if (errLoaded != 0)
+							{
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+							}
+							else
+							{
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+							}
 							break;
+							
 							
 						}
 						else

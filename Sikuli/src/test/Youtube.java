@@ -36,7 +36,7 @@ public class Youtube {
 
 HoVSmokeTests smoke = new HoVSmokeTests();
 //smoke.TutorialInstigates();
-	
+	String i = browsers[0];
 	
 	String pathToFile = "config.json";  //replace "C:/config.json" with args[0] before export to jar
 	if (CommonOperations.areFieldsPresentInConfigurationFile(pathToFile).equals("ok") && (CommonOperations.fillFieldsFromConfigFile(pathToFile))) 
@@ -44,40 +44,57 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 		try 
 		{
 			
-			BrowserOperations.openBrowser(browsers[2]);
+			/*BrowserOperations.openBrowser(i);
 			s.wait(5.0);				
-			FacebookOperations.loginFacebook(browsers[2]); // done
+			FacebookOperations.loginFacebook(i);
 			s.wait(5.0);	
 			FacebookOperations.createTestUser();
 			s.wait(5.0);
 			FacebookOperations.loginTestUser();
-			s.wait(5.0);
+			s.wait(5.0);*/						 // OK
 			
-			smoke.FreshInstallTest(browsers[2]);
-			s.wait(60.0);
+			FacebookOperations.userFacebookId = "106154683071929";
+			
+			//On Alex's PC russian language sets as default for test user, need to investigate
+			/*smoke.FreshInstallTest(i);
+			s.wait(60.0); 					//retest
+			
 			smoke.TutorialInstigates();
 			s.wait(5.0);
+			
 			smoke.CollectHourlyBonus();
+			
 			BrowserOperations.refreshPage();
 			s.wait(35.0);
+			
 			smoke.DailyBonusPresent();
 			s.wait(5.0);
+			*/
 			smoke.HelpFanPageOpen();
 			BrowserOperations.refreshPage();
 			s.wait(35.0);
+			
 			smoke.PlacedInLobby();
 			s.wait(5.0);
+			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
+			
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
-			AdminOperations.addGAIDToCRM(browsers[2], AdminOperations.getGAID(browsers[2], FacebookOperations.userFacebookId));
+			
+			AdminOperations.addGAIDToCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			BrowserOperations.refreshPage();
 			s.wait(35.0);
 			smoke.EnabledCRMsAppear();
 			s.wait(5.0);
-			AdminOperations.removeGAIDFromCRM(browsers[2], AdminOperations.getGAID(browsers[2], FacebookOperations.userFacebookId));
+			AdminOperations.removeGAIDFromCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			s.wait(5.0);
+			
+			smoke.SlotMachinesPresent();
+			
+			FacebookOperations.deleteTestUser();
+			*/
 		} 
 		catch (Exception e) 
 		{			

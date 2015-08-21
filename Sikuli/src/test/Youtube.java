@@ -89,15 +89,18 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			s.wait(5.0);
 			
 			//FacebookOperations.userFacebookId = "115326662150130"; //DEBUG
-			String fbId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
-			System.out.println("FBID = "+fbId);
-			AdminOperations.addGAIDToCRM(i, fbId);
+			AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 0); // NOT TESTED
+			String GaId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
+			System.out.println("GaId = "+GaId);
+			AdminOperations.addGAIDToCRM(i, GaId);
 			s.wait(2.0);
 			BrowserOperations.refreshPage(true);
 			s.wait(35.0);
 			smoke.EnabledCRMsAppear();
 			s.wait(5.0);
-			AdminOperations.removeGAIDFromCRM(i, fbId);
+			AdminOperations.removeGAIDFromCRM(i, GaId);
+			s.wait(5.0);
+			AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1); // NOT TESTED
 			s.wait(5.0);
 			
 			smoke.SlotMachinesPresent();

@@ -38,6 +38,13 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
+				try {
+					driver.wait(2);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 			
 		}
@@ -88,6 +95,13 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
+				try {
+					driver.wait(2);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 			
 		}
@@ -135,6 +149,13 @@ public class AdminOperations {
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+				
+				try {
+					driver.wait(2);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 			
@@ -187,6 +208,13 @@ public static double getUserBalance (String browser, String GAID) {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
+				try {
+					driver.wait(2);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 			
 		}
@@ -230,6 +258,13 @@ public static void resetHourlyBonus (String browser, String GAID) {
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+			try {
+				driver.wait(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -283,6 +318,13 @@ public static void addGAIDToCRM (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
+			try {
+				driver.wait(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
@@ -334,6 +376,13 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
+			try {
+				driver.wait(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
@@ -383,6 +432,13 @@ public static String getGAID (String browser, String userFacebookID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
+			try {
+				driver.wait(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
@@ -422,6 +478,13 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+			try {
+				driver.wait(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		

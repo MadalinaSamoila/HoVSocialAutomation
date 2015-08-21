@@ -43,7 +43,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 	{
 		try 
 		{
-			/*
+			
 			BrowserOperations.openBrowser(i);
 			s.wait(5.0);				
 			FacebookOperations.loginFacebook(i);
@@ -62,7 +62,8 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.TutorialInstigates();
 			s.wait(5.0);
-			AdminOperations.setExclusionGroup(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId), 1); // NOT TESTED
+			
+			AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1); // NOT TESTED
 			
 			
 			BrowserOperations.refreshPage(true);
@@ -83,11 +84,11 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
-			*/
+			
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
 			
-			/*FacebookOperations.userFacebookId = "115326662150130"; //DEBUG
+			//FacebookOperations.userFacebookId = "115326662150130"; //DEBUG
 			String fbId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
 			System.out.println("FBID = "+fbId);
 			AdminOperations.addGAIDToCRM(i, fbId);
@@ -102,7 +103,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			smoke.SlotMachinesPresent();
 			
 			FacebookOperations.deleteTestUser();
-			*/
+			
 		} 
 		catch (Exception e) 
 		{			

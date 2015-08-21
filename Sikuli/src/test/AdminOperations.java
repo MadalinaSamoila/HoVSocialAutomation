@@ -537,7 +537,7 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}*/
-	
+	s.wait(7.1);
 	driver.close();
 	
 }

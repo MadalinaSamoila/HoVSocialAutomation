@@ -16,6 +16,9 @@ public class AdminOperations {
 		
 		WebDriver driver;
 		
+		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+		
 		switch(browser) {
 		case "chrome": 	driver = new ChromeDriver();
 						break;
@@ -72,6 +75,8 @@ public class AdminOperations {
 		
 		WebDriver driver;
 		
+		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 		switch(browser) {
 		case "chrome": 	driver = new ChromeDriver();
 						break;
@@ -126,6 +131,9 @@ public class AdminOperations {
 	public static void resetUserBalance (String browser, String GAID, double balance) {
 		
 		WebDriver driver;
+		
+		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 		
 		switch(browser) {
 		case "chrome": 	driver = new ChromeDriver();
@@ -185,6 +193,9 @@ public static double getUserBalance (String browser, String GAID) {
 		
 		WebDriver driver;
 		
+		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+		
 		switch(browser) {
 		case "chrome": 	driver = new ChromeDriver();
 						break;
@@ -235,6 +246,9 @@ public static double getUserBalance (String browser, String GAID) {
 public static void resetHourlyBonus (String browser, String GAID) {
 	
 	WebDriver driver;
+	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 	
 	switch(browser) {
 	case "chrome": 	driver = new ChromeDriver();
@@ -291,6 +305,9 @@ public static void resetHourlyBonus (String browser, String GAID) {
 public static void addGAIDToCRM (String browser, String GAID) {
 	
 	WebDriver driver;
+	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 	
 	switch(browser) {
 	case "chrome": 	driver = new ChromeDriver();
@@ -349,6 +366,9 @@ public static void addGAIDToCRM (String browser, String GAID) {
 public static void removeGAIDFromCRM (String browser, String GAID) {
 	
 	WebDriver driver;
+	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 	
 	switch(browser) {
 	case "chrome": 	driver = new ChromeDriver();
@@ -409,6 +429,9 @@ public static String getGAID (String browser, String userFacebookID) {
 	
 	WebDriver driver;
 	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+	
 	switch(browser) {
 	case "chrome": 	driver = new ChromeDriver();
 					break;
@@ -455,6 +478,9 @@ public static String getGAID (String browser, String userFacebookID) {
 public static void setExclusionGroup (String browser, String userFacebookID, int groupId) {
 	
 	WebDriver driver;
+	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
 	
 	switch(browser) {
 	case "chrome": 	driver = new ChromeDriver();

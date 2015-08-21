@@ -69,7 +69,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Lobby_buyButton.png");
 			
-			s.wait(3.0);
+			s.wait(5.0);
 			
 			return true;
 		}
@@ -102,7 +102,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_purchaseButton.png");
 			
-			s.wait(5.0);
+			s.wait(15.0);
 			
 			return true;
 		}
@@ -128,7 +128,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_fbConfirmPaymentBuyButton.png");
 			
-			s.wait(5.0);
+			s.wait(15.0);
 			
 			return true;
 		}
@@ -148,7 +148,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_upsaleWheelSpinButton.png");
 			
-			s.wait(10.0);
+			s.wait(15.0);
 			
 			return true;
 		}
@@ -168,7 +168,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_upsaleWheelCompletedCollectButton.png");
 			
-			s.wait(5.0);
+			s.wait(15.0);
 			
 			return true;
 		}
@@ -220,6 +220,8 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_quickbuyDownButton.png");
 			
+			s.wait(1.5);
+			
 			return true;
 		}
 		catch (FindFailed e)
@@ -235,6 +237,8 @@ public class LobbyOperations
 			s.find("lobby//Shop_quickbuyUpButton.png");					
 			
 			s.click("lobby//Shop_quickbuyUpButton.png");
+			
+			s.wait(1.5);
 			
 			return true;
 		}
@@ -267,7 +271,7 @@ public class LobbyOperations
 			
 			s.click("lobby//Shop_quickbuyBuyButton.png");
 			
-			s.wait(5.0);
+			s.wait(10.0);
 			
 			return true;
 		}
@@ -581,7 +585,7 @@ public class LobbyOperations
 		 {
 		  try
 		  {   
-			  s.wait(4.0);
+			  s.wait(14.0);
 			  
 			  s.find("lobby//Lobby_CRM_body.png");
 		   
@@ -611,7 +615,7 @@ public class LobbyOperations
 		 {
 		  try
 		  {      
-			  s.wait(4.0);
+			  s.wait(14.0);
 			  
 			  s.find("lobby//FanPageTopBarButton.png");
 		   
@@ -629,7 +633,7 @@ public class LobbyOperations
 		  {      
 			  s.click("lobby//Lobby_CRM_body.png");
 			  
-			  s.wait(5.0);
+			  s.wait(10.0);
 		   
 		   return true;
 		  }
@@ -838,7 +842,7 @@ public class LobbyOperations
 				
 				s.type(Key.ENTER);
 				
-				s.wait(5.0);
+				s.wait(10.0);
 				
 				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
 				

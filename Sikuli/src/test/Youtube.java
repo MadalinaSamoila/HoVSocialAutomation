@@ -43,58 +43,62 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 	{
 		try 
 		{
-			
-			/*BrowserOperations.openBrowser(i);
+			/*
+			BrowserOperations.openBrowser(i);
 			s.wait(5.0);				
 			FacebookOperations.loginFacebook(i);
 			s.wait(5.0);	
 			FacebookOperations.createTestUser();
 			s.wait(5.0);
 			FacebookOperations.loginTestUser();
-			s.wait(5.0);*/						 // OK
-			
-			FacebookOperations.userFacebookId = "106154683071929";
+			s.wait(5.0);						 // OK
+			FacebookOperations.changeLanguageFacebook(i);
+			s.wait(5.0);
+			//FacebookOperations.userFacebookId = "106154683071929";
 			
 			//On Alex's PC russian language sets as default for test user, need to investigate
-			/*smoke.FreshInstallTest(i);
-			s.wait(60.0); 					//retest
+			smoke.FreshInstallTest(i);
+			//s.wait(60.0); 					//retest
 			
 			smoke.TutorialInstigates();
 			s.wait(5.0);
+			AdminOperations.setExclusionGroup(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId), 1); // NOT TESTED
 			
-			smoke.CollectHourlyBonus();
 			
-			BrowserOperations.refreshPage();
+			BrowserOperations.refreshPage(true);
 			s.wait(35.0);
 			
 			smoke.DailyBonusPresent();
 			s.wait(5.0);
-			*/
+			
+			smoke.CollectHourlyBonus();
+			
 			smoke.HelpFanPageOpen();
-			BrowserOperations.refreshPage();
+			BrowserOperations.refreshPage(true);
 			s.wait(35.0);
 			
 			smoke.PlacedInLobby();
 			s.wait(5.0);
 			
+			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
-			
+			*/
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
-			
+			/*
 			AdminOperations.addGAIDToCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
-			BrowserOperations.refreshPage();
+			BrowserOperations.refreshPage(false);
 			s.wait(35.0);
 			smoke.EnabledCRMsAppear();
 			s.wait(5.0);
 			AdminOperations.removeGAIDFromCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			s.wait(5.0);
-			
+			*//*
 			smoke.SlotMachinesPresent();
 			
 			FacebookOperations.deleteTestUser();
-			
+			*/
 		} 
 		catch (Exception e) 
 		{			

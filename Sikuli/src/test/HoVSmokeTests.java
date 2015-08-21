@@ -26,6 +26,7 @@ public class HoVSmokeTests {
 			{
 				System.out.println("[teststat] Find and tap Play Now are complete - OK");
 				testRailComment += "[teststat] Fresh install steps are complete - OK \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 			}
 			
 			else
@@ -172,6 +173,7 @@ public class HoVSmokeTests {
 		{
 			System.out.println("[teststat] User is placed in the Lobby - OK");
 			testRailComment += "[teststat] User is successfully placed into the apps lobby - OK \n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		
 		else
@@ -220,6 +222,7 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Daily Wheel Collect Button is Clicked - OK");
 					testRailComment += "[teststat] Daily Wheel Collect Button is Clicked - OK \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 				}
 				else
 				{
@@ -295,6 +298,7 @@ public class HoVSmokeTests {
 										{
 											System.out.println("[teststat] Congratulation popup is closed - OK");
 											testRailComment += "[teststat] Congratulation popup is closed - OK \n";
+											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 										}
 										
 										else
@@ -417,6 +421,7 @@ public class HoVSmokeTests {
 							{
 								System.out.println("[teststat] Lobby is returned from Support Page - OK");
 								testRailComment += "[teststat] Lobby is returned from Support Page - OK \n";
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 							}
 							
 							else
@@ -521,6 +526,7 @@ public class HoVSmokeTests {
 									{
 										System.out.println("[teststat] Congratulation Popup is Present and Okay button has been clicked - OK");
 										testRailComment += "[teststat] Congratulation Popup is Present and Okay button has been clicked - OK \n";
+										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 									}
 									else
 									{
@@ -638,6 +644,7 @@ public class HoVSmokeTests {
 											{
 												System.out.println("[teststat] Congratulation Popup is Present and Okay button has been clicked - OK");
 												testRailComment += "[teststat] Congratulation Popup is Present and Okay button has been clicked - OK \n";
+												TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 											}
 											else
 											{
@@ -741,6 +748,7 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[teststat] Time Bonus Collected - OK");
 					testRailComment += "[teststat] Time Bonus Collected - OK \n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 				}
 				else
 				{

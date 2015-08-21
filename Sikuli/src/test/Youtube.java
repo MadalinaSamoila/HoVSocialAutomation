@@ -94,7 +94,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			smoke.SlotMachinesPresent();
 			
 			FacebookOperations.deleteTestUser();
-			*/
+			
 		} 
 		catch (Exception e) 
 		{			

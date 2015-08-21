@@ -395,6 +395,54 @@ public static String getGAID (String browser, String userFacebookID) {
 	
 	return GAID;
 }
+
+public static void setExclusionGroup (String browser, String userFacebookID, int groupId) {
+	
+	WebDriver driver;
+	
+	switch(browser) {
+	case "chrome": 	driver = new ChromeDriver();
+					break;
+	case "firefox": driver = new FirefoxDriver();
+					break;
+	case "iexplore":driver = new InternetExplorerDriver();
+					break;
+	default:		driver = new ChromeDriver();
+					break;
+	}
+		
+	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts?utf8=%E2%9C%93&search_type=social_network_id&search_value[]="+userFacebookID+"&commit=Search");
+
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
+		
+		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			
+			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
+			
+		}
+		
+	}
+	
+	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
+	
+	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[3]/input")).sendKeys(Integer.toString(groupId));
+	
+	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[4]/button")).click();
+	
+	try {
+		driver.wait(2);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	driver.close();
+	
+}
 	
 	
 

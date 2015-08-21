@@ -57,8 +57,8 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			//FacebookOperations.userFacebookId = "106154683071929";
 			
 			//On Alex's PC russian language sets as default for test user, need to investigate
-			/*smoke.FreshInstallTest(i);
-			s.wait(60.0); 					//retest
+			smoke.FreshInstallTest(i);
+			//s.wait(60.0); 					//retest
 			
 			smoke.TutorialInstigates();
 			s.wait(5.0);
@@ -83,7 +83,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
-			
+			/*
 			AdminOperations.addGAIDToCRM(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId));
 			BrowserOperations.refreshPage(false);
 			s.wait(35.0);

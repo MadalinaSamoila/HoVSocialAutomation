@@ -43,7 +43,7 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 	{
 		try 
 		{
-			
+			/*
 			BrowserOperations.openBrowser(i);
 			s.wait(5.0);				
 			FacebookOperations.loginFacebook(i);
@@ -62,14 +62,16 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			
 			smoke.TutorialInstigates();
 			s.wait(5.0);
+			AdminOperations.setExclusionGroup(i, AdminOperations.getGAID(i, FacebookOperations.userFacebookId), 1); // NOT TESTED
 			
-			smoke.CollectHourlyBonus();
 			
 			BrowserOperations.refreshPage(true);
 			s.wait(35.0);
 			
 			smoke.DailyBonusPresent();
 			s.wait(5.0);
+			
+			smoke.CollectHourlyBonus();
 			
 			smoke.HelpFanPageOpen();
 			BrowserOperations.refreshPage(true);
@@ -78,9 +80,10 @@ HoVSmokeTests smoke = new HoVSmokeTests();
 			smoke.PlacedInLobby();
 			s.wait(5.0);
 			
+			
 			smoke.BuyAllCoinPackages();
 			s.wait(5.0);
-			
+			*/
 			smoke.QuickBuyFunctional();
 			s.wait(5.0);
 			/*

@@ -24,7 +24,7 @@ public class FacebookOperations {
 	
 	public static void createTestUser () throws Exception, IOException {
 		
-		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=AutomatedTester&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?installed=false&name=AutomatedTester&language=en&permissions=read_stream&method=post&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 

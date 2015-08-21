@@ -33,8 +33,8 @@ public class AdminOperations {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
-				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
@@ -90,8 +90,8 @@ public class AdminOperations {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
-				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
@@ -145,8 +145,8 @@ public class AdminOperations {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
-				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
@@ -203,8 +203,8 @@ public static double getUserBalance (String browser, String GAID) {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
-				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
@@ -254,8 +254,8 @@ public static void resetHourlyBonus (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
-			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
@@ -313,8 +313,8 @@ public static void addGAIDToCRM (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
-			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
@@ -371,8 +371,8 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
-			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
@@ -427,8 +427,8 @@ public static String getGAID (String browser, String userFacebookID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
-			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
@@ -474,8 +474,8 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			
-			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys("muddyrogue@gmail.com");
-			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys("ciorivopsite");
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			

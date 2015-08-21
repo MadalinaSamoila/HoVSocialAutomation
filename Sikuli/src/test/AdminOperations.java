@@ -41,12 +41,12 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				try {
+				/*try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				
 			}
 			
@@ -60,12 +60,12 @@ public class AdminOperations {
 		
 		driver.findElement(By.xpath("//div[@id='bonuses']/form/div[2]/div/div[2]/button")).click();
 		
-		try {
+		/*try {
 			driver.wait(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		driver.close();
 		
@@ -100,12 +100,12 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				try {
+				/*try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				
 			}
 			
@@ -117,12 +117,12 @@ public class AdminOperations {
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[3]/td[3]/form/div[4]/button")).click();
 		
-		try {
+		/*try {
 			driver.wait(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		driver.close();
 		
@@ -158,12 +158,12 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				try {
+				/*try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				
 			}
 			
@@ -178,12 +178,12 @@ public class AdminOperations {
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[4]/button")).click();	
 		
-		try {
+		/*try {
 			driver.wait(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		driver.close();
 		
@@ -219,12 +219,12 @@ public static double getUserBalance (String browser, String GAID) {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				try {
+				/*try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				
 			}
 			
@@ -273,12 +273,12 @@ public static void resetHourlyBonus (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			try {
+			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		}
 		
@@ -291,12 +291,12 @@ public static void resetHourlyBonus (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("//div[@id='bonuses']/form/div[2]/div/div[2]/button")).click();
 	
-	try {
+	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	
 	driver.close();
 		
@@ -352,12 +352,12 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("//div[2]/button")).click();
 	
-	try {
+	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	
 	driver.close();
 	
@@ -413,12 +413,12 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	
 	driver.findElement(By.xpath("//div[2]/button")).click();
 	
-	try {
+	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	
 	driver.close();
 	
@@ -455,12 +455,12 @@ public static String getGAID (String browser, String userFacebookID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			try {
+			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		}
 		
@@ -505,12 +505,12 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			try {
+			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		}
 		
@@ -522,12 +522,12 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 	
 	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[4]/button")).click();
 	
-	try {
+	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	
 	driver.close();
 	

@@ -755,6 +755,20 @@ public class LobbyOperations
 			}
 		}
 		
+		public static boolean clickCloseCabinet() throws FindFailed
+		{
+			try
+			{						
+				s.click("lobby//Lobby_CabinetCloseButton.png");
+				
+				return true;
+			}
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
 		public static void skipNextEarlyAccessAndComingSoonSlots() throws FindFailed
 		{
 			while (true)
@@ -798,7 +812,7 @@ public class LobbyOperations
 				Region r = s.find("lobby//Lobby_HR_Button.png");
 				r.y += 200;
 				r.h += 300;
-				// r.highlight();
+				//r.highlight();
 				startRegion = s.capture(r).getFilename();	
 				
 				System.out.println("[teststat] (Initial) Slot Region Stored - OK");
@@ -817,10 +831,11 @@ public class LobbyOperations
 		{
 			try
 			{	
-				Region r = s.find("lobby//Lobby_JP_Button.png");
-				r.y += 100;
-				r.h += 300;			
-				s.find(startRegion);
+				Region r = s.find("lobby//Lobby_HR_Button.png");
+				r.y += 200;
+				r.h += 300;		
+				//r.highlight();
+				r.find(startRegion);
 				
 				return true;
 			}

@@ -445,7 +445,7 @@ public class LobbyOperations
 				
 				s.click("lobby//Tutorial_selectBetStep.png");
 				
-				s.wait(30.0);
+				s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
 				
 				return true;
 			}
@@ -725,7 +725,7 @@ public class LobbyOperations
 				
 				s.click("lobby//Lobby_CabinetPlayBetButton.png");
 				
-				s.wait(65.5);
+				s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
 				
 				return true;
 			}
@@ -858,7 +858,7 @@ public class LobbyOperations
 				
 				s.type(Key.ENTER);
 				
-				s.wait(10.0);
+				s.wait(13.0);
 				
 				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
 				
@@ -867,7 +867,26 @@ public class LobbyOperations
 			}
 			catch (FindFailed e)
 			{
-				return false;
+				try
+				{
+					BrowserOperations.clickSearch();
+					
+					s.paste("https://apps.facebook.com/hov_uat/");
+					
+					s.type(Key.ENTER);
+					
+					s.wait(13.0);
+					
+					s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
+					
+					return true;
+					
+				}
+				catch (FindFailed ex)
+				{
+					
+					return false;
+				}			
 			}
 		}
 		
@@ -887,7 +906,7 @@ public class LobbyOperations
 				
 				s.click("browser//facebook_OK_button.png");
 				
-				s.wait(65.0);
+				s.wait(Double.parseDouble(CommonOperations.hov_load_time));
 				
 				s.find("lobby//Tutorial_collectBonusStep.png");
 				

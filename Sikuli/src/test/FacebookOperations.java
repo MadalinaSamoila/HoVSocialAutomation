@@ -111,6 +111,7 @@ public class FacebookOperations {
 		
 		if (browser.equals("iexplore"))
 		{
+			
 			screen.click("browser//facebook_login.png");
 			screen.paste(CommonOperations.fbLogin);
 			screen.type(Key.TAB);

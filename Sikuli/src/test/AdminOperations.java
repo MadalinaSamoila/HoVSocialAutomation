@@ -12,6 +12,7 @@ import org.sikuli.script.*;
 public class AdminOperations {
 	
 	static Screen s = new Screen();
+	static String selectAll = Keys.chord(Keys.CONTROL,"a");
 	public static void resetDailyWheel (String browser, String GAID) {
 		
 		WebDriver driver;
@@ -37,7 +38,9 @@ public class AdminOperations {
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -67,7 +70,7 @@ public class AdminOperations {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
+		s.wait(7.1);
 		driver.close();
 		
 	}
@@ -96,8 +99,9 @@ public class AdminOperations {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -125,7 +129,7 @@ public class AdminOperations {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
+		s.wait(7.1);
 		driver.close();
 		
 	}
@@ -155,8 +159,9 @@ public class AdminOperations {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -187,7 +192,7 @@ public class AdminOperations {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
+		s.wait(7.1);
 		driver.close();
 		
 	}
@@ -217,8 +222,9 @@ public static double getUserBalance (String browser, String GAID) {
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-				
+				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -238,7 +244,7 @@ public static double getUserBalance (String browser, String GAID) {
 		
 		String balanceString = driver.findElement(By.xpath("//div[2]/div/div/table/tbody/tr/td[2]")).getText();
 		double balance = Double.parseDouble(balanceString);
-		
+		s.wait(7.1);
 		driver.close();
 		
 		return balance;
@@ -272,8 +278,9 @@ public static void resetHourlyBonus (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -302,7 +309,7 @@ public static void resetHourlyBonus (String browser, String GAID) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}*/
-	
+	s.wait(7.1);
 	driver.close();
 		
 }
@@ -335,8 +342,9 @@ public static void addGAIDToCRM (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -354,17 +362,16 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	s.wait(2.1);
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
 	s.wait(2.1);
-	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(GAID);
-	s.wait(2.1);
+	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(GAID);	
 	driver.findElement(By.xpath("//div[2]/button")).click();
-	s.wait(7.1);
+	
 	/*try {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}*/
-	
+	s.wait(7.1);
 	driver.close();
 	
 }	
@@ -397,8 +404,9 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -417,7 +425,7 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	action.moveToElement(driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea"))).doubleClick().perform();
 	s.wait(2.1);
 	driver.findElement(By.xpath("//form[@id='edit_crm_action_1683']/div[23]/div/div[2]/div/div/div/textarea")).sendKeys(Keys.BACK_SPACE);
-	s.wait(2.1);
+	
 	driver.findElement(By.xpath("//div[2]/button")).click();
 	
 	/*try {
@@ -457,8 +465,9 @@ public static String getGAID (String browser, String userFacebookID) {
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
-			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
@@ -477,7 +486,7 @@ public static String getGAID (String browser, String userFacebookID) {
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 	
 	String GAID = driver.findElement(By.xpath("//div/div/div/div/table/tbody/tr/td[2]")).getText();
-	
+	s.wait(7.1);
 	driver.close();
 	
 	return GAID;
@@ -507,9 +516,11 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 		
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
-		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
+		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {			
 			
+			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
+			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();

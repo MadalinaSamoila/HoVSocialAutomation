@@ -11,10 +11,13 @@ import org.json.simple.parser.ParseException;
 
 public class CommonOperations 
 {
+	//for external
 	public static String testRailHostAdress = "";
 	public static String testRailLogin = "";
 	public static String testRailPassword = "";
-	public static String testRailRunId = "";
+	public static String testRailRunId_chrome = "";
+	public static String testRailRunId_firefox = "";
+	public static String testRailRunId_iexplore = "";
 	public static String fbLogin = "";
 	public static String fbPassword = "";
 	public static String chromePath = "";
@@ -22,6 +25,9 @@ public class CommonOperations
 	public static String iexplorePath = "";
 	public static String hov_load_time = "";
 	public static String hov_slot_load_time = "";
+	
+	//for internal
+	public static String currentBrowser;
 	
 	public static JSONArray getJsonArrayFromFile(String path) throws ParseException, IOException, FileNotFoundException 
 	{
@@ -176,10 +182,20 @@ public class CommonOperations
 			{
 				testRailPassword = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "tr_password");
 			}
-			if (!(getFieldFromJsonArray(a, "tr_run_id").equals(null)))
+			if (!(getFieldFromJsonArray(a, "tr_run_id_chrome").equals(null)))
 			{
-				testRailRunId = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "tr_run_id");
+				testRailRunId_chrome = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "tr_run_id_chrome");
 			}
+			if (!(getFieldFromJsonArray(a, "tr_run_id_firefox").equals(null)))
+			{
+				testRailRunId_firefox = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "tr_run_id_firefox");
+			}
+			if (!(getFieldFromJsonArray(a, "tr_run_id_iexplore").equals(null)))
+			{
+				testRailRunId_iexplore = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "tr_run_id_iexplore");
+			}
+			
+			
 			if (!(getFieldFromJsonArray(a, "chrome_path").equals(null)))
 			{
 				chromePath = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "chrome_path");	
@@ -238,5 +254,28 @@ public class CommonOperations
 		
 		
 		
+	}
+	
+	public static String getRunIdByBrowser()
+	{
+		switch (currentBrowser)
+		{
+			case "chrome":
+			{
+				return testRailRunId_chrome;
+			}
+			case "firefox":
+			{
+				return testRailRunId_firefox;
+			}
+			case "iexplore":
+			{
+				return testRailRunId_iexplore;
+			}
+			default:
+			{
+				return testRailRunId_chrome;
+			}
+		}
 	}
 }

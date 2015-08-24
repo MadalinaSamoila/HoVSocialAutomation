@@ -14,7 +14,7 @@ public class HoVSmokeTests {
 	@Test
 	public void FreshInstallTest(String browser) throws FindFailed, APIException, IOException {
 		String testRailTitle = "Fresh app install is successfull with no previous builds installed";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.findChangeURLAndAccessUATSocial(browser) == true)
@@ -49,7 +49,7 @@ public class HoVSmokeTests {
 	@Test
 	public void TutorialInstigates() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Via a fresh account, the tutorial instigates and successfully walks the player through the relevant steps without any core concerns";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
 		{
@@ -166,7 +166,7 @@ public class HoVSmokeTests {
 	@Test
 	public void PlacedInLobby() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User is successfully placed into the apps lobby";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isLobbyReturned(0) == true)
@@ -188,7 +188,7 @@ public class HoVSmokeTests {
 	@Test 
 	public void DailyBonusPresent() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Daily Bonus is present in build, opening upon load (if in a ready status) and functions as expected";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isDailyWheelPresent())
@@ -251,7 +251,7 @@ public class HoVSmokeTests {
 	@Test
 	public void EnabledCRMsAppear() throws FindFailed, APIException, IOException {
 		String testRailTitle = "CRM's that are enabled appear and function as expected";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.clickCentralSlot() == true)
@@ -377,7 +377,7 @@ public class HoVSmokeTests {
 	@Test
 	public void HelpFanPageOpen() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Help & Fan page can be successfully loaded from within game";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.clickFanPage() == true)
@@ -477,7 +477,7 @@ public class HoVSmokeTests {
 	@Test
 	public void BuyAllCoinPackages() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can successfully purchase all coin packages within the shop and they have the option to upsale their purchase";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isBuyButtonPresentAndClick())
@@ -592,7 +592,7 @@ public class HoVSmokeTests {
 	@Test
 	public void QuickBuyFunctional() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Quick Buy bar is functioning as intended";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isQuickBuyPanelPresent())
@@ -731,7 +731,7 @@ public class HoVSmokeTests {
 	@Test
 	public void CollectHourlyBonus() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can collect their hourly bonus";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
 		if (LobbyOperations.isTimeBonusEnabled())
@@ -776,7 +776,7 @@ public class HoVSmokeTests {
 	@Test
 	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
 		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.testRailRunId,  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 
 		int ngLoaded = 0;

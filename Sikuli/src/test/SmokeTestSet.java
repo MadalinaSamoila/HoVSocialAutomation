@@ -13,6 +13,7 @@ public class SmokeTestSet {
 	{
 		Screen s= new Screen();
 		String[] browsers = {"chrome", "firefox", "iexplore"};
+		
 		HoVSmokeTests smoke = new HoVSmokeTests();	
 		String pathToFile = "config.json";  //replace "config.json" with args[0] before export to jar
 		System.out.println("Welcome! \nPlease, make sure that there are no logged in users into Facebook under Chrome, FireFox and Internet Explorer browsers. Otherwise, log out and restart the test. \nAlso, make sure that you have a correct configuration file. \nGood luck :)");
@@ -21,6 +22,7 @@ public class SmokeTestSet {
 		{
 			for (String i: browsers) 
 			{
+				CommonOperations.currentBrowser = i;
 				try 
 				{
 					

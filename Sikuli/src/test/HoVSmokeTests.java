@@ -16,33 +16,21 @@ public class HoVSmokeTests {
 		String testRailTitle = "Fresh app install is successfull with no previous builds installed";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.findChangeURLAndAccessUATSocial(browser) == true)
-		{
-			System.out.println("[testprogress] Find, URL change and Access UAT are complete - OK");
-			testRailComment += "[testprogress] URL change and access UAT Socail are successfull - OK \n";
-			
-			if (LobbyOperations.areFreshInstallStepsCompleted() == true)
-			{
-				System.out.println("[teststat] Find and tap Play Now are complete - OK");
-				testRailComment += "[teststat] Fresh install steps are complete - OK \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-			}
-			
-			else
-			{
-				System.out.println("[teststat] Find or tap Play Now is not complete - Failed");
-				testRailComment += "[teststat] Fresh install steps are not complete - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
+		try
+		{		
+			testRailComment += LobbyOperations.findChangeURLAndAccessUATSocial(browser) +" \n";
+			testRailComment += LobbyOperations.areFreshInstallStepsCompleted() +" \n";	
+				
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		
-		else
-		{
-			System.out.println("[teststat] Find, URL change or Access UAT is not complete - Failed");
-			testRailComment += "[teststat] URL change and access UAT Social were not executed - FAILED \n";
+		catch (FindFailed e)
+		{	
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
+		
+		
+		
 		
 		
 		
@@ -54,113 +42,62 @@ public class HoVSmokeTests {
 		String testRailTitle = "Via a fresh account, the tutorial instigates and successfully walks the player through the relevant steps without any core concerns";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		if (LobbyOperations.isTimeBonusTutorialStepPresentAndClick())
-		{
-			System.out.println("[testprogress] Tutorial Time Bonus Step is Present and Clicked - OK");
-			testRailComment += "[testprogress] Tutorial Time Bonus Step is Present and Clicked - OK \n";
+		try
+		{	
+			testRailComment += LobbyOperations.isTimeBonusTutorialStepPresentAndClick()+" \n";
 			
-			if (LobbyOperations.isChooseMachineTutorialStepPresentAndClick())
+			testRailComment += LobbyOperations.isChooseMachineTutorialStepPresentAndClick()+" \n";
+			
+			testRailComment += LobbyOperations.isSelectBetTutorialStepPresentAndClick()+" \n";	
+						
+			switch (SlotOperations.specifySlot())
 			{
-				System.out.println("[testprogress] Tutorial Choose Machine Step is Present and Clicked - OK");
-				testRailComment += "[testprogress] Tutorial Choose Machine Step is Present and Clicked - OK \n";
-				
-				if (LobbyOperations.isSelectBetTutorialStepPresentAndClick())
+				case 0:
 				{
-					System.out.println("[testprogress] Tutorial Select Bet Step is Present and Clicked - OK");										
-					testRailComment += "[testprogress] Tutorial Select Bet Step is Present and Clicked - OK \n";
-					
-					switch (SlotOperations.specifySlot())
-					{
-						case 0:
-						{
-							System.out.println("[teststat] The User was not placed into the Slot - FAILED");
-							testRailComment += "[teststat] The User was not placed into the Slot - FAILED \n";
-							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							break;
-						}
-						case 1:
-						{
-							System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
-							testRailComment += "[testprogress] The User Placed into NexGen Slot - OK \n";
-							
-							if (LobbyOperations.returnToLobby())
-							{
-								System.out.println("[teststat] Returned to the Lobby - OK");
-								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
-							else
-							{
-								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							
-							break;
-						}
-						case 2:
-						{
-							System.out.println("[testprogress] The User Placed into GAN Slot - OK");
-							testRailComment += "[testprogress] The User Placed into GAN Slot - OK \n";
-							
-							if (LobbyOperations.returnToLobby())
-							{
-								System.out.println("[teststat] Returned to the Lobby - OK");
-								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
-							else
-							{
-								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							
-							break;
-						}
-						case 3:
-						{
-							System.out.println("[testprogress] The User Placed into GDK Slot - OK");
-							testRailComment += "[testprogress] The User Placed into GDK Slot - OK \n";
-							
-							if (LobbyOperations.returnToLobby())
-							{
-								System.out.println("[teststat] Returned to the Lobby - OK");
-								testRailComment += "[teststat] Returned to the Lobby - OK \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
-							else
-							{
-								System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								testRailComment += "[teststat] The User was not placed into the Lobby - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							
-							break;
-						}
-					}
-				}
-				else
-				{
-					System.out.println("[teststat] Tutorial Select Bet Step is Absent - FAILED");
-					
-					testRailComment += "[teststat] Tutorial Select Bet Step is Absent - FAILED \n";
+					System.out.println("[teststat] The User was not placed into the Slot Or Slot Displays Incorrectly - FAILED");
+					testRailComment += "[teststat] The User was not placed into the Slot Or Slot Displays Incorrectly - FAILED \n";
 					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					break;
+				}
+				case 1:
+				{
+					System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
+					testRailComment += "[testprogress] The User Placed into NexGen Slot - OK \n";
+					
+					testRailComment += LobbyOperations.returnToLobby();
+					
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+					
+					break;
+				}
+				case 2:
+				{
+					System.out.println("[testprogress] The User Placed into GAN Slot - OK");
+					testRailComment += "[testprogress] The User Placed into GAN Slot - OK \n";
+					
+					testRailComment += LobbyOperations.returnToLobby();
+					
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								
+					break;
+				}
+				case 3:
+				{
+					System.out.println("[testprogress] The User Placed into GDK Slot - OK");
+					testRailComment += "[testprogress] The User Placed into GDK Slot - OK \n";
+					
+					testRailComment += LobbyOperations.returnToLobby();
+					
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+									
+					break;
 				}
 			}
-			else
-			{
-				System.out.println("[teststat] Tutorial Choose Machine Step is Absent - FAILED");
-				
-				testRailComment += "[teststat] Tutorial Choose Machine Step is Absent - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
-		}
-		else
-		{
-			System.out.println("[teststat] Tutorial Time Bonus Step is Absent - FAILED");
 			
-			testRailComment += "[teststat] Tutorial Time Bonus Step is Absent - FAILED \n";
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	
@@ -189,60 +126,28 @@ public class HoVSmokeTests {
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		
-		if (LobbyOperations.isDailyWheelPresent())
+		try
 		{
-			System.out.println("[testprogress] Daily Wheel is Present - OK");
-			testRailComment += "[testprogress] Daily Wheel is Present - OK \n";
+			testRailComment += LobbyOperations.isDailyWheelPresent();
 			
-			if (LobbyOperations.clickDailyWheelSpin())
-			{
-				System.out.println("[testprogress] Daily Wheel Spin Complete - OK");
-				testRailComment += "[testprogress] Daily Wheel Spin Complete - OK \n";
-				
-				if (LobbyOperations.isDailyWheelSharePresent())
-				{
-					System.out.println("[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK");
-					testRailComment += "[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK \n";
+			testRailComment += LobbyOperations.clickDailyWheelSpin();
 					
-					if (LobbyOperations.untickDailyWheelShare())
-					{
-						System.out.println("[testprogress] Daily Wheel Share is Unticked - OK");
-						testRailComment += "[testprogress] Daily Wheel Share is Unticked - OK \n";
-					}
-					else
-					{
-						System.out.println("[testprogress] Unable to Untick Daily Wheel Share");
-						testRailComment += "[testprogress] Unable to Untick Daily Wheel Share - OK \n";
-					}
-				}
-				
-				if (LobbyOperations.clickDailyWheelCollect())
-				{
-					System.out.println("[teststat] Daily Wheel Collect Button is Clicked - OK");
-					testRailComment += "[teststat] Daily Wheel Collect Button is Clicked - OK \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-				}
-				else
-				{
-					System.out.println("[teststat] Daily Wheel Collect Button is not Clicked - FAILED");
-					testRailComment += "[teststat] Daily Wheel Collect Button is not Clicked - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-				
-			}
-			else
+			if (LobbyOperations.isDailyWheelSharePresent())
 			{
-				System.out.println("[teststat] Unable to Spin Daily Wheel - FAILED");
-				testRailComment += "[teststat] Unable to Spin Daily Wheel - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				System.out.println("[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK");
+				testRailComment += "[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK \n";	
+				testRailComment += LobbyOperations.untickDailyWheelShare();	
 			}
+					
+			testRailComment += LobbyOperations.clickDailyWheelCollect();
+				
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] Daily Wheel is Absent - FAILED");
-			testRailComment += "[teststat] Daily Wheel is Absent - FAILED \n";
+			testRailComment += e.getMessage();	
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-		}
+		}		
 		
 	}
 	

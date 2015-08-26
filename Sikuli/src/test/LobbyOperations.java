@@ -12,110 +12,95 @@ public class LobbyOperations
 	static String res;
 	//TIME BONUS
 	
-	public static boolean isTimeBonusEnabled() throws FindFailed // works if time bonus is filled on approx 50%
+	
+	
+	public static String isTimeBonusEnabled() throws FindFailed // works if time bonus is filled on approx 50%
 	{		
-		try
-		{						
-			s.find("lobby//TB_full.png");
-			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+		s.find("lobby//TB_full.png");
+		
+		res = "[testprogress] Time Bonus Is Enabled - OK";
+		
+		System.out.println(res);
+		
+		return res; 
 						
 	}
 	
-	public static boolean clickCollectTimeBonus() throws FindFailed
+	public static String clickCollectTimeBonus() throws FindFailed
 	{	
-		try
-		{
-						
+		
 			s.find("lobby//TB_collectEnabled.png");
 			
 			s.click("lobby//TB_collectEnabled.png");
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] Collect Time Bonus Button Is Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res; 
+			
 	}
 	
-	public static boolean isCollectedTimeBonus() throws FindFailed
+	public static String isCollectedTimeBonus() throws FindFailed
 	{	
-		try
-		{				
-			s.find("lobby//TB_empty_005957_remaining.png");					
+					
+			s.find("lobby//TB_empty_005957_remaining.png");
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[teststat] Time Bonus Collected - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
 	
 	//SHOP
 	
-	public static boolean isBuyButtonPresentAndClick() throws FindFailed
+	public static String isBuyButtonPresentAndClick() throws FindFailed
 	{
-		try
-		{
+		
 			s.find("lobby//Lobby_buyButton.png");
 			
 			s.click("lobby//Lobby_buyButton.png");
 			
 			s.wait(5.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] Lobby Buy Button is Present and Clicked - OK";
+			
+			System.out.println(res);
+		
+			return res;
 	}
 	
-	public static boolean isShopOpened() throws FindFailed
+	public static String isShopOpened() throws FindFailed
 	{
-		try
-		{
 			
-			s.find("lobby//Shop_general.png");		
+			s.find("lobby//Shop_general.png");
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] Shop Opened - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean isPurchaseButtonPresentAndClick() throws FindFailed
+	public static String isPurchaseButtonPresentAndClick() throws FindFailed
 	{
-		try
-		{
 			s.find("lobby//Shop_purchaseButton.png");
 			
 			s.click("lobby//Shop_purchaseButton.png");
 			
 			s.wait(15.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] Purchase Button Is Present and Has Been Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean isFbConfirmPopupPresentAndClickBuyButton(boolean isUpsale) throws FindFailed
+	public static String isFbConfirmPopupPresentAndClickBuyButton(boolean isUpsale) throws FindFailed
 	{
-		try
-		{
 			if (isUpsale)
 			{
 				s.find("lobby//Shop_fbConfirmPaymentUpsale.png");
@@ -124,24 +109,23 @@ public class LobbyOperations
 			{
 				s.find("lobby//Shop_fbConfirmPaymentGeneral.png");
 			}
+			
 			s.find("lobby//Shop_fbConfirmPaymentBuyButton.png");
 			
 			s.click("lobby//Shop_fbConfirmPaymentBuyButton.png");
 			
 			s.wait(15.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] FB Popup (General) Is Present and Buy Button Has Been Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean isUpsalePopupPresentAndClickSpinButton() throws FindFailed
+	public static String isUpsalePopupPresentAndClickSpinButton() throws FindFailed
 	{
-		try
-		{
+
 			s.find("lobby//Shop_upsaleWheel.png");
 			
 			s.find("lobby//Shop_upsaleWheelSpinButton.png");
@@ -150,18 +134,15 @@ public class LobbyOperations
 			
 			s.wait(15.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] Upsale Popup is Present and Spin Has Been Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean isUpsalePopupCompletedPresentAndClickCollectButton() throws FindFailed
+	public static String isUpsalePopupCompletedPresentAndClickCollectButton() throws FindFailed
 	{
-		try
-		{
 			s.find("lobby//Shop_upsaleWheelCompleted.png");
 			
 			s.find("lobby//Shop_upsaleWheelCompletedCollectButton.png");
@@ -170,123 +151,105 @@ public class LobbyOperations
 			
 			s.wait(15.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] FB Popup (Upsale) Is Present and Buy Button Has Been Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean isCongratulationPopupPresentAndClickOkayButton() throws FindFailed //this method is using for 																				
+	public static String ClickCongratulationOkayButton() throws FindFailed //this method is using for 																				
 	{                                                                                        // CRM Congratulation popup too
-		try
-		{
-			s.find("lobby//Shop_congratulation.png");
-			
 			s.find("lobby//Shop_congratulationOkayButton.png");
 			
 			s.click("lobby//Shop_congratulationOkayButton.png");
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[teststat] Congratulation Okay Button Has Been Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	//SHOP_QUICKBUY
 	
-	public static boolean isQuickBuyPanelPresent() throws FindFailed
+	public static String isQuickBuyPanelPresent() throws FindFailed
 	{
-		try
-		{
-			s.find("lobby//Shop_quickbuy.png");					
+
+			s.find("lobby//Shop_quickbuy.png");
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] QuickBuy Panel is Present - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
 	
-	public static boolean quickBuyDownClick() throws FindFailed
+	public static String quickBuyDownClick() throws FindFailed
 	{
-		try
-		{
+
 			s.find("lobby//Shop_quickbuyDownButton.png");					
 			
 			s.click("lobby//Shop_quickbuyDownButton.png");
 			
 			s.wait(1.5);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] QuickBuy Down Button is Present and Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
+
 	}
 	
-	public static boolean quickBuyUpClick() throws FindFailed
+	public static String quickBuyUpClick() throws FindFailed
 	{
-		try
-		{
+
 			s.find("lobby//Shop_quickbuyUpButton.png");					
 			
 			s.click("lobby//Shop_quickbuyUpButton.png");
 			
 			s.wait(1.5);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
-	}
-	
-	
-	public static boolean isQuickBuyDropDownPresent() throws FindFailed
-	{
-		try
-		{
-			s.find("lobby//Shop_quickbuyDropDownLess98.png");					
+			res = "[testprogress] QuickBuy Up Button is Present and Clicked - OK";
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			System.out.println(res);
+			
+			return res;
 	}
 	
-	public static boolean quickBuyBuyClick() throws FindFailed
+	
+	public static String isQuickBuyDropDownPresent() throws FindFailed
 	{
-		try
-		{
+
+			s.find("lobby//Shop_quickbuyDropDownLess98.png");
+			
+			res = "[testprogress] QuickBuy DropDown List is Present - OK";
+			
+			System.out.println(res);
+			
+			return res;
+	}
+	
+	public static String quickBuyBuyClick() throws FindFailed
+	{
 			s.find("lobby//Shop_quickbuyBuyButton.png");					
 			
 			s.click("lobby//Shop_quickbuyBuyButton.png");
 			
 			s.wait(10.0);
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] QuickBuy Buy Button is Present and Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
 	//FAN PAGE
 	
-	public static boolean isLobbyReturned(int wheel) throws FindFailed  //Accepts 1 to PageDown, 2 for PageUp
+	public static String isLobbyReturned(int wheel) throws FindFailed  //Accepts 1 to PageDown, 2 for PageUp
 	{
-		try
-		{
 			s.wait(8.0);
 			
 			switch  (wheel)
@@ -318,81 +281,69 @@ public class LobbyOperations
 				}
 			}
 			
-			return true;
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			res = "[testprogress] User Is Returned To The Lobby - OK";
+			
+			System.out.println(res);
+			
+			return res;
 	}
 	
 	
-	public static boolean isFanPageOpened()  throws FindFailed
+	public static String isFanPageOpened()  throws FindFailed
 	{
-		try
-		{
+
 			s.wait(14.0);
 			
 			s.find("externalPages//FanPageLogo.png");
 			
-			return true;
+			res = "[testprogress] Fan Page From Top Bar Is Opened - OK";
 			
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			System.out.println(res);
+			
+			return res;
 	}	
 		
-	public static boolean isHelpPageOpened()  throws FindFailed
+	public static String isHelpPageOpened()  throws FindFailed
 	{
-		try
-		{
+
 			s.wait(14.0);
 			
 			s.find("externalPages//SupportPage.png");
 			
-			return true;
+			res = "[testprogress] Support Page From The Bottom Is Opened - OK";
 			
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			System.out.println(res);
+			
+			return res;
+
 	}	
 	
-	public static boolean clickFanPage()  throws FindFailed
+	public static String clickFanPage()  throws FindFailed
 	{
-		try
-		{
+
 			s.click("lobby//FanPageTopBarButton.png");
 			
 			s.wait(15.0);
 			
-			return true;
+			res = "[testprogress] Fan Page Button Is Found and Clicked - OK";
 			
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			System.out.println(res);
+			
+			return res;
 	}	
 	
-	public static boolean clickSupportPage()  throws FindFailed
+	public static String clickSupportPage()  throws FindFailed
 	{
-		try
-		{
 			s.click("lobby//SupportLinkFooter.png");
 			
 			s.wait(14.0);
 			
-			return true;
+			res = "[testprogress] Support Page Is Found and Clicked - OK";
 			
-		}
-		catch (FindFailed e)
-		{
-			return false;
-		}
+			System.out.println(res);
+			
+			return res;
+
 	}	
 	  
 	  

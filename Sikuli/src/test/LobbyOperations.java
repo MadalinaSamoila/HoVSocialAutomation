@@ -159,7 +159,7 @@ public class LobbyOperations
 	}
 	
 	public static String ClickCongratulationOkayButton() throws FindFailed //this method is using for 																				
-	{                                                                                        // CRM Congratulation popup too
+	{                                                                      // CRM Congratulation popup too
 			s.find("lobby//Shop_congratulationOkayButton.png");
 			
 			s.click("lobby//Shop_congratulationOkayButton.png");

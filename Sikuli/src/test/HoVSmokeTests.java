@@ -171,21 +171,16 @@ public class HoVSmokeTests {
 		String testRailTitle = "User is successfully placed into the apps lobby";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.isLobbyReturned(0) == true)
+		try
 		{
-			System.out.println("[teststat] User is placed in the Lobby - OK");
-			testRailComment += "[teststat] User is successfully placed into the apps lobby - OK \n";
+			testRailComment += LobbyOperations.isLobbyReturned(0) + "\n";
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] User is not placed in the Lobby - Failed");
-			testRailComment += "[teststat] User is  not successfully placed into the apps lobby - FAILED \n";
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
-		
 	}
 	
 	@Test 
@@ -256,123 +251,22 @@ public class HoVSmokeTests {
 		String testRailTitle = "CRM's that are enabled appear and function as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.clickCentralSlot() == true)
+		try
 		{
-			System.out.println("[testprogress] Cabinet successfully clicked - OK");
-			testRailComment += "[testprogress] Cabinet successfully clicked - OK \n";
-			
-			if (LobbyOperations.isCRMOpened() == true)
-			{
-				System.out.println("[testprogress] CRM is opened - OK");
-				testRailComment += "[testprogress] CRM is opened - OK \n";
-				
-				if (LobbyOperations.clickCloseButtonCRM() == true)
-				{
-					System.out.println("[testprogress] CRM close button clicked - OK");
-					testRailComment += "[testprogress] CRM close button clicked - OK \n";
-					
-					if (LobbyOperations.isCRMClosed() == true)
-					{
-						System.out.println("[testprogress] CRM successfully closed - OK");
-						testRailComment += "[testprogress] CRM successfully closed - OK \n";
-						
-						if (LobbyOperations.clickNextSlot() == true)
-						{
-							System.out.println("[testprogress] Cabinet successfully clicked - OK");
-							testRailComment += "[testprogress] Cabinet successfully clicked - OK \n";
-							
-							if (LobbyOperations.isCRMOpened() == true)
-							{
-								System.out.println("[testprogress] CRM is opened - OK");
-								testRailComment += "[testprogress] CRM is opened - OK \n";
-								
-								if (LobbyOperations.clickCRM() == true)
-								{
-									System.out.println("[testprogress] CRM body is clicked - OK");
-									testRailComment += "[testprogress] CRM body is clicked - OK \n";
-									
-									if (LobbyOperations.isCongratulationPopupPresentAndClickOkayButton() == true)
-									{
-										System.out.println("[testprogress] Congratulation popup is present and Okay button is clicked - OK");
-										testRailComment += "[testprogress] Congratulation popup is present and Okay button is clicked  - OK \n";
-										
-										if (LobbyOperations.isCRMClosed() == true)
-										{
-											System.out.println("[teststat] Congratulation popup is closed - OK");
-											testRailComment += "[teststat] Congratulation popup is closed - OK \n";
-											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-										}
-										
-										else
-										{
-											System.out.println("[teststat] Congratulation popup is not closed - Failed");
-											testRailComment += "[teststat] Congratulation popup is not closed - FAILED \n";
-											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-											
-										}
-									}
-									
-									else
-									{
-										System.out.println("[teststat] Congratulation popup is absent OR Okay button is not clicked - Failed");
-										testRailComment += "[teststat] Congratulation popup is absent OR Okay button is not clicked - FAILED \n";
-										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-									}
-								}
-								
-								else
-								{
-									System.out.println("[teststat] CRM body is not clicked - Failed");
-									testRailComment += "[teststat] CRM body is not clicked - FAILED \n";
-									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-								}
-							}
-							
-							else
-							{
-								System.out.println("[teststat] CRM is not opened - Failed");
-								testRailComment += "[teststat] CRM is not opened - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-						}
-						
-						else
-						{
-							System.out.println("[teststat] Cabinet is not clicked - Failed");
-							testRailComment += "[teststat] Cabinet is not clicked - FAILED \n";
-							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-						}
-					}
-					
-					else
-					{
-						System.out.println("[teststat] CRM is not closed - Failed");
-						testRailComment += "[teststat] CRM is not closed - FAILED \n";
-						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-					}
-				}
-				
-				else
-				{
-					System.out.println("[teststat] CRM is not clicked - Failed");
-					testRailComment += "[teststat] CRM is not clicked - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-			}
-			
-			else
-			{
-				System.out.println("[teststat] CRM is not opened - Failed");
-				testRailComment += "[teststat] CRM is not opened - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
+			testRailComment += LobbyOperations.clickCentralSlot() + "\n";
+			testRailComment += LobbyOperations.isCRMOpened() + "\n";
+			testRailComment += LobbyOperations.clickCloseButtonCRM() + "\n";
+			testRailComment += LobbyOperations.isCRMClosed() + "\n";
+			testRailComment += LobbyOperations.clickNextSlot() + "\n";
+			testRailComment += LobbyOperations.isCRMOpened() + "\n";
+			testRailComment += LobbyOperations.clickCRM() + "\n";
+			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //ClickCongratulationOkayButton() method now
+			testRailComment += LobbyOperations.isCRMClosed() + "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-				
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] Cabinet is not clicked - Failed");
-			testRailComment += "[teststat] Cabinet is not clicked - FAILED \n";
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}

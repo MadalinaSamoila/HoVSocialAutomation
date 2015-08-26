@@ -20,7 +20,6 @@ public class HoVSmokeTests {
 		{		
 			testRailComment += LobbyOperations.findChangeURLAndAccessUATSocial(browser) +" \n";
 			testRailComment += LobbyOperations.areFreshInstallStepsCompleted() +" \n";	
-				
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		catch (FindFailed e)
@@ -28,12 +27,6 @@ public class HoVSmokeTests {
 			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
-		
-		
-		
-		
-		
-		
 		
 	}
 	
@@ -45,11 +38,8 @@ public class HoVSmokeTests {
 		try
 		{	
 			testRailComment += LobbyOperations.isTimeBonusTutorialStepPresentAndClick()+" \n";
-			
 			testRailComment += LobbyOperations.isChooseMachineTutorialStepPresentAndClick()+" \n";
-			
 			testRailComment += LobbyOperations.isSelectBetTutorialStepPresentAndClick()+" \n";	
-						
 			switch (SlotOperations.specifySlot())
 			{
 				case 0:
@@ -63,37 +53,27 @@ public class HoVSmokeTests {
 				{
 					System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
 					testRailComment += "[testprogress] The User Placed into NexGen Slot - OK \n";
-					
 					testRailComment += LobbyOperations.returnToLobby();
-					
 					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-					
 					break;
 				}
 				case 2:
 				{
 					System.out.println("[testprogress] The User Placed into GAN Slot - OK");
 					testRailComment += "[testprogress] The User Placed into GAN Slot - OK \n";
-					
 					testRailComment += LobbyOperations.returnToLobby();
-					
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-								
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);	
 					break;
 				}
 				case 3:
 				{
 					System.out.println("[testprogress] The User Placed into GDK Slot - OK");
 					testRailComment += "[testprogress] The User Placed into GDK Slot - OK \n";
-					
 					testRailComment += LobbyOperations.returnToLobby();
-					
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-									
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);		
 					break;
 				}
 			}
-			
 		}
 		catch (FindFailed e)
 		{
@@ -125,22 +105,19 @@ public class HoVSmokeTests {
 		String testRailTitle = "Daily Bonus is present in build, opening upon load (if in a ready status) and functions as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
 		try
 		{
 			testRailComment += LobbyOperations.isDailyWheelPresent();
-			
 			testRailComment += LobbyOperations.clickDailyWheelSpin();
-					
+		
 			if (LobbyOperations.isDailyWheelSharePresent())
 			{
 				System.out.println("[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK");
 				testRailComment += "[testprogress] Daily Wheel Share is ticked - DISABLING SHARE - OK \n";	
 				testRailComment += LobbyOperations.untickDailyWheelShare();	
 			}
-					
+	
 			testRailComment += LobbyOperations.clickDailyWheelCollect();
-				
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		catch (FindFailed e)
@@ -148,7 +125,6 @@ public class HoVSmokeTests {
 			testRailComment += e.getMessage();	
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}		
-		
 	}
 	
 	@Test
@@ -165,7 +141,7 @@ public class HoVSmokeTests {
 			testRailComment += LobbyOperations.clickNextSlot() + "\n";
 			testRailComment += LobbyOperations.isCRMOpened() + "\n";
 			testRailComment += LobbyOperations.clickCRM() + "\n";
-			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //ClickCongratulationOkayButton() method now
+			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //isCongratulationPopupPresentAndClickOkayButton() was
 			testRailComment += LobbyOperations.isCRMClosed() + "\n";
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
@@ -181,97 +157,22 @@ public class HoVSmokeTests {
 		String testRailTitle = "Help & Fan page can be successfully loaded from within game";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.clickFanPage() == true)
+		try
 		{
-			System.out.println("[testprogress] Fan page button is found and clicked - OK");
-			testRailComment += "[testprogress] Fan page button is found and clicked - OK \n";
-								
-			if (LobbyOperations.isFanPageOpened() == true)
-			{
-				System.out.println("[testprogress] Fan page from top bar is opened - OK");
-				testRailComment += "[testprogress] Fan page from top bar is opened - OK \n";
-				
-				BrowserOperations.closeTab();
-				
-				//s.click("browserFFButtons//closeTabFFButton.png"); // Will be changed to Maddy`s tab closing method
-				
-				if (LobbyOperations.isLobbyReturned(1) == true)
-				{
-					System.out.println("[testprogress] Lobby is returned from Fan Page - OK");
-					testRailComment += "[testprogress] Lobby is returned from Fan Page - OK \n";
-					
-					if (LobbyOperations.clickSupportPage() == true)
-					{
-						System.out.println("[testprogress] Support page is found and clicked - OK");
-						testRailComment += "[testprogress] Support page is found and clicked - OK \n";
-						
-						if (LobbyOperations.isHelpPageOpened() == true)
-						{
-							System.out.println("[testprogress] Support page from the bottom is opened - OK");
-							testRailComment += "[testprogress] Support page from the bottom is opened - OK \n";
-							
-							BrowserOperations.closeTab();
-							
-							//s.click("browserFFButtons//closeTabFFButton.png");  // Will be changed to Maddy`s tab closing method
-							
-							//s.wait(4.0);
-							
-							//s.wheel("lobby//SupportLinkFooter.png", -1, 2);
-							
-							if (LobbyOperations.isLobbyReturned(2) == true)
-							{
-								System.out.println("[teststat] Lobby is returned from Support Page - OK");
-								testRailComment += "[teststat] Lobby is returned from Support Page - OK \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
-							
-							else
-							{
-								System.out.println("[teststat] Lobby is not returned from Support Page - Failed");
-								testRailComment += "[teststat] Lobby is not returned from Support Page - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-								
-							}
-							
-						}
-						
-						else 
-						{
-							System.out.println("[teststat] Support page from the bottom is not opened - FAILED");
-							testRailComment += "[teststat] Support page from the bottom is not opened - FAILED \n";
-							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-						}
-					}
-					
-					
-					else
-					{
-						System.out.println("[teststat] Support page is not found and clicked - FAILED");
-						testRailComment += "[teststat] Support page is not found and clicked - FAILED \n";
-						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-					}
-					
-				}
-				
-				else
-				{
-					System.out.println("[teststat] Lobby is not returned from Fan Page - FAILED");
-					testRailComment += "[teststat] Lobby is not returned from Fan Page - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-			}
-			else
-			{
-				System.out.println("[teststat] Fan page from top bar is not opened - FAILED");
-				testRailComment += "[teststat] Fan page from top bar is not opened - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
+			testRailComment += LobbyOperations.clickFanPage() + "\n";	
+			testRailComment += LobbyOperations.isFanPageOpened() + "\n";	
+			BrowserOperations.closeTab();
+			testRailComment += LobbyOperations.isLobbyReturned(1) + "\n";
+			testRailComment += LobbyOperations.clickSupportPage() + "\n";
+			testRailComment += LobbyOperations.isHelpPageOpened() + "\n";		
+			BrowserOperations.closeTab();
+			//s.wait(4.0);
+			testRailComment += LobbyOperations.isLobbyReturned(2) + "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] Fan page button cannot be found - FAILED");
-			testRailComment += "[teststat] Fan page button cannot be found - FAILED \n";
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
@@ -281,112 +182,21 @@ public class HoVSmokeTests {
 		String testRailTitle = "User can successfully purchase all coin packages within the shop and they have the option to upsale their purchase";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.isBuyButtonPresentAndClick())
+		try
 		{
-			System.out.println("[testprogress] Lobby Buy Button is Present and Clicked - OK");
-			testRailComment += "[testprogress] Lobby Buy Button is Present and Clicked - OK \n";
-			
-			//if (LobbyOperations.isShopOpened())   //The Shop popup was changed, performing recognition via "PURCHASE" button only
-			//{
-				
-				
-				//System.out.println("[testprogress] Shop Opened - OK");
-				//testRailComment += "[testprogress] Shop Opened - OK \n";
-				
-				if (LobbyOperations.isPurchaseButtonPresentAndClick())
-				{
-					System.out.println("[testprogress] Purchase Button is Present and has been clicked - OK");
-					testRailComment += "[testprogress] Purchase Button is Present and has been clicked - OK \n";
-					
-					
-					if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(false))
-					{
-						System.out.println("[testprogress] FB Popup (General) is Present and Buy button has been clicked - OK");
-						testRailComment += "[testprogress] FB Popup (General) is Present and Buy button has been clicked - OK \n";
-						
-						
-						if (LobbyOperations.isUpsalePopupPresentAndClickSpinButton())
-						{
-							System.out.println("[testprogress] Upsale Popup is Present and Spin has been clicked - OK");
-							testRailComment += "[testprogress] Upsale Popup is Present and Spin has been clicked - OK \n";
-							
-							
-							if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(true))
-							{
-								System.out.println("[testprogress] FB Popup (Upsale) is Present and Buy button has been clicked - OK");
-								testRailComment += "[testprogress] FB Popup (Upsale) is Present and Buy button has been clicked - OK \n";
-								
-								
-								if (LobbyOperations.isUpsalePopupCompletedPresentAndClickCollectButton())
-								{
-									System.out.println("[testprogress] Upsale Completed and Collect button has been clicked - OK");
-									testRailComment += "[testprogress] Upsale Completed and Collect button has been clicked - OK \n";
-									
-									
-									if (LobbyOperations.isCongratulationPopupPresentAndClickOkayButton())
-									{
-										System.out.println("[teststat] Congratulation Popup is Present and Okay button has been clicked - OK");
-										testRailComment += "[teststat] Congratulation Popup is Present and Okay button has been clicked - OK \n";
-										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-									}
-									else
-									{
-										System.out.println("[teststat] Congratulation Popup is Absent or Okay button is Absent - Failed");
-										testRailComment += "[teststat] Congratulation Popup is Absent or Okay button is Absent - FAILED \n";
-
-										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-									}
-								}
-								else
-								{
-									System.out.println("[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED");
-									testRailComment += "[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED \n";
-									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-								}
-							}
-							else
-							{
-								System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED");
-								testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED \n";
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-						}
-						else
-						{
-							System.out.println("[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED");
-							testRailComment += "[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED \n";
-							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-						}
-						
-					}
-					else
-					{
-						System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED");
-						testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED \n";
-						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-					}
-					
-					
-				}
-				else
-				{
-					System.out.println("[teststat] Can't Click Shop Purchase Button - FAILED");
-					testRailComment += "[teststat] Can't Click Shop Purchase Button - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-			//}
-			//else
-			//{
-			//	System.out.println("[teststat] Shop Popup is Absent - FAILED");
-			//	testRailComment += "[teststat] Shop Popup is Absent - FAILED \n";
-			//}
+			testRailComment += LobbyOperations.isBuyButtonPresentAndClick() + "\n";
+			//testRailComment += LobbyOperations.isShopOpened() + "\n";   //The Shop popup was changed, performing recognition via "PURCHASE" button only
+			testRailComment += LobbyOperations.isPurchaseButtonPresentAndClick() + "\n";
+			testRailComment += LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(false) + "\n";
+			testRailComment += LobbyOperations.isUpsalePopupPresentAndClickSpinButton() + "\n";
+			testRailComment += LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(true) + "\n";
+			testRailComment += LobbyOperations.isUpsalePopupCompletedPresentAndClickCollectButton() + "\n";
+			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //isCongratulationPopupPresentAndClickOkayButton() was
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] Lobby Buy Button is Absent - UNABLE_TO_CONTINUE");
-			testRailComment += "[teststat] Lobby Buy Button is Absent - FAILED \n";
-
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
@@ -396,138 +206,26 @@ public class HoVSmokeTests {
 		String testRailTitle = "Quick Buy bar is functioning as intended";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.isQuickBuyPanelPresent())
+		try
 		{
-			System.out.println("[testprogress] QuickBuy Panel is Present - OK");
-			testRailComment += "[testprogress] QuickBuy Panel is Present - OK \n";
-			
-			if (LobbyOperations.quickBuyDownClick())
-			{
-				System.out.println("[testprogress] QuickBuy Down Button is Present and Clicked - OK");
-				testRailComment += "[testprogress] QuickBuy Down Button is Present and Clicked - OK \n";
-				
-				if (LobbyOperations.isQuickBuyDropDownPresent())
-				{
-					System.out.println("[testprogress] QuickBuy DropDown List is Present - OK");
-					testRailComment += "[testprogress] QuickBuy DropDown List is Present - OK \n";
-					
-					if (LobbyOperations.quickBuyUpClick())
-					{
-						System.out.println("[testprogress] QuickBuy Up Button is Present and Clicked - OK");
-						testRailComment += "[testprogress] QuickBuy Up Button is Present and Clicked - OK \n";
-						
-						if (LobbyOperations.quickBuyBuyClick())
-						{
-							System.out.println("[testprogress] QuickBuy Buy Button is Present and Clicked - OK");
-							testRailComment += "[testprogress] QuickBuy Buy Button is Present and Clicked - OK \n";
-							////////////////////SPEC_QUICKBUY////////////////////////////////
-							if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(false))
-							{
-								System.out.println("[testprogress] FB Popup (General) is Present and Buy button has been clicked - OK");
-								testRailComment += "[testprogress] FB Popup (General) is Present and Buy button has been clicked - OK \n";
-								
-								if (LobbyOperations.isUpsalePopupPresentAndClickSpinButton())
-								{
-									System.out.println("[testprogress] Upsale Popup is Present and Spin has been clicked - OK");
-									testRailComment += "[testprogress] Upsale Popup is Present and Spin has been clicked - OK \n";
-									
-									if (LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(true))
-									{
-										System.out.println("[testprogress] FB Popup (Upsale) is Present and Buy button has been clicked - OK");
-										testRailComment += "[testprogress] FB Popup (Upsale) is Present and Buy button has been clicked - OK \n";
-										
-										if (LobbyOperations.isUpsalePopupCompletedPresentAndClickCollectButton())
-										{
-											System.out.println("[testprogress] Upsale Completed and Collect button has been clicked - OK");
-											testRailComment += "[testprogress] Upsale Completed and Collect button has been clicked - OK \n";
-											
-											if (LobbyOperations.isCongratulationPopupPresentAndClickOkayButton())
-											{
-												System.out.println("[teststat] Congratulation Popup is Present and Okay button has been clicked - OK");
-												testRailComment += "[teststat] Congratulation Popup is Present and Okay button has been clicked - OK \n";
-												TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-											}
-											else
-											{
-												System.out.println("[teststat] Congratulation Popup is Absent or Okay button is Absent - Failed");
-												testRailComment += "[teststat] Congratulation Popup is Absent or Okay button is Absent - FAILED \n";
-
-												TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-											}
-										}
-										else
-										{
-											System.out.println("[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED");
-											testRailComment += "[teststat] Can't Find Completed Upsale Popup or click Upsale Collect Button - FAILED \n";
-
-											TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-										}
-									}
-									else
-									{
-										System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED");
-										testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (Upsale) - FAILED \n";
-
-										TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-									}
-								}
-								else
-								{
-									System.out.println("[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED");
-									testRailComment += "[teststat] Can't Find Upsale Popup or Upsale Spin Button - FAILED \n";
-
-									TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-								}
-								
-							}
-							else
-							{
-								System.out.println("[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED");
-								testRailComment += "[teststat] Can't Find FB Popup or click FB Buy Button (General) - FAILED \n";
-
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							
-							
-							////////////////////SPEC_QUICKBUY////////////////////////////////
-						}
-						else
-						{
-							System.out.println("[teststat] QuickBuy Buy Button is Absent - FAILED");
-							testRailComment += "[teststat] QuickBuy Buy Button is Absent - FAILED \n";
-							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-						}
-					}
-					else
-					{
-						System.out.println("[teststat] QuickBuy Up Button is Absent - FAILED");
-						testRailComment += "[teststat] QuickBuy Up Button is Absent - FAILED \n";
-						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-					}
-				}
-				else
-				{
-					System.out.println("[teststat] QuickBuy DropDown List is Absent - FAILED");
-					testRailComment += "[teststat] QuickBuy DropDown List is Absent - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-			}
-			else
-			{
-				System.out.println("[teststat] QuickBuy Down Button is Absent - FAILED");
-				testRailComment += "[teststat] QuickBuy Down Button is Absent - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
+			testRailComment += LobbyOperations.isQuickBuyPanelPresent() + "\n";
+			testRailComment += LobbyOperations.quickBuyDownClick() + "\n";
+			testRailComment += LobbyOperations.isQuickBuyDropDownPresent() + "\n";
+			testRailComment += LobbyOperations.quickBuyUpClick() + "\n";
+			testRailComment += LobbyOperations.quickBuyBuyClick() + "\n";
+			////////////////////SPEC_QUICKBUY////////////////////////////////
+			testRailComment += LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(false) + "\n";
+			testRailComment += LobbyOperations.isUpsalePopupPresentAndClickSpinButton() + "\n";
+			testRailComment += LobbyOperations.isFbConfirmPopupPresentAndClickBuyButton(true) + "\n";
+			testRailComment += LobbyOperations.isUpsalePopupCompletedPresentAndClickCollectButton() + "\n";
+			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //isCongratulationPopupPresentAndClickOkayButton() was
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[teststat] QuickBuy Panel is Absent - UNABLE_TO_CONTINUE");
-			testRailComment += "[teststat] QuickBuy Panel is Absent - FAILED \n";
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
-		
-		
 	}
 	
 	@Test
@@ -535,41 +233,16 @@ public class HoVSmokeTests {
 		String testRailTitle = "User can collect their hourly bonus";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
-		
-		if (LobbyOperations.isTimeBonusEnabled())
+		try
 		{
-			System.out.println("[testprogress] Time Bonus Enabled - OK");
-			testRailComment += "[testprogress] Time Bonus Enabled - OK \n";
-			
-			if (LobbyOperations.clickCollectTimeBonus())
-			{
-				System.out.println("[testprogress] Time Bonus Clicked - OK");
-				testRailComment += "[testprogress] Time Bonus Clicked - OK \n";
-				
-				if (LobbyOperations.isCollectedTimeBonus())
-				{
-					System.out.println("[teststat] Time Bonus Collected - OK");
-					testRailComment += "[teststat] Time Bonus Collected - OK \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-				}
-				else
-				{
-					System.out.println("[teststat] Time Bonus is not Collected - FAILED");
-					testRailComment += "[teststat] Time Bonus is not Collected - FAILED \n";
-					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-				}
-			}
-			else
-			{
-				System.out.println("[teststat] Time Bonus Not Clicked - FAILED");
-				testRailComment += "[teststat] Time Bonus Not Clicked - FAILED \n";
-				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-			}
+			testRailComment += LobbyOperations.isTimeBonusEnabled() + "\n";
+			testRailComment += LobbyOperations.clickCollectTimeBonus() + "\n";
+			testRailComment += LobbyOperations.isCollectedTimeBonus() + "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
-		else
+		catch (FindFailed e)
 		{
-			System.out.println("[testprogress] Time Bonus Disabled - UNABLE_TO_CONTINUE");
-			testRailComment += "[teststat] Time Bonus Disabled - FAILED \n";
+			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		

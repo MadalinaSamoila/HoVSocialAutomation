@@ -44,6 +44,9 @@ public class HoVSmokeTests {
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
+		
+		
+		
 	}
 	
 	@Test

@@ -9,7 +9,7 @@ public class LobbyOperations
 {
 	static Screen s = new Screen();
 	static String startRegion;
-	
+	static String res;
 	//TIME BONUS
 	
 	public static boolean isTimeBonusEnabled() throws FindFailed // works if time bonus is filled on approx 50%
@@ -398,132 +398,113 @@ public class LobbyOperations
 	  
 	  //TUTORIAL
 	  
-	  public static boolean isTimeBonusTutorialStepPresentAndClick() throws FindFailed
-		{
-			try
-			{
+		public static String isTimeBonusTutorialStepPresentAndClick() throws FindFailed
+		{			
 							
-				s.find("lobby//Tutorial_collectBonusStep.png");
-				
-				s.click("lobby//Tutorial_collectBonusStep.png");
-				
-				s.wait(5.0);
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			s.find("lobby//Tutorial_collectBonusStep.png");
+			
+			s.click("lobby//Tutorial_collectBonusStep.png");
+			
+			s.wait(5.0);
+			
+			res = "[testprogress] Tutorial's Time Bonus Step Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean isChooseMachineTutorialStepPresentAndClick() throws FindFailed
+		public static String isChooseMachineTutorialStepPresentAndClick() throws FindFailed
 		{
-			try
-			{
-							
-				s.find("lobby//Tutorial_chooseMachineStep.png");
-				
-				s.click("lobby//Tutorial_chooseMachineStep.png");
-				
-				s.wait(3.0);
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+						
+			s.find("lobby//Tutorial_chooseMachineStep.png");
+			
+			s.click("lobby//Tutorial_chooseMachineStep.png");
+			
+			s.wait(3.0);
+			
+			res = "[testprogress] Tutorial's Choose Machine Step Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean isSelectBetTutorialStepPresentAndClick() throws FindFailed
+		public static String isSelectBetTutorialStepPresentAndClick() throws FindFailed
 		{
-			try
-			{
 							
-				s.find("lobby//Tutorial_selectBetStep.png");
-				
-				s.click("lobby//Tutorial_selectBetStep.png");
-				
-				s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			s.find("lobby//Tutorial_selectBetStep.png");
+			
+			s.click("lobby//Tutorial_selectBetStep.png");
+			
+			s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
+			
+			res = "[testprogress] Tutorial's Select Bet Step Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean returnToLobby()
+		public static String returnToLobby() throws FindFailed
 		{
-			try
-			{						
-				s.find("slot//Slot_LobbyButton.png");						
-				
-				s.click("slot//Slot_LobbyButton.png");
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+								
+			s.find("slot//Slot_LobbyButton.png");						
+			
+			s.click("slot//Slot_LobbyButton.png");
+			
+			res = "[testprogress] The User Was Returned to the Lobby - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
 		//DAILY_WHEEL
 		
-		public static boolean isDailyWheelPresent() throws FindFailed
+		public static String isDailyWheelPresent() throws FindFailed
 		{
-			try
-			{
-				s.find("lobby//DW_Unspinned.png");					
+			s.find("lobby//DW_Unspinned.png");					
 				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			res = "[testprogress] Daily Wheel is Present - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean clickDailyWheelSpin() throws FindFailed
+		public static String clickDailyWheelSpin() throws FindFailed
 		{
-			try
-			{
-				s.find("lobby//DW_ClickSpin.png");	
+			s.find("lobby//DW_ClickSpin.png");	
 				
-				s.click("lobby//DW_ClickSpin.png");					
-
-				s.wait(10.0);
+			s.click("lobby//DW_ClickSpin.png");					
+	
+			s.wait(10.0);
 				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			res = "[testprogress] Daily Wheel Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean clickDailyWheelCollect() throws FindFailed
+		public static String clickDailyWheelCollect() throws FindFailed
 		{
-			try
-			{
-				s.find("lobby//DW_CollectButton.png");	
-				
-				s.click("lobby//DW_CollectButton.png");					
-
-				s.wait(3.0);
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			
+			s.find("lobby//DW_CollectButton.png");	
+			
+			s.click("lobby//DW_CollectButton.png");					
+	
+			s.wait(3.0);
+			
+			res = "[testprogress] Daily Wheel's Collect Button Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean isDailyWheelSharePresent() throws FindFailed 
+		public static boolean isDailyWheelSharePresent()
 		{
 			try
 			{
@@ -538,152 +519,138 @@ public class LobbyOperations
 		}
 		
 		
-		public static boolean untickDailyWheelShare() throws FindFailed 
+		public static String untickDailyWheelShare() throws FindFailed 
 		{
-			try
-			{
-				s.find("lobby//DW_ShareTicked.png");	
-				
-				s.click("lobby//DW_ShareTick.png");	
-				
-				s.find("lobby//DW_ShareUnticked.png");	
-				
-				s.wait(3.0);
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			
+			s.find("lobby//DW_ShareTicked.png");	
+			
+			s.click("lobby//DW_ShareTick.png");	
+			
+			s.find("lobby//DW_ShareUnticked.png");	
+			
+			s.wait(3.0);
+			
+			res = "[testprogress] Daily Wheel's Share Checkbix Was Unticked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean tickDailyWheelShare() throws FindFailed 
+		public static String tickDailyWheelShare() throws FindFailed 
 		{
-			try
-			{
-				s.find("lobby//DW_ShareUnticked.png");	
-				
-				s.click("lobby//DW_ShareUntick.png");	
-				
-				s.find("lobby//DW_ShareTicked.png");	
-				
-				s.wait(3.0);
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			
+			s.find("lobby//DW_ShareUnticked.png");	
+			
+			s.click("lobby//DW_ShareUntick.png");	
+			
+			s.find("lobby//DW_ShareTicked.png");	
+			
+			s.wait(3.0);
+			
+			res = "[testprogress] Daily Wheel's Share Checkbix Was Ticked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
 		// IsEnabledCRMAppears
 		
 		// Method that used for clicking Slot is writen in SlotMachinesPresent - clickCentralSlot()
-		public static boolean isCRMOpened() throws FindFailed
-		 {
-		  try
-		  {   
+		public static String isCRMOpened() throws FindFailed
+		{
+		   
 			  s.wait(14.0);
 			  
 			  s.find("lobby//Lobby_CRM_body.png");
 		   
-		   return true;
-		  }
-		  catch (FindFailed e)
-		  {
-		   return false;
-		  }
+			  res = "[testprogress] CRM Is Opened - OK";
+				
+			  System.out.println(res);
+			  
+			  return res;
 		 } 
 		
-		public static boolean clickCloseButtonCRM() throws FindFailed
-		 {
-		  try
-		  {      
+		public static String clickCloseButtonCRM() throws FindFailed
+		{
+		       
 			  s.click("lobby//Lobby_CRM_Close_Button.png");
 		   
-		   return true;
-		  }
-		  catch (FindFailed e)
-		  {
-		   return false;
-		  }
-		 } 
+			  res = "[testprogress] CRM's Close Button Was Clicked - OK";
+				
+			  System.out.println(res);
+			  
+			  return res;
+		} 
 		
-		public static boolean isCRMClosed() throws FindFailed
-		 {
-		  try
-		  {      
+		public static String isCRMClosed() throws FindFailed
+		{
+		        
 			  s.wait(14.0);
 			  
 			  s.find("lobby//FanPageTopBarButton.png");
 			  
 			  s.wait(14.0);
-		   return true;
-		  }
-		  catch (FindFailed e)
-		  {
-		   return false;
-		  }
-		 } 
+		   
+			  res = "[testprogress] CRM Was Closed - OK";
+				
+			  System.out.println(res);
+			  
+			  return res;
+		 }
+		 
 		
-		public static boolean clickCRM() throws FindFailed
-		 {
-		  try
-		  {      
+		public static String clickCRM() throws FindFailed
+		{
+		        
 			  s.click("lobby//Lobby_CRM_body.png");
 			  
 			  s.wait(10.0);
 		   
-		   return true;
-		  }
-		  catch (FindFailed e)
-		  {
-		   return false;
-		  }
+			  res = "[testprogress] CRM Was Clicked - OK";
+				
+			  System.out.println(res);
+			  
+			  return res;
 		 } 
 		
 		// Close CRM Congratulation popup mecthod is in SHOP - isCongratulationPopupPresentAndClickOkayButton()
-
+	
 		
 		// SlotMachinesPresent
-		public static boolean clickCentralSlot() throws FindFailed
+		public static String clickCentralSlot() throws FindFailed
 		{
-			try
-			{
-				Region r = s.find("lobby//Lobby_HR_Button.png");
-				r.h += 500;
-				r.click("lobby//Lobby_slotCabinetButtons.png");
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			
+			Region r = s.find("lobby//Lobby_HR_Button.png");
+			r.h += 500;
+			r.click("lobby//Lobby_slotCabinetButtons.png");
+			
+			res = "[testprogress] Central Slot Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean clickNextSlot() throws FindFailed
+		public static String clickNextSlot() throws FindFailed
 		{
-			try
-			{
-				Region r = s.find("lobby//Lobby_JP_Button.png");
-				
-				r.h += 500;
-				r.w += 70;
-				//r.highlight();
-				r.click("lobby//Lobby_slotCabinetButtonsNext.png");
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			
+			Region r = s.find("lobby//Lobby_JP_Button.png");
+			
+			r.h += 500;
+			r.w += 70;
+			//r.highlight();
+			r.click("lobby//Lobby_slotCabinetButtonsNext.png");
+			
+			res = "[testprogress] Next Slot Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean isNextSlotComingSoon() throws FindFailed
+		public static boolean isNextSlotComingSoon()
 		{
 			try
 			{
@@ -700,7 +667,7 @@ public class LobbyOperations
 			}
 		}
 		
-		public static boolean isNextSlotEarlyAccess() throws FindFailed
+		public static boolean isNextSlotEarlyAccess()
 		{
 			try
 			{
@@ -717,59 +684,52 @@ public class LobbyOperations
 			}
 		}
 		
-		public static boolean clickCabinetPlayButton() throws FindFailed
+		public static String clickCabinetPlayButton() throws FindFailed
 		{
-			try
-			{						
-				s.find("lobby//Lobby_CabinetPlayBetButton.png");						
-				
-				s.click("lobby//Lobby_CabinetPlayBetButton.png");
-				
-				s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+									
+			s.find("lobby//Lobby_CabinetPlayBetButton.png");						
+			
+			s.click("lobby//Lobby_CabinetPlayBetButton.png");
+			
+			s.wait(Double.parseDouble(CommonOperations.hov_slot_load_time));
+			
+			res = "[testprogress] Bet's Play Button Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
 		
 		
 		
-		public static boolean clickAfterNextSlot() throws FindFailed
+		public static String clickAfterNextSlot() throws FindFailed
 		{
-			try
-			{						
-				Region r = s.find("lobby//Lobby_JP_Button.png");
-				r.h += 500;
-				r.x += 250;
-				r.click("lobby//Lobby_slotCabinetButtonsNext.png");
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+								
+			Region r = s.find("lobby//Lobby_JP_Button.png");
+			r.h += 500;
+			r.x += 250;
+			r.click("lobby//Lobby_slotCabinetButtonsNext.png");
+			
+			res = "[testprogress] After The Next Slot Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static boolean clickCloseCabinet() throws FindFailed
-		{
-			try
-			{						
-				s.click("lobby//Lobby_CabinetCloseButton.png");
-				
-				return true;
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+		public static String clickCloseCabinet() throws FindFailed
+		{									
+			s.click("lobby//Lobby_CabinetCloseButton.png");
+			
+			res = "[testprogress] Cabinet's Close Button Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
 		}
 		
-		public static void skipNextEarlyAccessAndComingSoonSlots() throws FindFailed
+		public static void skipNextEarlyAccessAndComingSoonSlots()
 		{
 			while (true)
 			{
@@ -805,7 +765,7 @@ public class LobbyOperations
 			}
 		}
 		
-		public static void saveCentralSlotRegion() throws FindFailed, IOException
+		public static void saveCentralSlotRegion()
 		{
 			try
 			{
@@ -827,7 +787,7 @@ public class LobbyOperations
 			}
 		}
 		
-		public static boolean isCentralSlotInitial() throws FindFailed
+		public static boolean isCentralSlotInitial()
 		{
 			try
 			{	
@@ -846,54 +806,32 @@ public class LobbyOperations
 		}
 		
 		// FreshInstallTest case methods - start (behind)
-		public static boolean findChangeURLAndAccessUATSocial(String browser)  throws FindFailed
+		public static String findChangeURLAndAccessUATSocial(String browser)  throws FindFailed
 		{
-			try
-			{
-				s.find("browser//"+browser+"_facebook.com_url.png");
-				
-				s.click("browser//"+browser+"_facebook.com_url.png");
+			
+				BrowserOperations.clickSearch();
 				
 				s.paste("https://apps.facebook.com/hov_uat/");
 				
 				s.type(Key.ENTER);
 				
-				s.wait(13.0);
+				s.wait(15.5);
 				
 				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
 				
-				return true;
+				res = "[testprogress] The tab With The Game Wasn't Opened - OK";
 				
-			}
-			catch (FindFailed e)
-			{
-				try
-				{
-					BrowserOperations.clickSearch();
-					
-					s.paste("https://apps.facebook.com/hov_uat/");
-					
-					s.type(Key.ENTER);
-					
-					s.wait(13.0);
-					
-					s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
-					
-					return true;
-					
-				}
-				catch (FindFailed ex)
-				{
-					
-					return false;
-				}			
-			}
+				System.out.println(res);
+				
+				return res;
+				
+			
+			
 		}
 		
-		public static boolean areFreshInstallStepsCompleted()  throws FindFailed
+		public static String areFreshInstallStepsCompleted()  throws FindFailed
 		{
-			try
-			{
+			
 				s.wait(15.0);
 				
 				s.find("browser//facebook_Play_Now_button.png");
@@ -910,13 +848,11 @@ public class LobbyOperations
 				
 				s.find("lobby//Tutorial_collectBonusStep.png");
 				
-				return true;
+				res = "[testprogress] All Install Steps Were Completed. The User Is Placed In The Tutorial - OK";
 				
-			}
-			catch (FindFailed e)
-			{
-				return false;
-			}
+				System.out.println(res);
+				
+				return res;
 		}
 		// FreshInstallTest case methods - finish (above)
 }

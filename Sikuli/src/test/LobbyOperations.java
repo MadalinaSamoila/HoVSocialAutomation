@@ -699,7 +699,7 @@ public class LobbyOperations
 			return res;
 		}
 		
-		public static String clickCloseCabinet() throws FindFailed
+		public static String clickClosePopup() throws FindFailed
 		{									
 			s.click("lobby//Lobby_CabinetCloseButton.png");
 			

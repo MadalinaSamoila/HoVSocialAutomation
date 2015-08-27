@@ -264,7 +264,7 @@ public class HoVSmokeTests {
 			{				
 				LobbyOperations.skipNextEarlyAccessAndComingSoonSlots();
 				LobbyOperations.clickNextSlot();
-				LobbyOperations.clickCloseCabinet();
+				LobbyOperations.clickClosePopup();
 			}
 			LobbyOperations.saveCentralSlotRegion();
 		}

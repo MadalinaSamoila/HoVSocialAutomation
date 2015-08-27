@@ -16,18 +16,19 @@ public class SmokeTestSet {
 		
 		HoVSmokeTests smoke = new HoVSmokeTests();	
 		String pathToFile = "config.json";  //replace "config.json" with args[0] before export to jar
-		System.out.println("Welcome! \nPlease, make sure that there are no logged in users into Facebook under Chrome, FireFox and Internet Explorer browsers. Otherwise, log out and restart the test. \nAlso, make sure that you have a correct configuration file. \nGood luck :)");
+		System.out.println("Welcome! \nPlease, make sure that there are no logged in users into Facebook under all browsers. Otherwise, log out and restart the test. \nAlso, make sure that you have a correct configuration file.\nWarning: before running test on Microsoft Edge Browser, all windows will me minimized! \nGood luck :)");
 		
 		if ((CommonOperations.fillFieldsFromConfigFile(pathToFile))) 
 		{
-			for (String i: browsers) 
-			{
+			//for (String i: browsers) 
+			//{
+				String i = "edge";
 				CommonOperations.currentBrowser = i;
 				try 
 				{
 					
 					BrowserOperations.openBrowser(i);
-					s.wait(5.0);				
+					/*s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);
 					s.wait(5.0);	
 					FacebookOperations.createTestUser();
@@ -84,12 +85,14 @@ public class SmokeTestSet {
 					
 					FacebookOperations.deleteTestUser();
 					
+					BrowserOperations.closeBrowser(i);
+					*/
 				} 
 				catch (Exception e) 
 				{			
 					e.printStackTrace();
 				}
-			}
+		//	}
 		}
 		else
 		{

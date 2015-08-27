@@ -109,7 +109,7 @@ public class FacebookOperations {
 		screen.type(Key.ENTER);
 		screen.wait(15.0);
 		
-		if (browser.equals("iexplore"))
+		if ((browser.equals("iexplore")) || (browser.equals("edge")))
 		{
 			
 			screen.click("browser//facebook_login.png");

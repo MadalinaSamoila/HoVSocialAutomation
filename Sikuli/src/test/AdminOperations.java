@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.edge.*;
 import org.openqa.selenium.Keys;
 import org.sikuli.script.*;
 
@@ -19,6 +20,7 @@ public class AdminOperations {
 		
 		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
 		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+		System.setProperty("webdriver.edge.driver", "lib\\webdriver\\MicrosoftWebDriver.exe");
 		
 		switch(browser) {
 		case "chrome": 	driver = new ChromeDriver();
@@ -27,6 +29,8 @@ public class AdminOperations {
 						break;
 		case "iexplore":driver = new InternetExplorerDriver();
 						break;
+		case "edge":	driver = new EdgeDriver();
+						break;		
 		default:		driver = new ChromeDriver();
 						break;
 		}

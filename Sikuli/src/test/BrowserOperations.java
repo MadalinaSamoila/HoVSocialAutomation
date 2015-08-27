@@ -1,7 +1,8 @@
 package test;
 
 import org.sikuli.script.*;
-
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.*;
 
 
 enum Browsers {
@@ -18,23 +19,57 @@ enum Browsers {
 	}
 }
 
+
 public class BrowserOperations {
 	public static App browser;
-	static Screen screen= new Screen();
+	private static Screen screen= new Screen();
 	private static String browserName;
-	
+	private static WebDriver driver;
 	
 	
 	public static void openBrowser(String name) {
-		App.open(Browsers.valueOf(name).getBrowserAddress());
-		//browser = new App(Browsers.valueOf(name).getBrowserAddress()).open();
+		if (name.equals("edge"))
+		{
+			screen.keyDown(Key.WIN);
+			screen.keyDown("d");
+			screen.keyUp(Key.WIN);
+			screen.keyUp("d");
+		
+			System.setProperty("webdriver.edge.driver", "lib\\webdriver\\MicrosoftWebDriver.exe");
+			driver = new EdgeDriver();
+			
+			screen.wait(5.2);
+			screen.keyDown(Key.WIN);
+			screen.keyDown(Key.UP);
+			screen.keyUp(Key.WIN);
+			screen.keyUp(Key.UP);
+			try 
+			{
+				screen.click("browser/"+name+"_search.png");
+			} 
+			catch (FindFailed e) 
+			{
+				e.printStackTrace();
+			}						
+		}
+		else
+		{
+			App.open(Browsers.valueOf(name).getBrowserAddress());
+		}
 		browserName = name;
 		
 	}
 
-	public static void closeBrowser(String name) {
-		browser.close();
-		
+	public static void closeBrowser(String name) 
+	{
+		if (name.equals("edge"))
+		{
+			driver.close();
+		}
+		else
+		{
+			browser.close();
+		}
 	}
 	
 	public static void openNewTab (/*String name*/) {

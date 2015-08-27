@@ -574,14 +574,30 @@ public class LobbyOperations
 		{
 			
 			Region r = s.find("lobby//Lobby_HR_Button.png");
+			
 			r.h += 500;
-			r.click("lobby//Lobby_slotCabinetButtons.png");
-			
-			res = "[testprogress] Central Slot Was Clicked - OK";
-			
-			System.out.println(res);
-			
-			return res;
+			r.w += 70;
+			//r.highlight();
+			try
+			{
+				r.click("lobby//Lobby_slotCabinetButtons.png");
+				
+				res = "[testprogress] Next Slot Was Clicked - OK";
+				
+				System.out.println(res);
+				
+				return res;
+			}
+			catch (FindFailed e)
+			{
+				r.click("lobby//Lobby_slotOldschoolCabinetButtonsNext.png");
+				
+				res = "[testprogress] Next Slot Was Clicked (Old School Slot Version) - OK";
+				
+				System.out.println(res);
+				
+				return res;
+			}
 		}
 		
 		public static String clickNextSlot() throws FindFailed
@@ -592,13 +608,26 @@ public class LobbyOperations
 			r.h += 500;
 			r.w += 70;
 			//r.highlight();
-			r.click("lobby//Lobby_slotCabinetButtonsNext.png");
-			
-			res = "[testprogress] Next Slot Was Clicked - OK";
-			
-			System.out.println(res);
-			
-			return res;
+			try
+			{
+				r.click("lobby//Lobby_slotCabinetButtonsNext.png");
+				
+				res = "[testprogress] Next Slot Was Clicked - OK";
+				
+				System.out.println(res);
+				
+				return res;
+			}
+			catch (FindFailed e)
+			{
+				r.click("lobby//Lobby_slotOldschoolCabinetButtonsNext.png");
+				
+				res = "[testprogress] Next Slot Was Clicked (Old School Slot Version) - OK";
+				
+				System.out.println(res);
+				
+				return res;
+			}
 		}
 		
 		public static boolean isNextSlotComingSoon()
@@ -614,6 +643,7 @@ public class LobbyOperations
 			}
 			catch (FindFailed e)
 			{
+				
 				return false;
 			}
 		}
@@ -770,7 +800,7 @@ public class LobbyOperations
 				
 				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
 				
-				res = "[testprogress] The tab With The Game Wasn't Opened - OK";
+				res = "[testprogress] The tab With The Game Opened - OK";
 				
 				System.out.println(res);
 				

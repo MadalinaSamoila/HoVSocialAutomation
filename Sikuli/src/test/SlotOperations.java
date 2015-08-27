@@ -31,7 +31,16 @@ public class SlotOperations
 		}
 		catch (FindFailed e)
 		{
-			return false;
+			try
+			{
+				s.find("slot//gan//GAN_spinButtonOldschool.png");						
+				
+				return true;
+			}
+			catch (FindFailed ex)
+			{
+				return false;
+			}
 		}
 	}
 	

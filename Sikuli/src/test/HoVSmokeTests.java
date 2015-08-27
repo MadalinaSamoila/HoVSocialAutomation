@@ -258,14 +258,21 @@ public class HoVSmokeTests {
 		int ganLoaded = 0;
 		int gdkLoaded = 0;
 		int errLoaded = 0;
-		
-		if ((LobbyOperations.isNextSlotComingSoon()) || (LobbyOperations.isNextSlotEarlyAccess()))
-		{				
-			LobbyOperations.skipNextEarlyAccessAndComingSoonSlots();
-			LobbyOperations.clickNextSlot();
-			LobbyOperations.clickCloseCabinet();
+		try
+		{
+			if ((LobbyOperations.isNextSlotComingSoon()) || (LobbyOperations.isNextSlotEarlyAccess()))
+			{				
+				LobbyOperations.skipNextEarlyAccessAndComingSoonSlots();
+				LobbyOperations.clickNextSlot();
+				LobbyOperations.clickCloseCabinet();
+			}
+			LobbyOperations.saveCentralSlotRegion();
 		}
-		LobbyOperations.saveCentralSlotRegion();
+		catch (FindFailed e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 		
 		while(true)
 		{
@@ -275,147 +282,81 @@ public class HoVSmokeTests {
 			}
 			else
 			{
-				System.out.println("[teststat] Next Slot is not in Early Acces or Comnig Soon Status - OK");
-				
-				if (LobbyOperations.clickNextSlot())
+				try
 				{
-					System.out.println("[teststat] Next Slot Clicked - OK");
-					
-					if (LobbyOperations.clickCabinetPlayButton())
+					LobbyOperations.clickNextSlot();
+										
+					LobbyOperations.clickCabinetPlayButton();
+																							
+					switch (SlotOperations.specifySlot())
 					{
-						System.out.println("[teststat] Starting the Slot - OK");
-																		
-						switch (SlotOperations.specifySlot())
+						case 0:
 						{
-							case 0:
-							{
-								System.out.println("[teststat] The User was not placed into the Slot or the Slot Displays incorrectly - FAILED");
-								errLoaded++;
-								System.out.println("[teststat] FORCE TRYING TO RETURN TO THE LOBBY");
-								if (LobbyOperations.returnToLobby())
-								{
-									System.out.println("[testres] Returned to the Lobby - OK");		
-									
-								}
-								else
-								{
-									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-									
-								}
-								break;
-							}
-							case 1:
-							{
-								System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
-								ngLoaded++;
-								if (LobbyOperations.returnToLobby())
-								{
-									System.out.println("[teststat] Returned to the Lobby - OK");
-								}
-								else
-								{
-									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								}
-								
-								break;
-							}
-							case 2:
-							{
-								System.out.println("[testprogress] The User Placed into GAN Slot - OK");
-								ganLoaded++;
-								if (LobbyOperations.returnToLobby())
-								{
-									System.out.println("[teststat] Returned to the Lobby - OK");
-								}
-								else
-								{
-									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								}
-								
-								break;
-							}
-							case 3:
-							{
-								System.out.println("[testprogress] The User Placed into GDK Slot - OK");
-								gdkLoaded++;
-								if (LobbyOperations.returnToLobby())
-								{
-									System.out.println("[teststat] Returned to the Lobby - OK");
-								}
-								else
-								{
-									System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
-								}
-								
-								break;
-							}
-							
-						}
-						if (LobbyOperations.isCentralSlotInitial())
-						{
-							System.out.println("[testres] The Slot is initial - STOP_TESTING");
-							
-							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
-							testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded;
-							if (errLoaded != 0)
-							{
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							else
-							{
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
+							System.out.println("[teststat] The User was not placed into the Slot or the Slot Displays incorrectly - FAILED");
+							errLoaded++;
+							System.out.println("[teststat] FORCE TRYING TO RETURN TO THE LOBBY");
+							System.out.println(LobbyOperations.returnToLobby());
+																									
 							break;
+						}
+						case 1:
+						{
+							System.out.println("[testprogress] The User Placed into NexGen Slot - OK");
+							ngLoaded++;
+							System.out.println(LobbyOperations.returnToLobby());
 							
-						}
-						else
-						{
-							System.out.println("[testres] The Slot is not initial - CONTUNUE_TESTING");
-						}
-					}
-					else
-					{
-						System.out.println("[teststat] Play Button (Bet per line) Not Clicked - FAILED");
-					}
-				}
-				else
-				{
-					System.out.println("[teststat] Next Slot Not Clicked - FAILED");
-					System.out.println("[teststat] FORCE TRYING TO RETURN TO THE LOBBY");
-					if (LobbyOperations.returnToLobby())
-					{
-						System.out.println("[testres] Returned to the Lobby - OK");
-						if (LobbyOperations.isCentralSlotInitial())
-						{
-							System.out.println("[testres] The Slot is initial - STOP_TESTING");
-							System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
-							testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded;
-							if (errLoaded != 0)
-							{
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-							}
-							else
-							{
-								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-							}
 							break;
-							
-							
 						}
-						else
+						case 2:
 						{
-							System.out.println("[testres] The Slot is not initial - CONTUNUE_TESTING");
+							System.out.println("[testprogress] The User Placed into GAN Slot - OK");
+							ganLoaded++;
+							System.out.println(LobbyOperations.returnToLobby());
+							
+							break;
+						}
+						case 3:
+						{
+							System.out.println("[testprogress] The User Placed into GDK Slot - OK");
+							gdkLoaded++;
+							System.out.println(LobbyOperations.returnToLobby());
+							
+							break;
 						}
 						
 					}
+					if (LobbyOperations.isCentralSlotInitial())
+					{
+						System.out.println("[testres] The Slot is initial - STOP_TESTING");
+						
+						System.out.println("[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded);
+						testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded;
+						if (errLoaded != 0)
+						{
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+						}
+						else
+						{
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+						}
+						break;				
+					}
 					else
 					{
-						System.out.println("[teststat] The User was not placed into the Lobby - FAILED");
+						System.out.println("[testres] The Slot is not initial - CONTUNUE_TESTING");
 					}
+				}
+				catch (FindFailed e)
+				{
+					testRailComment += e.getMessage();
+					testRailComment += "\n Restarting The App. Unable to Continue Test \n";
+					BrowserOperations.refreshPage(true);
+					testRailComment += "[testres] GAN - "+ganLoaded+"; GDK - "+gdkLoaded+ "; NG - "+ngLoaded+" ; Does Not Load - "+errLoaded + "\n";
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					break;
 				}
 			}
 		}
-		
 	}
 	
 	

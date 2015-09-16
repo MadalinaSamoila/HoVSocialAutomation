@@ -1,11 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" total="10" passed="10">
   <reporter-output>
   </reporter-output>
-  <suite name="Muddy Test Suite" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
+  <suite name="HoVSmokeTestSuite" duration-ms="80293" started-at="2015-09-16T07:52:48Z" finished-at="2015-09-16T07:54:09Z">
     <groups>
     </groups>
-    <test name="Youtube test" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
-    </test> <!-- Youtube test -->
-  </suite> <!-- Muddy Test Suite -->
+    <test name="Default test" duration-ms="80293" started-at="2015-09-16T07:52:48Z" finished-at="2015-09-16T07:54:09Z">
+      <class name="test.testng.HoVSmokeTestsSuite">
+        <test-method status="PASS" signature="beforeSuite(java.lang.String)[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="beforeSuite" is-config="true" duration-ms="85057" started-at="2015-09-16T10:51:23Z" finished-at="2015-09-16T10:52:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="FreshInstallTest(java.lang.String)[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="FreshInstallTest" duration-ms="19963" started-at="2015-09-16T10:52:48Z" finished-at="2015-09-16T10:53:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FreshInstallTest -->
+        <test-method status="PASS" signature="TutorialInstigates()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="TutorialInstigates" duration-ms="3554" started-at="2015-09-16T10:53:08Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.FreshInstallTest" finished-at="2015-09-16T10:53:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TutorialInstigates -->
+        <test-method status="PASS" signature="PlacedInLobby()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="PlacedInLobby" duration-ms="11865" started-at="2015-09-16T10:53:12Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.TutorialInstigates" finished-at="2015-09-16T10:53:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PlacedInLobby -->
+        <test-method status="PASS" signature="DailyBonusPresent()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="DailyBonusPresent" duration-ms="3872" started-at="2015-09-16T10:53:24Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.PlacedInLobby" finished-at="2015-09-16T10:53:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DailyBonusPresent -->
+        <test-method status="PASS" signature="EnabledCRMsAppear()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="EnabledCRMsAppear" duration-ms="3766" started-at="2015-09-16T10:53:28Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.DailyBonusPresent" finished-at="2015-09-16T10:53:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EnabledCRMsAppear -->
+        <test-method status="PASS" signature="HelpFanPageOpen()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="HelpFanPageOpen" duration-ms="4245" started-at="2015-09-16T10:53:31Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.EnabledCRMsAppear" finished-at="2015-09-16T10:53:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HelpFanPageOpen -->
+        <test-method status="PASS" signature="BuyAllCoinPackages()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="BuyAllCoinPackages" duration-ms="3963" started-at="2015-09-16T10:53:36Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.HelpFanPageOpen" finished-at="2015-09-16T10:53:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyAllCoinPackages -->
+        <test-method status="PASS" signature="QuickBuyFunctional()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="QuickBuyFunctional" duration-ms="4094" started-at="2015-09-16T10:53:40Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.BuyAllCoinPackages" finished-at="2015-09-16T10:53:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuickBuyFunctional -->
+        <test-method status="PASS" signature="CollectHourlyBonus()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="CollectHourlyBonus" duration-ms="3958" started-at="2015-09-16T10:53:44Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.QuickBuyFunctional" finished-at="2015-09-16T10:53:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CollectHourlyBonus -->
+        <test-method status="PASS" signature="SlotMachinesPresent()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="SlotMachinesPresent" duration-ms="20988" started-at="2015-09-16T10:53:48Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.CollectHourlyBonus" finished-at="2015-09-16T10:54:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SlotMachinesPresent -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:test.testng.HoVSmokeTestsSuite@71c7db30]" name="afterSuite" is-config="true" duration-ms="4210" started-at="2015-09-16T10:54:10Z" finished-at="2015-09-16T10:54:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- test.testng.HoVSmokeTestsSuite -->
+    </test> <!-- Default test -->
+  </suite> <!-- HoVSmokeTestSuite -->
 </testng-results>

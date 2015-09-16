@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Muddy Test Suite">
- <test name="Youtube test">
-  <classes>
-   <class name="test.test.YoutubeTest"/>
-  </classes>
- </test> 
-</suite> <!-- Suite -->
+<suite name="HoVSmokeTestSuite" parallel="none">
+<parameter name="browser" value="chrome"/>
+  <test name="HoVSmokeTests"> 
+    <classes>	
+      <class name="test.testng.HoVSmokeTestsSuite"/>
+    </classes>
+  </test> <!-- HoVSmokeTests -->
+</suite> <!-- HoVSmokeTestSuite -->

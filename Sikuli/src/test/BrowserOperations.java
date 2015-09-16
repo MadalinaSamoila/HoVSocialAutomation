@@ -54,10 +54,12 @@ public class BrowserOperations {
 		}
 		else
 		{
+			System.out.println(name);
 			App.open(Browsers.valueOf(name).getBrowserAddress());
+			
 		}
 		browserName = name;
-		
+		CommonOperations.currentBrowser = name;
 	}
 
 	public static void closeBrowser(String name) 

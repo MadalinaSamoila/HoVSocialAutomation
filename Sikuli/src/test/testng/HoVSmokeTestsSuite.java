@@ -1,17 +1,28 @@
-package test;
+package test.testng;
 
+import org.testng.annotations.Test;
 import java.io.IOException;
 
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import com.gurock.testrail.APIException;
 
-public class HoVSmokeTests {
-	static Screen screen= new Screen();
-	
-	@Test
+import test.BrowserOperations;
+import test.CommonOperations;
+import test.FacebookOperations;
+import test.LobbyOperations;
+import test.SlotOperations;
+import test.TestRailOperations;
+
+public class HoVSmokeTestsSuite {
+	@Parameters({"browser"})
+	@Test(priority=1)
 	public void FreshInstallTest(String browser) throws FindFailed, APIException, IOException {
 		String testRailTitle = "Fresh app install is successfull with no previous builds installed";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -30,7 +41,7 @@ public class HoVSmokeTests {
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"FreshInstallTest"})
 	public void TutorialInstigates() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Via a fresh account, the tutorial instigates and successfully walks the player through the relevant steps without any core concerns";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -83,7 +94,7 @@ public class HoVSmokeTests {
 	
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"TutorialInstigates"})
 	public void PlacedInLobby() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User is successfully placed into the apps lobby";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -100,7 +111,7 @@ public class HoVSmokeTests {
 		}
 	}
 	
-	@Test 
+	@Test(dependsOnMethods={"PlacedInLobby"})
 	public void DailyBonusPresent() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Daily Bonus is present in build, opening upon load (if in a ready status) and functions as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -127,7 +138,7 @@ public class HoVSmokeTests {
 		}		
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"DailyBonusPresent"})
 	public void EnabledCRMsAppear() throws FindFailed, APIException, IOException {
 		String testRailTitle = "CRM's that are enabled appear and function as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -152,7 +163,7 @@ public class HoVSmokeTests {
 		}
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"EnabledCRMsAppear"})
 	public void HelpFanPageOpen() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Help & Fan page can be successfully loaded from within game";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -177,7 +188,7 @@ public class HoVSmokeTests {
 		}
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"HelpFanPageOpen"})
 	public void BuyAllCoinPackages() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can successfully purchase all coin packages within the shop and they have the option to upsale their purchase";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -201,7 +212,7 @@ public class HoVSmokeTests {
 		}
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"BuyAllCoinPackages"})
 	public void QuickBuyFunctional() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Quick Buy bar is functioning as intended";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -228,7 +239,7 @@ public class HoVSmokeTests {
 		}
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"QuickBuyFunctional"})
 	public void CollectHourlyBonus() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can collect their hourly bonus";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -248,7 +259,7 @@ public class HoVSmokeTests {
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"CollectHourlyBonus"})
 	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
 		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -360,11 +371,15 @@ public class HoVSmokeTests {
 	}
 	
 	
-	
-	@BeforeSuite
-	public void beforeSuite(String browser) {
+	@Parameters({"browser"})
+	@BeforeSuite		
+	public void beforeSuite( String browser) {
+		
 		try {
-							
+			final Screen screen= new Screen();	
+			CommonOperations.fillFieldsFromConfigFile("config.json");
+			BrowserOperations.openBrowser(browser);
+			screen.wait(5.0);	
 			FacebookOperations.loginFacebook(browser);
 			screen.wait(3.0);	
 			FacebookOperations.createTestUser();
@@ -387,13 +402,11 @@ public class HoVSmokeTests {
 	public void afterSuite() {
 		try {
 			FacebookOperations.deleteTestUser();
+			BrowserOperations.closeBrowser(CommonOperations.currentBrowser);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	
-	
-
 }

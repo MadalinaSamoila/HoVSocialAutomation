@@ -131,11 +131,12 @@ public class FacebookOperations {
 	}
 	public static void changeLanguageFacebook(String browser) throws Exception
 	{
+		screen.wait(3.0);
 		BrowserOperations.clickSearch();
 		screen.paste("https://www.facebook.com/settings?tab=language&section=primary&view");
 		screen.type(Key.ENTER);
 		screen.wait(15.0);
-		
+		screen.click("browser//facebook_accountLanguabeLabel.png");
 		screen.click("browser//"+browser+"_downArrow.png");
 		screen.type("e");
 		screen.type("n");

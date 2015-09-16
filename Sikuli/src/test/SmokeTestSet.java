@@ -43,9 +43,9 @@ public class SmokeTestSet {
 					
 					smoke.TutorialInstigates();
 					s.wait(5.0);
-					
+					*/
 					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1); 
-										
+					/*				
 					BrowserOperations.refreshPage(true);
 					s.wait(35.0);
 					

@@ -796,12 +796,16 @@ public class LobbyOperations
 				
 				s.type(Key.ENTER);
 				
-				s.wait(15.5);
+				s.wait(10.5);
+				
+				/*s.type(Key.ENTER);
+				
+				s.wait(10.5);
 				
 				s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
 				
 				res = "[testprogress] The tab With The Game Opened - OK";
-				
+				*/
 				System.out.println(res);
 				
 				return res;

@@ -37,26 +37,31 @@ public class AdminOperations {
 		
 		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-			
-			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
+			driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+			driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+			driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+			/*driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				
-				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
+				/*driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(CommonOperations.fbLogin);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(selectAll);
 				driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				/*try {
+				try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
-			}
+			}*/
 			
 		}
 		s.wait(2.1);
@@ -99,8 +104,13 @@ public class AdminOperations {
 		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 		
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-			
-			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
+			driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+			driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+			driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+		/*	driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
@@ -110,14 +120,14 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				/*try {
+				try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
-			}
+			}*/
 			
 		}
 		s.wait(2.1);
@@ -159,8 +169,13 @@ public class AdminOperations {
 		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 		
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-			
-			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+			s.wait(2.1);
+			driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+			driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+			driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+			/*driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 				driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
@@ -170,14 +185,14 @@ public class AdminOperations {
 				
 				driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 				
-				/*try {
+				try {
 					driver.wait(2);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
-			}
+			}*/
 			
 		}
 		s.wait(2.1);
@@ -222,7 +237,7 @@ public static double getUserBalance (String browser, String GAID) {
 		driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 
 		if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-			
+			/*
 			driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 			s.wait(2.1);
 			if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
@@ -238,10 +253,15 @@ public static double getUserBalance (String browser, String GAID) {
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
-			}
-			
+			}*/
+			s.wait(2.1);
+			driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+			driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+			driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+			driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
 		}
 		s.wait(2.1);
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
@@ -278,7 +298,7 @@ public static void resetHourlyBonus (String browser, String GAID) {
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts/"+GAID+"#summary");
 	
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-		
+	/*	
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
@@ -289,17 +309,25 @@ public static void resetHourlyBonus (String browser, String GAID) {
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
 			
-			/*try {
+			try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 		}
 		
-	}
 
+*/
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+	}
+	
 	s.wait(2.1);
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li[2]/a")).click();
 	
@@ -342,7 +370,13 @@ public static void addGAIDToCRM (String browser, String GAID) {
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/crm/actions/1683/edit");
 
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-		
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+		/*
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
@@ -352,15 +386,15 @@ public static void addGAIDToCRM (String browser, String GAID) {
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
-			
+			*/
 			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
-		}
+		}*/
 		
 	}
 	s.wait(2.1);
@@ -404,8 +438,13 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/crm/actions/1683/edit");
 
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-		
-		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+	/*	driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
 			driver.findElement(By.xpath("//div[@id='loginform']/div/input")).sendKeys(selectAll);		
@@ -414,7 +453,7 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
-			
+			*/
 		/*	try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
@@ -436,8 +475,8 @@ public static void removeGAIDFromCRM (String browser, String GAID) {
 		driver.wait(2);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();*/
-	}
+		e.printStackTrace();
+	}*/
 	s.wait(7.1);
 	driver.close();
 	
@@ -465,7 +504,13 @@ public static String getGAID (String browser, String userFacebookID) {
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts?utf8=%E2%9C%93&search_type=social_network_id&search_value[]="+userFacebookID+"&commit=Search");
 
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-		
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+		/*
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {
@@ -475,15 +520,15 @@ public static String getGAID (String browser, String userFacebookID) {
 			driver.findElement(By.xpath("//div[@id='loginform']/div[2]/input")).sendKeys(CommonOperations.fbPassword);
 			
 			driver.findElement(By.xpath("//div[@id='login_button_inline']/label")).click();
-			
+			*/
 			/*try {
 				driver.wait(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
-		}
+		}*/
 		
 	}
 	s.wait(2.1);
@@ -517,7 +562,13 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts?utf8=%E2%9C%93&search_type=social_network_id&search_value[]="+userFacebookID+"&commit=Search");
 
 	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) {
-		
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);
+		/*
 		driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")).click();
 		s.wait(2.1);
 		if (driver.findElement(By.xpath("//div[@id='loginform']/div/input")) != null) {			
@@ -534,17 +585,17 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
 		}
-		
+		*/
 	}
 	s.wait(2.1);
 	driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 	
-	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[3]/input")).sendKeys(Integer.toString(groupId));
-	
-	driver.findElement(By.xpath("//tr[4]/td[3]/form/div[4]/button")).click();
+	driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[5]/td[3]/form/div[3]/input")).sendKeys(Integer.toString(groupId));
+	driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr[5]/td[3]/form/div[3]/input")).sendKeys(Key.ENTER);
+	//driver.findElement(By.xpath("//tr[4]/td[3]/form/div[4]/button")).click();
 	
 	/*try {
 		driver.wait(2);

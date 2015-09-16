@@ -22,30 +22,32 @@ public class SmokeTestSet {
 		{
 			//for (String i: browsers) 
 			//{
-				String i = "edge";
+				String i = "chrome";
 				CommonOperations.currentBrowser = i;
 				try 
 				{
-					
+					/*
 					BrowserOperations.openBrowser(i);
-					/*s.wait(5.0);				
+					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);
 					s.wait(5.0);	
 					FacebookOperations.createTestUser();
 					s.wait(5.0);
 					FacebookOperations.loginTestUser();
-					s.wait(5.0);						
+					s.wait(5.0);				
 					FacebookOperations.changeLanguageFacebook(i);
 					s.wait(5.0);
+					
 					
 					smoke.FreshInstallTest(i);
 					s.wait(5.0);
 					
 					smoke.TutorialInstigates();
 					s.wait(5.0);
-					*/
+					
+					FacebookOperations.userFacebookId = "100005189688884";
 					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1); 
-					/*				
+								
 					BrowserOperations.refreshPage(true);
 					s.wait(35.0);
 					
@@ -66,7 +68,8 @@ public class SmokeTestSet {
 					
 					smoke.QuickBuyFunctional();
 					s.wait(5.0);
-					
+					*/
+					FacebookOperations.userFacebookId = "100005189688884";
 					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 0);
 					String GaId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
 					System.out.println("GaId = "+GaId);
@@ -80,13 +83,14 @@ public class SmokeTestSet {
 					s.wait(5.0);
 					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1);
 					s.wait(5.0);
+					BrowserOperations.refreshPage(true);
 					
 					smoke.SlotMachinesPresent();
 					
-					FacebookOperations.deleteTestUser();
+					//FacebookOperations.deleteTestUser();
 					
 					BrowserOperations.closeBrowser(i);
-					*/
+					
 				} 
 				catch (Exception e) 
 				{			

@@ -7,11 +7,11 @@
         <methods>
           <include name="HelpFanPageOpen"/>
           <include name="SlotMachinesPresent"/>
-          <include name="CollectHourlyBonus"/>
           <include name="DailyBonusPresent"/>
+          <include name="CollectHourlyBonus"/>
           <include name="TutorialInstigates"/>
-          <include name="EnabledCRMsAppear"/>
           <include name="FreshInstallTest"/>
+          <include name="EnabledCRMsAppear"/>
           <include name="PlacedInLobby"/>
           <include name="QuickBuyFunctional"/>
           <include name="BuyAllCoinPackages"/>

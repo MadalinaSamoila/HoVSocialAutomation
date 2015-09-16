@@ -25,6 +25,7 @@ public class HoVSmokeTests {
 		catch (FindFailed e)
 		{	
 			testRailComment += e.getMessage();
+			System.out.println(e.getMessage());
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		
@@ -268,7 +269,7 @@ public class HoVSmokeTests {
 			}
 			LobbyOperations.saveCentralSlotRegion();
 		}
-		catch (FindFailed e)
+		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
 		}

@@ -56,6 +56,11 @@ public class BrowserOperations {
 		{
 			System.out.println(name);
 			App.open(Browsers.valueOf(name).getBrowserAddress());
+			screen.wait(5.2);
+			screen.keyDown(Key.WIN);
+			screen.keyDown(Key.UP);
+			screen.keyUp(Key.WIN);
+			screen.keyUp(Key.UP);
 			
 		}
 		browserName = name;

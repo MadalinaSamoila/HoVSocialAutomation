@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import com.gurock.testrail.APIException;
 
+import test.AdminOperations;
 import test.BrowserOperations;
 import test.CommonOperations;
 import test.FacebookOperations;
@@ -21,6 +22,8 @@ import test.SlotOperations;
 import test.TestRailOperations;
 
 public class HoVSmokeTestsSuite {
+	
+	
 	@Parameters({"browser"})
 	@Test(priority=1)
 	public void FreshInstallTest(String browser) throws FindFailed, APIException, IOException {
@@ -85,6 +88,8 @@ public class HoVSmokeTestsSuite {
 					break;
 				}
 			}
+			
+			
 		}
 		catch (FindFailed e)
 		{
@@ -93,29 +98,21 @@ public class HoVSmokeTestsSuite {
 		}
 	
 	}
+	
+	
 	
 	@Test(dependsOnMethods={"TutorialInstigates"})
-	public void PlacedInLobby() throws FindFailed, APIException, IOException {
-		String testRailTitle = "User is successfully placed into the apps lobby";
-		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
-		String testRailComment = "";
-		try
-		{
-			testRailComment += LobbyOperations.isLobbyReturned(0) + "\n";
-			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
-		}
-		catch (FindFailed e)
-		{
-			testRailComment += e.getMessage();
-			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
-		}
-	}
-	
-	@Test(dependsOnMethods={"PlacedInLobby"})
 	public void DailyBonusPresent() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Daily Bonus is present in build, opening upon load (if in a ready status) and functions as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
+		//preconditions
+		AdminOperations.setExclusionGroup("chrome",  FacebookOperations.userFacebookId, 1); 
+		BrowserOperations.refreshPage(true);
+		Screen s = new Screen();
+		s.wait(35.0);
+		//end preconditions
+		
 		try
 		{
 			testRailComment += LobbyOperations.isDailyWheelPresent();
@@ -138,22 +135,17 @@ public class HoVSmokeTestsSuite {
 		}		
 	}
 	
+	
 	@Test(dependsOnMethods={"DailyBonusPresent"})
-	public void EnabledCRMsAppear() throws FindFailed, APIException, IOException {
-		String testRailTitle = "CRM's that are enabled appear and function as expected";
+	public void CollectHourlyBonus() throws FindFailed, APIException, IOException {
+		String testRailTitle = "User can collect their hourly bonus";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
 		try
 		{
-			testRailComment += LobbyOperations.clickCentralSlot() + "\n";
-			testRailComment += LobbyOperations.isCRMOpened() + "\n";
-			testRailComment += LobbyOperations.clickCloseButtonCRM() + "\n";
-			testRailComment += LobbyOperations.isCRMClosed() + "\n";
-			testRailComment += LobbyOperations.clickNextSlot() + "\n";
-			testRailComment += LobbyOperations.isCRMOpened() + "\n";
-			testRailComment += LobbyOperations.clickCRM() + "\n";
-			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //isCongratulationPopupPresentAndClickOkayButton() was
-			testRailComment += LobbyOperations.isCRMClosed() + "\n";
+			testRailComment += LobbyOperations.isTimeBonusEnabled() + "\n";
+			testRailComment += LobbyOperations.clickCollectTimeBonus() + "\n";
+			testRailComment += LobbyOperations.isCollectedTimeBonus() + "\n";
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		catch (FindFailed e)
@@ -161,9 +153,10 @@ public class HoVSmokeTestsSuite {
 			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
+		
 	}
 	
-	@Test(dependsOnMethods={"EnabledCRMsAppear"})
+	@Test(dependsOnMethods={"CollectHourlyBonus"})
 	public void HelpFanPageOpen() throws FindFailed, APIException, IOException {
 		String testRailTitle = "Help & Fan page can be successfully loaded from within game";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -180,6 +173,34 @@ public class HoVSmokeTestsSuite {
 			//s.wait(4.0);
 			testRailComment += LobbyOperations.isLobbyReturned(2) + "\n";
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			
+			//postconditions
+			BrowserOperations.refreshPage(true);
+			Screen s = new Screen();
+			s.wait(35.0);
+			//end postconditions
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			//postconditions
+			BrowserOperations.refreshPage(true);
+			Screen s = new Screen();
+			s.wait(35.0);
+			//end postconditions
+		}
+	}
+	
+	@Test(dependsOnMethods={"HelpFanPageOpen"})
+	public void PlacedInLobby() throws FindFailed, APIException, IOException {
+		String testRailTitle = "User is successfully placed into the apps lobby";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		try
+		{
+			testRailComment += LobbyOperations.isLobbyReturned(0) + "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		catch (FindFailed e)
 		{
@@ -188,7 +209,7 @@ public class HoVSmokeTestsSuite {
 		}
 	}
 	
-	@Test(dependsOnMethods={"HelpFanPageOpen"})
+	@Test(dependsOnMethods={"PlacedInLobby"})
 	public void BuyAllCoinPackages() throws FindFailed, APIException, IOException {
 		String testRailTitle = "User can successfully purchase all coin packages within the shop and they have the option to upsale their purchase";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -240,26 +261,64 @@ public class HoVSmokeTestsSuite {
 	}
 	
 	@Test(dependsOnMethods={"QuickBuyFunctional"})
-	public void CollectHourlyBonus() throws FindFailed, APIException, IOException {
-		String testRailTitle = "User can collect their hourly bonus";
+	public void EnabledCRMsAppear() throws FindFailed, APIException, IOException {
+		String testRailTitle = "CRM's that are enabled appear and function as expected";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		String testRailComment = "";
+		//preconditions
+		AdminOperations.setExclusionGroup("chrome",  FacebookOperations.userFacebookId, 0);
+		String GaId = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);
+		System.out.println("GaId = "+GaId);
+		AdminOperations.addGAIDToCRM("chrome", GaId);
+		Screen s = new Screen();
+		s.wait(2.0);
+		BrowserOperations.refreshPage(true);
+		s.wait(35.0);
+		//end preconditions
+		
 		try
 		{
-			testRailComment += LobbyOperations.isTimeBonusEnabled() + "\n";
-			testRailComment += LobbyOperations.clickCollectTimeBonus() + "\n";
-			testRailComment += LobbyOperations.isCollectedTimeBonus() + "\n";
+			testRailComment += LobbyOperations.clickCentralSlot() + "\n";
+			testRailComment += LobbyOperations.isCRMOpened() + "\n";
+			testRailComment += LobbyOperations.clickCloseButtonCRM() + "\n";
+			testRailComment += LobbyOperations.isCRMClosed() + "\n";
+			testRailComment += LobbyOperations.clickNextSlot() + "\n";
+			testRailComment += LobbyOperations.isCRMOpened() + "\n";
+			testRailComment += LobbyOperations.clickCRM() + "\n";
+			testRailComment += LobbyOperations.ClickCongratulationOkayButton() + "\n"; //isCongratulationPopupPresentAndClickOkayButton() was
+			testRailComment += LobbyOperations.isCRMClosed() + "\n";
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			//postconditions
+			AdminOperations.removeGAIDFromCRM("chrome", GaId);
+			s.wait(5.0);
+			AdminOperations.setExclusionGroup("chrome",  FacebookOperations.userFacebookId, 1);
+			s.wait(5.0);
+			BrowserOperations.refreshPage(true);
+			s.wait(35.0);
+			//end postconditions
 		}
 		catch (FindFailed e)
 		{
 			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			//postconditions
+			AdminOperations.removeGAIDFromCRM("chrome", GaId);
+			s.wait(5.0);
+			AdminOperations.setExclusionGroup("chrome",  FacebookOperations.userFacebookId, 1);
+			s.wait(5.0);
+			BrowserOperations.refreshPage(true);
+			s.wait(35.0);
+			//end postconditions
 		}
-		
 	}
 	
-	@Test(dependsOnMethods={"CollectHourlyBonus"})
+	
+	
+	
+	
+	
+	
+	@Test(dependsOnMethods={"EnabledCRMsAppear"})
 	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
 		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);

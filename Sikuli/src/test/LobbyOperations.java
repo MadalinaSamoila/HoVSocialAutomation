@@ -791,7 +791,7 @@ public class LobbyOperations
 		{
 			
 				BrowserOperations.clickSearch();
-				
+				s.wait(1.5);
 				s.paste("https://apps.facebook.com/hov_uat/");
 				
 				s.type(Key.ENTER);

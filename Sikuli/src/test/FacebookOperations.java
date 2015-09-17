@@ -61,6 +61,7 @@ public class FacebookOperations {
 	    System.out.println("user id"+userFacebookId);
 	    
 	    BrowserOperations.clickSearch();
+	    screen.wait(2.1);
 	    screen.paste("https://developers.facebook.com/apps/600712740047839/payments/");
 		screen.type(Key.ENTER);
 	    screen.wait(5.1);
@@ -94,6 +95,7 @@ public class FacebookOperations {
 
 	public static void loginTestUser() throws Exception{
 		BrowserOperations.clickSearch();
+		screen.wait(2.1);
 		screen.paste(userLogin.toString());
 		screen.type(Key.ENTER);
 		screen.wait(5.5);
@@ -105,6 +107,7 @@ public class FacebookOperations {
 	public static void loginFacebook(String browser) throws Exception
 	{
 		BrowserOperations.clickSearch();
+		screen.wait(2.1);
 		screen.paste("https://www.facebook.com/login.php");
 		screen.type(Key.ENTER);
 		screen.wait(15.0);
@@ -133,6 +136,7 @@ public class FacebookOperations {
 	{
 		screen.wait(3.0);
 		BrowserOperations.clickSearch();
+		screen.wait(2.1);
 		screen.paste("https://www.facebook.com/settings?tab=language&section=primary&view");
 		screen.type(Key.ENTER);
 		screen.wait(15.0);

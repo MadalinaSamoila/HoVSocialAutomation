@@ -77,4 +77,54 @@ public class SlotOperations
 			return 0;
 		}
 	}
+	
+	// JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination - start (behind)
+	
+	public static boolean isJPNotValid()  throws FindFailed
+	{
+		try
+		{
+			s.find("slot//Slot_JPNotValid.png");
+			
+			return true;
+		}
+		
+		catch (FindFailed e)
+		{
+			return false;
+		}
+		
+	}
+	
+	public static void clickMaxBetButton() throws FindFailed
+	{
+			s.find("slot//gdk_dash_maxbet_enabled_btn.png");
+			
+			s.click("slot//gdk_dash_maxbet_enabled_btn.png");
+			
+			s.find("slot//gdk_dash_maxbet_disabled_btn.png");
+			
+			s.find("slot//gdk_dash_+_disabled_btn.png");
+			
+	}
+	
+	public static boolean isJPValid()  throws FindFailed
+	{
+		try
+		{
+			s.find("slot//Slot_JPValid.png");
+			
+			return true;
+		}
+		
+		catch (FindFailed e)
+		{
+			return false;
+		}
+	}
+	// JackpotsUpdateAcceptancestateWhenChangingCoinDenomination - finish (above)
+	
+	// AllDashButtonsAreFunctional - start (behind)
+	// MaxBet button checked during JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination test case
+	
 }

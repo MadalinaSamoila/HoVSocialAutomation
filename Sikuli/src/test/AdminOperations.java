@@ -12,8 +12,10 @@ import org.sikuli.script.*;
 
 public class AdminOperations {
 	
+	static double balance;
 	static Screen s = new Screen();
 	static String selectAll = Keys.chord(Keys.CONTROL,"a");
+	
 	public static void resetDailyWheel (String browser, String GAID) {
 		
 		WebDriver driver;
@@ -146,6 +148,30 @@ public class AdminOperations {
 		s.wait(7.1);
 		driver.close();
 		
+	}
+	
+	public static boolean storeOrCompareUserBalance (String mode)
+	{
+		boolean res = true;
+		
+		if (mode.equals("store"))
+		{
+			balance = AdminOperations.getUserBalance("chrome", AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId));
+		}
+		
+		if (mode.equals("compare"))
+		{
+			if (balance == AdminOperations.getUserBalance("chrome", AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId)))
+			{
+				res = true;
+			}
+			
+			else
+			{
+				res = false;
+			}
+		}
+		return res;
 	}
 	
 	public static void resetUserBalance (String browser, String GAID, double balance) {

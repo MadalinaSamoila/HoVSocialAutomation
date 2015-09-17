@@ -26,8 +26,33 @@ public class SmokeTestSet {
 				CommonOperations.currentBrowser = i;
 				try 
 				{
+					/*SlotOperations.storeOrCompareRegion("bet", "store");
+					System.out.println("pause 5 sec");
+					s.wait(5.0);
+					if (SlotOperations.storeOrCompareRegion("bet", "compare"))
+					{
+						System.out.println("SAME");
+					}
+					else
+					{
+						System.out.println("NOT_SAME");
+					}
+					*/
+					/*
+					if (SlotOperations.isDeraseBetButtonEnabled())
+					{
+						SlotOperations.clickDecraseBetButton();
+					}
+					else
+					{
+						if (SlotOperations.isIncraseBetButtonEnabled())
+						{
+							SlotOperations.clickDecraseBetButton();
+						}
+					}
 					
-					BrowserOperations.openBrowser(i);
+					*/
+				/*		BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);
 					s.wait(5.0);	
@@ -90,7 +115,7 @@ public class SmokeTestSet {
 					FacebookOperations.deleteTestUser();
 					
 					BrowserOperations.closeBrowser(i);
-					
+					*/
 				} 
 				catch (Exception e) 
 				{			

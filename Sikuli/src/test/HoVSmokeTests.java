@@ -361,6 +361,11 @@ public class HoVSmokeTests {
 	}
 	
 	
+	public void CheckGDKDashButtons()
+	{
+		
+	}
+	
 	
 	@BeforeSuite
 	public void beforeSuite(String browser) {

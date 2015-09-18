@@ -840,4 +840,9 @@ public class LobbyOperations
 				return res;
 		}
 		// FreshInstallTest case methods - finish (above)
+		
+		// JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination
+		
+		// isJPNotValid(), clickMaxBetButton() and  methods isJPValid() is inside *SlotOperations.java class
+		
 }

@@ -27,6 +27,8 @@ public class SmokeTestSet {
 				try 
 				{
 					
+					
+					
 					BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);

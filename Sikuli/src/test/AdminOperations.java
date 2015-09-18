@@ -152,9 +152,9 @@ public class AdminOperations {
 		
 	}
 	
-	public static boolean storeOrCompareUserBalance (String mode, String GAID)
+	public static double storeOrCompareUserBalance (String mode, String GAID)
 	{
-		boolean res = true;
+		double res = 0;
 		
 		if (mode.equals("store"))
 		{
@@ -164,7 +164,7 @@ public class AdminOperations {
 		if (mode.equals("compare"))
 		{
 			double currentBalance = AdminOperations.getUserBalance("chrome", GAID);
-			if (balance == currentBalance)
+			/*if (balance == currentBalance)
 			{
 				res = true;
 				balance = currentBalance;
@@ -174,7 +174,10 @@ public class AdminOperations {
 			{
 				res = false;
 				balance = currentBalance;
-			}
+			}*/
+			
+			res = (balance - currentBalance);
+			balance = currentBalance;
 		}
 		return res;
 	}

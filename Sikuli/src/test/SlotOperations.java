@@ -320,4 +320,24 @@ public class SlotOperations
 		return (res);
 	}
 	
+	public static String performLoosingSpinGDK() throws FindFailed
+	{
+		s.click("slot//gdk//gdk_dash_totalbet_label.png");
+		s.type("0");
+		String res = "[testprogress] Performed Loosing Spin";
+		System.out.println(res + "wait 5 sec");
+		s.wait(5.0);
+		return (res);
+	}
+	
+	public static String performWininngSpinGDK() throws FindFailed
+	{
+		s.click("slot//gdk//gdk_dash_totalbet_label.png");
+		s.type("1");
+		String res = "[testprogress] Performed Winning Spin";
+		System.out.println(res + "wait 15 sec") ;
+		s.wait(15.0);
+		return (res);
+	}
+	
 }

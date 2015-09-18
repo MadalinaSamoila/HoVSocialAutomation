@@ -27,19 +27,26 @@ public class SmokeTestSet {
 				CommonOperations.currentBrowser = i;
 				try 
 				{
-					
+					FacebookOperations.userFacebookId = "100005189688884";
 					smoke.SlotMachinesPresent();
 					
 					
-					String GAID = "6244689";
-				/*	
+					//smoke.CheckBalanceAdditionsAndSubtractions();
+					
+					
+					/*SlotOperations.performLoosingSpinGDK();
+					SlotOperations.performWininngSpinGDK();*/
+					
+					
+					/*String GAID = "6244689";
+				
 					AdminOperations.storeOrCompareUserBalance("store", GAID);
 					
-					//SlotOperations.clickAutospinActivate();
+					SlotOperations.clickAutospinActivate();
 					s.wait(5.1);
-				//	SlotOperations.clickAutospinDeactivate();
+					SlotOperations.clickAutospinDeactivate();
 					//screen.wait(5.1);
-					if (!AdminOperations.storeOrCompareUserBalance("compare", GAID))
+					if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
 					{
 						System.out.println("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
 						//testRailComment += ("[testprogress] Balance Was Changed After Deactivating Autospin - OK");

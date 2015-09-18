@@ -464,34 +464,38 @@ public class HoVSmokeTests {
 						AdminOperations.storeOrCompareUserBalance("store", GAID);
 						
 						testRailComment += SlotOperations.clickAutospinActivate() + "\n";
-						screen.wait(5.1);
+						screen.wait(7.1);
 						testRailComment += SlotOperations.clickAutospinDeactivate() + "\n";
 						//screen.wait(5.1);
-						if (!AdminOperations.storeOrCompareUserBalance("compare", GAID))
+						if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
 						{
 							System.out.println("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
 							testRailComment += ("[testprogress] Balance Was Changed After Deactivating Autospin - OK" + "\n");
 							
 							testRailComment += SlotOperations.clickSpinButton() + "\n";
 							
-							if (!AdminOperations.storeOrCompareUserBalance("compare", GAID))
+							if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
 							{
 								System.out.println("[testprogress] Balance Was Changed After Spin - OK");
 								testRailComment += ("[testprogress] Balance Was Changed After Spin - OK" + "\n");
 								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								
+								CheckBalanceAdditionsAndSubtractions();
+								
+								
 							}
 							else
 							{
-								System.out.println("[testprogress] Balance Was Not Changed After Spin - FAILED");
-								testRailComment += ("[testprogress] Balance Was Not Changed After Spin - FAILED" + "\n");
+								System.out.println("[testres] Balance Was Not Changed After Spin - FAILED");
+								testRailComment += ("[testres] Balance Was Not Changed After Spin - FAILED" + "\n");
 								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 							}
 		
 						}
 						else
 						{
-							System.out.println("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED");
-							testRailComment += ("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED" + "\n");
+							System.out.println("[testres] Balance Was Not Changed After Deactivating Autospin - FAILED");
+							testRailComment += ("[testres] Balance Was Not Changed After Deactivating Autospin - FAILED" + "\n");
 							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 						}
 						
@@ -530,7 +534,61 @@ public class HoVSmokeTests {
 			System.out.println(testRailComment);
 		}
 	}
-	
+	public void CheckBalanceAdditionsAndSubtractions() throws FindFailed, APIException, IOException
+	{
+		String testRailTitle = "Users balance updates with appropriate additions and subtractions";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		try
+			{
+			
+			///////////////////////////////DEBUG
+			//String GAID = "6244689";//////////
+			////////////////////////////////////
+			
+			/////////////////////////////////DEBUG
+			//FacebookOperations.userFacebookId = "100005189688884";
+			//////////////////////////////////////
+			String GAID = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);
+			
+			
+			
+			AdminOperations.storeOrCompareUserBalance("store", GAID);
+			testRailComment += SlotOperations.performLoosingSpinGDK()+ "\n";
+			if (AdminOperations.storeOrCompareUserBalance("compare", GAID) > 0)
+			{
+				testRailComment += "[testres] Balance Was Changed After Loosing Spin - OK" + "\n";
+				System.out.println("[testres] Balance Was Changed After Loosing Spin - OK");
+				testRailComment += SlotOperations.performWininngSpinGDK()+ "\n";
+				if (AdminOperations.storeOrCompareUserBalance("compare", GAID) <= 0)
+				{					
+					testRailComment += "[testres] Balance Was Changed After Winning Spin - OK" + "\n";
+					System.out.println("[testres] Balance Was Changed After Winning Spin - OK");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+				}
+				else
+				{
+					testRailComment += "[testres] Balance Was Not Changed After Winning Spin - FAILED" + "\n";
+					System.out.println("[testres] Balance Was Not Changed After Winning Spin - FAILED");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				
+				}
+				
+			}
+			else
+			{
+				testRailComment += "[testres] Balance Was Not Changed After Loosing Spin - FAILED" + "\n";
+				System.out.println("[testres] Balance Was Not Changed After Loosing Spin - FAILED");
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			
+			}
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+	}
 	
 	@BeforeSuite
 	public void beforeSuite(String browser) {

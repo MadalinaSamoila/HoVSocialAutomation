@@ -22,10 +22,38 @@ public class SmokeTestSet {
 		{
 			//for (String i: browsers) 
 			//{
+				AdminOperations.currentGAID = null;
 				String i = "chrome";
 				CommonOperations.currentBrowser = i;
 				try 
 				{
+					
+					smoke.SlotMachinesPresent();
+					
+					
+					String GAID = "6244689";
+				/*	
+					AdminOperations.storeOrCompareUserBalance("store", GAID);
+					
+					//SlotOperations.clickAutospinActivate();
+					s.wait(5.1);
+				//	SlotOperations.clickAutospinDeactivate();
+					//screen.wait(5.1);
+					if (!AdminOperations.storeOrCompareUserBalance("compare", GAID))
+					{
+						System.out.println("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
+						//testRailComment += ("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
+					}
+					else
+					{
+						System.out.println("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED");
+						//testRailComment += ("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED");
+//						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					}
+					
+					*/
+					
+					
 					/*SlotOperations.storeOrCompareRegion("bet", "store");
 					System.out.println("pause 5 sec");
 					s.wait(5.0);

@@ -3,20 +3,20 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="test.testng.HoVSmokeTestsSuite">
+      <class name="test.HoVSmokeTests">
         <methods>
-          <include name="HelpFanPageOpen"/>
-          <include name="SlotMachinesPresent"/>
-          <include name="DailyBonusPresent"/>
-          <include name="CollectHourlyBonus"/>
-          <include name="TutorialInstigates"/>
-          <include name="FreshInstallTest"/>
-          <include name="EnabledCRMsAppear"/>
-          <include name="PlacedInLobby"/>
           <include name="QuickBuyFunctional"/>
+          <include name="SlotMachinesPresent"/>
+          <include name="CollectHourlyBonus"/>
+          <include name="HelpFanPageOpen"/>
+          <include name="DailyBonusPresent"/>
           <include name="BuyAllCoinPackages"/>
+          <include name="PlacedInLobby"/>
+          <include name="EnabledCRMsAppear"/>
+          <include name="FreshInstallTest"/>
+          <include name="TutorialInstigates"/>
         </methods>
-      </class> <!-- test.testng.HoVSmokeTestsSuite -->
+      </class> <!-- test.HoVSmokeTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

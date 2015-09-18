@@ -9,7 +9,8 @@ public class SlotOperations
 {
 	static Screen s = new Screen();
 	static Region r;
-	static String storedRegion;
+	static String storedRegionSlot;
+	static String storedRegionBet;
 	public static boolean isNgSpinButtonPresent() throws FindFailed
 	{
 		try
@@ -96,19 +97,23 @@ public class SlotOperations
 				r = s.find("lobby//Lobby_buyButton.png");
 				r.h += 500;
 				r.w += 50;
-				storedRegion = s.capture(r).getFilename();
+				System.out.println("STORING REGION");
+				storedRegionSlot = s.capture(r).getFilename();
 			}
 			if (mode.equals("compare"))
 			{
 				try 
 				{
 					//r.highlight();
-					s.find(storedRegion);
+					s.find(storedRegionSlot);
+					System.out.println("SAME REGION");
 					res = true;
 				}
 				catch (FindFailed e)
 				{
 					res = false;
+					System.out.println("DIFFERENT REGION");
+					//throw e;
 				}
 			}
 		}
@@ -119,19 +124,26 @@ public class SlotOperations
 				r = s.find("slot//gdk//gdk_dash_totalbet_label.png");
 				r.h += 40;
 				//r.w += 50;
-				storedRegion = s.capture(r).getFilename();
+				System.out.println("STORING REGION");
+				storedRegionSlot = s.capture(r).getFilename();
 			}
 			if (mode.equals("compare"))
 			{
 				try 
 				{
 					//r.highlight();
-					s.find(storedRegion);
+					
+					r = s.find("slot//gdk//gdk_dash_totalbet_label.png");
+					r.h += 40;
+					r.find(storedRegionSlot);
+					System.out.println("SAME REGION");
 					res = true;
 				}
 				catch (FindFailed e)
 				{
+					System.out.println("DIFFERENT REGION");
 					res = false;
+					//throw e;
 				}
 			}
 		}
@@ -139,16 +151,26 @@ public class SlotOperations
 		return res;		
 	}
 	
-	public static void clickHelpButton() throws FindFailed
+	public static String clickHelpButton() throws FindFailed
 	{
 		s.click("slot//gdk//gdk_dash_i_btn.png");
 		s.wait(1.5);
 		s.find("slot//gdk//gdk_dash_i_clicked_btn.png");
+		
+		String res = "[testprogress] 'i' Button Clicked";
+		System.out.println(res);
+		
+		return (res);
 	}
 	
-	public static void exitFromHelp() throws FindFailed
+	public static String exitFromHelp() throws FindFailed
 	{
 		s.click("slot//gdk//gdk_help_exit_button.png");	
+		
+		String res = "[testprogress] Returned To The Slot From GameInfo Page";
+		System.out.println(res);
+		
+		return (res);	
 	}
 	
 	public static boolean isDeraseBetButtonEnabled() throws FindFailed
@@ -187,17 +209,43 @@ public class SlotOperations
 		return res;
 	}
 	
-	public static void clickIncraseBetButton() throws FindFailed
+	public static String clickIncraseBetButton() throws FindFailed
 	{
-		s.click("slot//gdk//gdk_dash_+_enabled_btn.png");
+		r = s.find("slot//gdk//gdk_dash_totalbet_label.png");
+		
+		r.x += 50;
+		r.h += 50;
+		//r.highlight();
+		r.click("slot//gdk//gdk_dash_+_enabled_btn.png");
+		
+		String res = "[testprogress] Incrase Bet Button Clicked";
+		System.out.println(res);
+		
+		return (res);		
 	}
 	
-	public static void clickDecraseBetButton() throws FindFailed
+	public static String clickDecraseBetButton() throws FindFailed
 	{
+		r = s.find("slot//gdk//gdk_dash_totalbet_label.png");
+		r.x -= 50;
+		r.h += 50;
 		s.click("slot//gdk//gdk_dash_-_enabled_btn.png");
+		
+		String res = "[testprogress] Decrase Bet Button Clicked";
+		System.out.println(res);
+		
+		return (res);
 	}
 	
-
+	public static String clickSpinButton() throws FindFailed
+	{
+		s.click("slot//gdk//GDK_spinButton.png");
+		
+		String res = "[testprogress] Spin Button Clicked";
+		System.out.println(res);
+		
+		return (res);
+	}
 
 
 // JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination - start (behind)
@@ -218,7 +266,7 @@ public class SlotOperations
 		
 	}
 	
-	public static void clickMaxBetButton() throws FindFailed
+	public static String clickMaxBetButton() throws FindFailed
 	{
 			s.find("slot//gdk_dash_maxbet_enabled_btn.png");
 			
@@ -227,6 +275,12 @@ public class SlotOperations
 			s.find("slot//gdk_dash_maxbet_disabled_btn.png");
 			
 			s.find("slot//gdk_dash_+_disabled_btn.png");
+			
+			
+			String res = "[testprogress] MaxBet Button Clicked";
+			System.out.println(res);
+			
+			return (res);
 			
 	}
 	
@@ -250,4 +304,20 @@ public class SlotOperations
 	// MaxBet button checked during JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination test case
 
 
+	public static String clickAutospinActivate() throws FindFailed
+	{
+		s.click("slot//gdk//gdk_dash_autospin_activate_btn.png");
+		String res = "[testprogress] Autospin Activate Button Clicked";
+		System.out.println(res);
+		return (res);
+	}
+	
+	public static String clickAutospinDeactivate() throws FindFailed
+	{
+		s.click("slot//gdk//gdk_dash_autospin_deactivate_btn.png");
+		String res = "[testprogress] Autospin Deactivate Button Clicked";
+		System.out.println(res);
+		return (res);
+	}
+	
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [HoVSmokeTestSuite]" parallel="none">
-  <parameter name="browser" value="chrome"/>
-  <test name="Default test(failed)" parallel="none">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
       <class name="test.HoVSmokeTests">
         <methods>
@@ -20,4 +19,4 @@
       </class> <!-- test.HoVSmokeTests -->
     </classes>
   </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [HoVSmokeTestSuite] -->
+</suite> <!-- Failed suite [Default suite] -->

@@ -2,12 +2,12 @@
 <testng-results skipped="9" failed="1" total="10" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="HoVSmokeTestSuite" duration-ms="76" started-at="2015-09-16T14:33:56Z" finished-at="2015-09-16T14:33:56Z">
+  <suite name="Default suite" duration-ms="85" started-at="2015-09-18T10:24:52Z" finished-at="2015-09-18T10:24:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="76" started-at="2015-09-16T14:33:56Z" finished-at="2015-09-16T14:33:56Z">
+    <test name="Default test" duration-ms="85" started-at="2015-09-18T10:24:52Z" finished-at="2015-09-18T10:24:52Z">
       <class name="test.HoVSmokeTests">
-        <test-method status="FAIL" signature="beforeSuite(java.lang.String)[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="beforeSuite" is-config="true" duration-ms="0" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="FAIL" signature="beforeSuite(java.lang.String)[pri:0, instance:test.HoVSmokeTests@7225790e]" name="beforeSuite" is-config="true" duration-ms="0" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <exception class="org.testng.TestNGException">
             <message>
               <![CDATA[
@@ -38,23 +38,23 @@ Method beforeSuite requires 1 parameters but 0 were supplied in the @Configurati
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="SKIP" signature="BuyAllCoinPackages()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="BuyAllCoinPackages" duration-ms="11" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="BuyAllCoinPackages()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="BuyAllCoinPackages" duration-ms="9" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BuyAllCoinPackages -->
-        <test-method status="SKIP" signature="CollectHourlyBonus()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="CollectHourlyBonus" duration-ms="2" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="CollectHourlyBonus()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="CollectHourlyBonus" duration-ms="1" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CollectHourlyBonus -->
-        <test-method status="SKIP" signature="DailyBonusPresent()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="DailyBonusPresent" duration-ms="1" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="DailyBonusPresent()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="DailyBonusPresent" duration-ms="1" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- DailyBonusPresent -->
-        <test-method status="SKIP" signature="EnabledCRMsAppear()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="EnabledCRMsAppear" duration-ms="1" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="EnabledCRMsAppear()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="EnabledCRMsAppear" duration-ms="4" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EnabledCRMsAppear -->
-        <test-method status="FAIL" signature="FreshInstallTest(java.lang.String)[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="FreshInstallTest" duration-ms="0" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="FAIL" signature="FreshInstallTest(java.lang.String)[pri:0, instance:test.HoVSmokeTests@7225790e]" name="FreshInstallTest" duration-ms="0" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <exception class="org.testng.TestNGException">
             <message>
               <![CDATA[
@@ -92,31 +92,31 @@ Method FreshInstallTest requires 1 parameters but 0 were supplied in the @Test a
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FreshInstallTest -->
-        <test-method status="SKIP" signature="HelpFanPageOpen()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="HelpFanPageOpen" duration-ms="2" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="HelpFanPageOpen()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="HelpFanPageOpen" duration-ms="1" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- HelpFanPageOpen -->
-        <test-method status="SKIP" signature="PlacedInLobby()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="PlacedInLobby" duration-ms="1" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="PlacedInLobby()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="PlacedInLobby" duration-ms="1" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PlacedInLobby -->
-        <test-method status="SKIP" signature="QuickBuyFunctional()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="QuickBuyFunctional" duration-ms="1" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="QuickBuyFunctional()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="QuickBuyFunctional" duration-ms="0" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- QuickBuyFunctional -->
-        <test-method status="SKIP" signature="SlotMachinesPresent()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="SlotMachinesPresent" duration-ms="0" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="SlotMachinesPresent()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="SlotMachinesPresent" duration-ms="0" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SlotMachinesPresent -->
-        <test-method status="SKIP" signature="TutorialInstigates()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="TutorialInstigates" duration-ms="0" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="TutorialInstigates()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="TutorialInstigates" duration-ms="0" started-at="2015-09-18T13:24:52Z" finished-at="2015-09-18T13:24:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TutorialInstigates -->
-        <test-method status="SKIP" signature="afterSuite()[pri:0, instance:test.HoVSmokeTests@36f6e879]" name="afterSuite" is-config="true" duration-ms="0" started-at="2015-09-16T17:33:56Z" finished-at="2015-09-16T17:33:56Z">
+        <test-method status="SKIP" signature="afterSuite()[pri:0, instance:test.HoVSmokeTests@7225790e]" name="afterSuite" is-config="true" duration-ms="0" started-at="2015-09-18T13:24:53Z" finished-at="2015-09-18T13:24:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
       </class> <!-- test.HoVSmokeTests -->
     </test> <!-- Default test -->
-  </suite> <!-- HoVSmokeTestSuite -->
+  </suite> <!-- Default suite -->
 </testng-results>

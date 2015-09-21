@@ -5,12 +5,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.sikuli.script.*;
-
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -149,6 +151,75 @@ public class FacebookOperations {
 		screen.type(Key.ENTER);
 		screen.type(Key.TAB);
 		screen.type(Key.ENTER);
+	}
+	
+	public static String getUserAccessToken(String fbId) throws IOException, ParseException
+	{
+		String resSrting = "";
+		URL url = new URL("https://graph.facebook.com/600712740047839/accounts/test-users?access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+		// optional default is GET
+		con.setRequestMethod("GET");
+
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'GET' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(
+		        new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject object = (JSONObject) jsonParser.parse(response.toString());
+		
+		JSONArray array = (JSONArray)object.get("data");
+		for (Object o : array)
+		{
+			JSONObject obj = (JSONObject) o;				
+			String tmp = (String) obj.get("id");			
+			if (tmp.equals(fbId))
+			{
+				resSrting = (String) obj.get("access_token");
+			}
+			
+		}
+		
+		return resSrting;
+	   
+	}
+	
+	public static void makeUsersFriends(String user1FbId, String user2FbId) throws IOException, ParseException
+	{
+		URL url1 = new URL("https://graph.facebook.com/"+user1FbId+"/friends/"+user2FbId+"?access_token="+getUserAccessToken(user1FbId));		
+		HttpURLConnection con1 = (HttpURLConnection) url1.openConnection();
+
+		// optional default is GET
+		con1.setRequestMethod("POST");
+
+		int responseCode1 = con1.getResponseCode();
+		System.out.println("\nSending 'POST' request to URL : " + url1);
+		System.out.println("Response Code : " + responseCode1);
+		con1.disconnect();
+		
+		URL url2 = new URL("https://graph.facebook.com/"+user2FbId+"/friends/"+user1FbId+"?access_token="+getUserAccessToken(user2FbId));		
+		HttpURLConnection con2 = (HttpURLConnection) url2.openConnection();
+
+		// optional default is GET
+		con2.setRequestMethod("POST");
+
+		int responseCode2 = con2.getResponseCode();
+		System.out.println("\nSending 'POST' request to URL : " + url2);
+		System.out.println("Response Code : " + responseCode2);
+		con2.disconnect();
+		
 	}
 	
 }

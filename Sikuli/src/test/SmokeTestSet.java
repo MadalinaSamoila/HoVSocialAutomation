@@ -28,10 +28,12 @@ public class SmokeTestSet {
 				try 
 				{
 					//FacebookOperations.userFacebookId = "100005189688884";
-					FacebookOperations.userFacebookId = "577845726";
-					smoke.IngameEventsPresent(new String[]{"big_win", "cabinet_clicked", "catalogue_open"});
+					//FacebookOperations.userFacebookId = "577845726";
+					//smoke.IngameEventsPresent(new String[]{"big_win", "cabinet_clicked", "catalogue_open"});
 					//smoke.SlotMachinesPresent();
 					
+					FacebookOperations.makeUsersFriends("130904730594868", "123111368043995");
+					//System.out.println(res);
 					/*String[] array = {"big_win", "cabinet_clicked", "catalogue_open"};
 					String res = AdminOperations.checkIngameEvents("Chrome",array, "577845726");
 					System.out.println(res);*/

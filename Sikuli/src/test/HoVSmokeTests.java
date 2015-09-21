@@ -249,6 +249,8 @@ public class HoVSmokeTests {
 		
 	}
 	
+	
+	//SlotMachinesPresent() check now includes jackpot ticker, +/- balance after spin and dash buttons checks, so we do not waste time 
 	@Test
 	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
 		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
@@ -259,6 +261,10 @@ public class HoVSmokeTests {
 		int ganLoaded = 0;
 		int gdkLoaded = 0;
 		int errLoaded = 0;
+		
+		boolean isJPAndDashChecksDone = false;
+		
+		
 		try
 		{
 			if ((LobbyOperations.isNextSlotComingSoon()) || (LobbyOperations.isNextSlotEarlyAccess()))
@@ -320,6 +326,19 @@ public class HoVSmokeTests {
 						{
 							System.out.println("[testprogress] The User Placed into GDK Slot - OK");
 							gdkLoaded++;
+							
+							//here implement JP and Dash check
+							
+							if (SlotOperations.isJPNotValid() && !isJPAndDashChecksDone)
+							{
+	//REMOVE_COMMENT_BEFORE_MERGING							//AdminOperations.setLevel("chrome", FacebookOperations.userFacebookId, 82);
+								
+								JackpotValidationCheck();
+								
+								isJPAndDashChecksDone = true;
+							}
+							
+							//end of JP and Dash check
 							System.out.println(LobbyOperations.returnToLobby());
 							
 							break;
@@ -358,6 +377,244 @@ public class HoVSmokeTests {
 				}
 			}
 		}
+	}
+	
+	
+	
+	public void JackpotValidationCheck() throws FindFailed, APIException, IOException
+	{
+		String testRailTitle = "Jackpots update their acceptance state when changing coin denomination inside an active machine";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "[testprogress] Jackpot is Not Valid Now - OK" + "\n";
+		try
+		{
+			testRailComment += SlotOperations.clickMaxBetButton() + "\n";
+			
+			if (SlotOperations.isJPValid())
+			{
+				testRailComment += "[testres] Jackpot is Valid Now - OK" + "\n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+				CheckGDKDashButtons();
+			}
+			else
+			{
+				testRailComment += "[testres] Jackpot is not Valid Now After Clicking MaxBet Button - FAILED" + "\n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			}
+				
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		catch (APIException ex)
+		{
+			System.out.println(testRailComment);
+		}
+	}
+	
+	
+	public void CheckGDKDashButtons() throws APIException, IOException
+	{
+		String testRailTitle = "All Dash buttons are functional for GDK games";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		try
+		{
+			SlotOperations.storeOrCompareRegion("slot", "store");
+			testRailComment += SlotOperations.clickHelpButton() + "\n";
+			screen.wait(1.5);
+			if (!SlotOperations.storeOrCompareRegion("slot", "compare"))
+			{
+				testRailComment += ("[testprogress] GameInfo Page Was Opened - OK" + "\n");				
+				testRailComment += SlotOperations.exitFromHelp() + "\n";
+				
+				//testRailComment += ("[testprogress] GameInfo Page Was Closed - OK");
+				SlotOperations.storeOrCompareRegion("bet", "store");
+				screen.wait(1.5);
+				testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+				testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+				testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+				testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+				if (!SlotOperations.storeOrCompareRegion("bet", "compare"))
+				{
+					testRailComment += ("[testprogress] Bet Amount Was Changed - OK" + "\n");
+					SlotOperations.storeOrCompareRegion("bet", "store");
+					screen.wait(1.5);
+					testRailComment += SlotOperations.clickIncraseBetButton() + "\n";
+					testRailComment += SlotOperations.clickIncraseBetButton() + "\n";
+					testRailComment += SlotOperations.clickIncraseBetButton() + "\n";
+					testRailComment += SlotOperations.clickIncraseBetButton() + "\n";
+					if (!SlotOperations.storeOrCompareRegion("bet", "compare"))
+					{
+						testRailComment += ("[testprogress] Bet Amount Was Changed - OK" + "\n");
+						
+						/////////////////////////////////DEBUG
+						//FacebookOperations.userFacebookId = "100005189688884";
+						//////////////////////////////////////
+						String GAID = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);
+						testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+						testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+						testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+						testRailComment += SlotOperations.clickDecraseBetButton() + "\n";
+						///////////////////////////////DEBUG
+						//String GAID = "6244689";//////////
+						////////////////////////////////////
+						AdminOperations.storeOrCompareUserBalance("store", GAID);
+						
+						testRailComment += SlotOperations.clickAutospinActivate() + "\n";
+						screen.wait(7.1);
+						testRailComment += SlotOperations.clickAutospinDeactivate() + "\n";
+						//screen.wait(5.1);
+						if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
+						{
+							System.out.println("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
+							testRailComment += ("[testprogress] Balance Was Changed After Deactivating Autospin - OK" + "\n");
+							
+							testRailComment += SlotOperations.clickSpinButton() + "\n";
+							
+							if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
+							{
+								System.out.println("[testprogress] Balance Was Changed After Spin - OK");
+								testRailComment += ("[testprogress] Balance Was Changed After Spin - OK" + "\n");
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+								
+								CheckBalanceAdditionsAndSubtractions();
+								
+								
+							}
+							else
+							{
+								System.out.println("[testres] Balance Was Not Changed After Spin - FAILED");
+								testRailComment += ("[testres] Balance Was Not Changed After Spin - FAILED" + "\n");
+								TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+							}
+		
+						}
+						else
+						{
+							System.out.println("[testres] Balance Was Not Changed After Deactivating Autospin - FAILED");
+							testRailComment += ("[testres] Balance Was Not Changed After Deactivating Autospin - FAILED" + "\n");
+							TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+						}
+						
+					}
+					else
+					{
+						testRailComment += ("[testres] Bet Amount Was Not Changed - FAILED" + "\n");
+						System.out.println("[testres] Bet Amount Was Not Changed - FAILED");
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					
+					}
+					
+				}
+				else
+				{
+					testRailComment += ("[testres] Bet Amount Was Not Changed - FAILED" + "\n");
+					System.out.println("[testres] Bet Amount Was Not Changed - FAILED");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				}
+								
+			}
+			else
+			{
+				testRailComment += "[testres] GameInfo Page Was Not Opened - FAILED" + "\n";
+				System.out.println("[testres] GameInfo Page Was Not Opened - FAILED");
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			}
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		catch (APIException ex)
+		{
+			System.out.println(testRailComment);
+		}
+	}
+	
+	public void CheckBalanceAdditionsAndSubtractions() throws FindFailed, APIException, IOException
+	{
+		String testRailTitle = "Users balance updates with appropriate additions and subtractions";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		try
+			{
+			
+			///////////////////////////////DEBUG
+			//String GAID = "6244689";//////////
+			////////////////////////////////////
+			
+			/////////////////////////////////DEBUG
+			//FacebookOperations.userFacebookId = "100005189688884";
+			//////////////////////////////////////
+			String GAID = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);
+			
+			
+			
+			AdminOperations.storeOrCompareUserBalance("store", GAID);
+			testRailComment += SlotOperations.performLoosingSpinGDK()+ "\n";
+			if (AdminOperations.storeOrCompareUserBalance("compare", GAID) > 0)
+			{
+				testRailComment += "[testres] Balance Was Changed After Loosing Spin - OK" + "\n";
+				System.out.println("[testres] Balance Was Changed After Loosing Spin - OK");
+				testRailComment += SlotOperations.performWininngSpinGDK()+ "\n";
+				if (AdminOperations.storeOrCompareUserBalance("compare", GAID) <= 0)
+				{					
+					testRailComment += "[testres] Balance Was Changed After Winning Spin - OK" + "\n";
+					System.out.println("[testres] Balance Was Changed After Winning Spin - OK");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+				}
+				else
+				{
+					testRailComment += "[testres] Balance Was Not Changed After Winning Spin - FAILED" + "\n";
+					System.out.println("[testres] Balance Was Not Changed After Winning Spin - FAILED");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				
+				}
+				
+			}
+			else
+			{
+				testRailComment += "[testres] Balance Was Not Changed After Loosing Spin - FAILED" + "\n";
+				System.out.println("[testres] Balance Was Not Changed After Loosing Spin - FAILED");
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			
+			}
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+	}
+	
+	@Test
+	public void IngameEventsPresent(String[] ingameEventsArray) throws FindFailed, IOException, APIException 
+	{
+		
+		String testRailTitle = "Ingame_events are being tracked";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		
+				
+		String testRailComment = AdminOperations.checkIngameEvents("Chrome",ingameEventsArray, FacebookOperations.userFacebookId);
+		
+		if (testRailComment.equals(""))
+		{
+			testRailComment = "Required events are present - OK";
+			
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		else
+		{
+			String tmp = "Can't find events: /n";
+			tmp += testRailComment += " - FAILED";
+			
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		System.out.println(testRailComment);
 	}
 	
 	

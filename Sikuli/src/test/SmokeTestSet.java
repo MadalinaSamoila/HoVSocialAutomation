@@ -22,14 +22,76 @@ public class SmokeTestSet {
 		{
 			//for (String i: browsers) 
 			//{
+				AdminOperations.currentGAID = null;//do not delete, especially after merging
 				String i = "chrome";
 				CommonOperations.currentBrowser = i;
 				try 
 				{
+					//FacebookOperations.userFacebookId = "100005189688884";
+					FacebookOperations.userFacebookId = "577845726";
+					smoke.IngameEventsPresent(new String[]{"big_win", "cabinet_clicked", "catalogue_open"});
+					//smoke.SlotMachinesPresent();
+					
+					/*String[] array = {"big_win", "cabinet_clicked", "catalogue_open"};
+					String res = AdminOperations.checkIngameEvents("Chrome",array, "577845726");
+					System.out.println(res);*/
+					//smoke.CheckBalanceAdditionsAndSubtractions();
 					
 					
+					/*SlotOperations.performLoosingSpinGDK();
+					SlotOperations.performWininngSpinGDK();*/
 					
-					BrowserOperations.openBrowser(i);
+					
+					/*String GAID = "6244689";
+				
+					AdminOperations.storeOrCompareUserBalance("store", GAID);
+					
+					SlotOperations.clickAutospinActivate();
+					s.wait(5.1);
+					SlotOperations.clickAutospinDeactivate();
+					//screen.wait(5.1);
+					if (AdminOperations.storeOrCompareUserBalance("compare", GAID) != 0)
+					{
+						System.out.println("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
+						//testRailComment += ("[testprogress] Balance Was Changed After Deactivating Autospin - OK");
+					}
+					else
+					{
+						System.out.println("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED");
+						//testRailComment += ("[testprogress] Balance Was Not Changed After Deactivating Autospin - FAILED");
+//						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+					}
+					
+					*/
+					
+					
+					/*SlotOperations.storeOrCompareRegion("bet", "store");
+					System.out.println("pause 5 sec");
+					s.wait(5.0);
+					if (SlotOperations.storeOrCompareRegion("bet", "compare"))
+					{
+						System.out.println("SAME");
+					}
+					else
+					{
+						System.out.println("NOT_SAME");
+					}
+					*/
+					/*
+					if (SlotOperations.isDeraseBetButtonEnabled())
+					{
+						SlotOperations.clickDecraseBetButton();
+					}
+					else
+					{
+						if (SlotOperations.isIncraseBetButtonEnabled())
+						{
+							SlotOperations.clickDecraseBetButton();
+						}
+					}
+					
+					*/
+				/*		BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);
 					s.wait(5.0);	
@@ -92,7 +154,7 @@ public class SmokeTestSet {
 					FacebookOperations.deleteTestUser();
 					
 					BrowserOperations.closeBrowser(i);
-					
+					*/
 				} 
 				catch (Exception e) 
 				{			

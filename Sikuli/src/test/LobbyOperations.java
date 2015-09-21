@@ -699,7 +699,7 @@ public class LobbyOperations
 			return res;
 		}
 		
-		public static String clickClosePopup() throws FindFailed
+		public static String clickCloseGameInfoPopup() throws FindFailed
 		{									
 			s.click("lobby//Lobby_CabinetCloseButton.png");
 			
@@ -844,5 +844,126 @@ public class LobbyOperations
 		// JackpotsUpdateAcceptanceStateWhenChangingCoinDenomination
 		
 		// isJPNotValid(), clickMaxBetButton() and  methods isJPValid() is inside *SlotOperations.java class
+		
+		//UserCanSendAndreceiveGifts - start (behind)
+		
+		public static boolean isGiftViaLeaderboardSend() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
+				
+				s.click("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
+				
+				s.wait(5.0);
+				
+				s.find("browser//facebook_Send_Button.png");
+				
+				s.click("browser//facebook_Send_Button.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Gift_Sent_Button_Leaderboard.png");
+				
+				return true;
+			}
+			
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isGiftViaGiftBoxSend() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.click("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
+				
+				s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
+				
+				s.wait(5.0);
+				
+				s.find("browser//facebook_Send_Button.png");
+				
+				s.click("browser//facebook_Send_Button.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.click("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
+				
+				s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
+				
+				return true;
+			}
+			
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static boolean isGiftReseived() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.click("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Collect_Button_Gift_Box_Enabled.png");
+				
+				s.click("lobby//Lobby_Collect_Button_Gift_Box_Enabled.png");
+				
+				s.wait(3.0);
+				
+				s.find("lobby//Lobby_Collect_Button_Gift_Box_Disabled.png");
+				
+				LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+				
+				s.find("lobby//Lobby_Collect_One_Gift_After_Tutorial_Congratulation_Popup.png");
+				
+				s.find("lobby//Shop_congratulationOkayButton.png");
+				
+				s.click("lobby//Shop_congratulationOkayButton.png");
+				
+				s.find("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.click("lobby//Lobby_Gift_Box_Tab.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Collect_Button_Gift_Box_Disabled.png");
+				
+				return true;
+			}
+			
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
+		
+		public static void closeShopInviteBoxGiftBoxPopup() throws FindFailed
+		{
+			s.find("lobby//Lobby_Close_Shop_InviteBox_GiftBox_Popup_Button.png");
+			
+			s.click("lobby//Lobby_Close_Shop_InviteBox_GiftBox_Popup_Button.png");
+			
+		}
 		
 }

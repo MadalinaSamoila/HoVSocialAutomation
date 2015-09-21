@@ -596,7 +596,7 @@ public class HoVSmokeTests {
 	{
 		
 		String testRailTitle = "Ingame_events are being tracked";
-		//String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
 		
 				
 		String testRailComment = AdminOperations.checkIngameEvents("Chrome",ingameEventsArray, FacebookOperations.userFacebookId);
@@ -605,14 +605,14 @@ public class HoVSmokeTests {
 		{
 			testRailComment = "Required events are present - OK";
 			
-		//	TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		else
 		{
 			String tmp = "Can't find events: /n";
 			tmp += testRailComment += " - FAILED";
 			
-		//	TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 		System.out.println(testRailComment);
 	}

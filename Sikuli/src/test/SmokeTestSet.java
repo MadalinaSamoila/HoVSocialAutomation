@@ -22,15 +22,19 @@ public class SmokeTestSet {
 		{
 			//for (String i: browsers) 
 			//{
-				AdminOperations.currentGAID = null;
+				AdminOperations.currentGAID = null;//do not delete, especially after merging
 				String i = "chrome";
 				CommonOperations.currentBrowser = i;
 				try 
 				{
-					FacebookOperations.userFacebookId = "100005189688884";
-					smoke.SlotMachinesPresent();
+					//FacebookOperations.userFacebookId = "100005189688884";
+					FacebookOperations.userFacebookId = "577845726";
+					smoke.IngameEventsPresent(new String[]{"big_win", "cabinet_clicked", "catalogue_open"});
+					//smoke.SlotMachinesPresent();
 					
-					
+					/*String[] array = {"big_win", "cabinet_clicked", "catalogue_open"};
+					String res = AdminOperations.checkIngameEvents("Chrome",array, "577845726");
+					System.out.println(res);*/
 					//smoke.CheckBalanceAdditionsAndSubtractions();
 					
 					

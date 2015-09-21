@@ -5,6 +5,7 @@
     <classes>
       <class name="test.HoVSmokeTests">
         <methods>
+          <include name="IngameEventsPresent"/>
           <include name="QuickBuyFunctional"/>
           <include name="SlotMachinesPresent"/>
           <include name="CollectHourlyBonus"/>

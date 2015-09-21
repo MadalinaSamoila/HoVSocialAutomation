@@ -657,7 +657,7 @@ public static void setExclusionGroup (String browser, String userFacebookID, int
 	
 public static void setLevel(String browser, String userFacebookID, int level)	
 {
-WebDriver driver;
+	WebDriver driver;
 	
 	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
 	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
@@ -716,5 +716,80 @@ WebDriver driver;
 	
 }
 
+
+public static String checkIngameEvents(String browser, String[] requiredEventsArray, String userFacebookID)
+{
+	
+	WebDriver driver;
+	
+	String absentEvents = "";
+	
+	System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+	System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+	System.setProperty("webdriver.edge.driver", "lib\\webdriver\\MicrosoftWebDriver.exe");
+	
+	switch(browser) {
+	case "chrome": 	driver = new ChromeDriver();
+					break;
+	case "firefox": driver = new FirefoxDriver();
+					break;
+	case "iexplore":driver = new InternetExplorerDriver();
+					break;
+	default:		driver = new ChromeDriver();
+					break;
+	}
+		
+	driver.get("http://hov-uat-aio01.productmadness.com/admin/game_accounts?utf8=%E2%9C%93&search_type=social_network_id&search_value[]="+userFacebookID+"&commit=Search");
+
+	if (driver.findElement(By.xpath("//form[@id='new_admin']/div[5]/div/a")) != null) 
+	{
+		s.wait(2.1);
+		driver.findElement(By.id("admin_email")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_email")).sendKeys(CommonOperations.fbLogin);	
+		driver.findElement(By.id("admin_password")).sendKeys(selectAll);	
+		driver.findElement(By.id("admin_password")).sendKeys(CommonOperations.fbPassword);
+		driver.findElement(By.id("admin_password")).sendKeys(Key.ENTER);		
+	}
+	s.wait(2.1);
+	driver.findElement(By.xpath("//div[4]/div/ul/li[5]/a")).click();
+	driver.findElement(By.xpath("//form[@id='events_filter_form']/div[2]/div/button")).click();
+	int columnCount = driver.findElements(By.xpath("//form[@id='events_filter_form']/div[2]/div/ul/li")).size();
+	int requiredEventsArrayItemsAmount = requiredEventsArray.length;
+	int matchAmount = 0;
+	
+	for (String event : requiredEventsArray)
+	{
+		boolean isFind = false;
+		for (int i=1; i<=columnCount; i++ )
+		{	
+			try
+			{
+				
+				if ((driver.findElement(By.xpath("//form[@id='events_filter_form']/div[2]/div/ul/li["+i+"]/a/label")).getText()).equals(event))
+				{
+					matchAmount++;
+					isFind = true;
+					break;
+				}
+				else
+				{
+					if ((i==columnCount) && !isFind)
+					{
+						absentEvents += event + "\n";
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				absentEvents += event + "\n";
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	System.out.println("Found "+ matchAmount+ " / " + requiredEventsArrayItemsAmount+" : " + absentEvents);
+	driver.close();
+	
+	return absentEvents;
+}
 
 }

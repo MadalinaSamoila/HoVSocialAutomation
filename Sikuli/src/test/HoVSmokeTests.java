@@ -250,7 +250,7 @@ public class HoVSmokeTests {
 	}
 	
 	
-	//SlotMachinesPresent() check now includes jackpot ticker and dash buttons checks, so we do not waste time 
+	//SlotMachinesPresent() check now includes jackpot ticker, +/- balance after spin and dash buttons checks, so we do not waste time 
 	@Test
 	public void SlotMachinesPresent() throws FindFailed, IOException, APIException {
 		String testRailTitle = "All slot machines are present, with their relevant graphics and Toppers (E.G Jackpot, hot new game etc...)";
@@ -534,6 +534,7 @@ public class HoVSmokeTests {
 			System.out.println(testRailComment);
 		}
 	}
+	
 	public void CheckBalanceAdditionsAndSubtractions() throws FindFailed, APIException, IOException
 	{
 		String testRailTitle = "Users balance updates with appropriate additions and subtractions";
@@ -589,6 +590,34 @@ public class HoVSmokeTests {
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
+	
+	@Test
+	public void IngameEventsPresent(String[] ingameEventsArray) throws FindFailed, IOException, APIException 
+	{
+		
+		String testRailTitle = "Ingame_events are being tracked";
+		//String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		
+				
+		String testRailComment = AdminOperations.checkIngameEvents("Chrome",ingameEventsArray, FacebookOperations.userFacebookId);
+		
+		if (testRailComment.equals(""))
+		{
+			testRailComment = "Required events are present - OK";
+			
+		//	TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		else
+		{
+			String tmp = "Can't find events: /n";
+			tmp += testRailComment += " - FAILED";
+			
+		//	TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		System.out.println(testRailComment);
+	}
+	
+	
 	
 	@BeforeSuite
 	public void beforeSuite(String browser) {

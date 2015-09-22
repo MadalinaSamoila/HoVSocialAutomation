@@ -964,6 +964,34 @@ public class LobbyOperations
 			
 			s.click("lobby//Lobby_Close_Shop_InviteBox_GiftBox_Popup_Button.png");
 			
+			s.wait(5.0);
+			
+			
+			
 		}
 		
+		public static boolean isInviteSend() throws FindFailed
+		{
+			try
+			{
+				s.find("lobby//Lobby_Invite_Button_Leaderboard.png");
+				
+				s.click("lobby//Lobby_Invite_Button_Leaderboard.png");
+				
+				s.find("browser//facebook_Send_Button.png");
+				
+				s.click("browser//facebook_Send_Button.png");
+				
+				s.wait(5.0);
+				
+				s.find("lobby//Lobby_Invited_Button_Leaderboard.png");
+				
+				return true;
+			}
+			
+			catch (FindFailed e)
+			{
+				return false;
+			}
+		}
 }

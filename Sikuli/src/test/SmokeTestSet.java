@@ -27,12 +27,54 @@ public class SmokeTestSet {
 				CommonOperations.currentBrowser = i;
 				try 
 				{
+					//BELOW FOR TESTING
+					BrowserOperations.openBrowser(i);
+					s.wait(5.0);				
+					FacebookOperations.loginFacebook(i);
+					s.wait(5.0);	
+					FacebookOperations.createTestUser();
+					s.wait(5.0);
+					FacebookOperations.loginTestUser();
+					s.wait(5.0);				
+					FacebookOperations.changeLanguageFacebook(i);
+					s.wait(5.0);
+					System.out.println(FacebookOperations.userFacebookPageLink);
+					FacebookOperations.makeUsersFriendsWithoutToken("chrome", FacebookOperations.userFacebookPageLink, FacebookOperations.createFriendTestUser(false)[1]);
+					smoke.FreshInstallTest(i);
+					s.wait(5.0);
+					FacebookOperations.makeUsersFriends(FacebookOperations.userFacebookId, FacebookOperations.createFriendTestUser(true)[0]);
+					s.wait(5.0);
+					smoke.TutorialInstigates();
+					/*BrowserOperations.clickSearch();
+					s.keyDown(Key.CTRL);
+					s.keyDown("c");
+					s.keyUp(Key.CTRL);
+					s.keyUp("c");*/ 
+					
+					
+					//FacebookOperations.makeUsersFriendsWithoutToken("chrome", Env.getClipboard(), "https://developers.facebook.com/checkpoint/test-user-login/142701756077717/");
+					
+					
+					
+					/*
+					for (String k : FacebookOperations.createFriendTestUser(false))
+					{
+						System.out.println(k+"\n");
+					}
+					
+					for (String k : FacebookOperations.createFriendTestUser(true))
+					{
+						System.out.println(k+"\n");
+					}
+					*/
+					
+					
 					//FacebookOperations.userFacebookId = "100005189688884";
 					//FacebookOperations.userFacebookId = "577845726";
 					//smoke.IngameEventsPresent(new String[]{"big_win", "cabinet_clicked", "catalogue_open"});
 					//smoke.SlotMachinesPresent();
 					
-					FacebookOperations.makeUsersFriends("130904730594868", "123111368043995");
+					//FacebookOperations.makeUsersFriends("130904730594868", "123111368043995");
 					//System.out.println(res);
 					/*String[] array = {"big_win", "cabinet_clicked", "catalogue_open"};
 					String res = AdminOperations.checkIngameEvents("Chrome",array, "577845726");
@@ -93,6 +135,8 @@ public class SmokeTestSet {
 					}
 					
 					*/
+					
+					//ABOVE FOR TESTING
 				/*		BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i);

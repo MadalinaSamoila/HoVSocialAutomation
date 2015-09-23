@@ -439,11 +439,11 @@ public class HoVSmokeTestsSuite {
 			CommonOperations.fillFieldsFromConfigFile("config.json");
 			BrowserOperations.openBrowser(browser);
 			screen.wait(5.0);	
-			FacebookOperations.loginFacebook(browser);
+			FacebookOperations.loginFacebook(browser, CommonOperations.fbLogin, CommonOperations.fbPassword);
 			screen.wait(3.0);	
 			FacebookOperations.createTestUser();
 			screen.wait(3.0);
-			FacebookOperations.loginTestUser();
+			FacebookOperations.loginTestUser(FacebookOperations.userLogin.toString());
 			screen.wait(3.0);						
 			FacebookOperations.changeLanguageFacebook(browser);
 			screen.wait(3.0);
@@ -460,7 +460,10 @@ public class HoVSmokeTestsSuite {
 	@AfterSuite
 	public void afterSuite() {
 		try {
-			FacebookOperations.deleteTestUser();
+			FacebookOperations.deleteTestUser(FacebookOperations.userFacebookId);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserNonInstalledDetails[0]);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[0][0]);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[1][0]);
 			BrowserOperations.closeBrowser(CommonOperations.currentBrowser);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

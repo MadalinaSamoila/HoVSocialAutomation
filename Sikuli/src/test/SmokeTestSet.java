@@ -27,24 +27,105 @@ public class SmokeTestSet {
 				CommonOperations.currentBrowser = i;
 				try 
 				{
-					//BELOW FOR TESTING
+					
 					BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
-					FacebookOperations.loginFacebook(i);
+					FacebookOperations.loginFacebook(i, CommonOperations.fbLogin, CommonOperations.fbPassword);
 					s.wait(5.0);	
 					FacebookOperations.createTestUser();
 					s.wait(5.0);
-					FacebookOperations.loginTestUser();
+					FacebookOperations.loginTestUser(FacebookOperations.userLogin.toString());
 					s.wait(5.0);				
 					FacebookOperations.changeLanguageFacebook(i);
 					s.wait(5.0);
-					System.out.println(FacebookOperations.userFacebookPageLink);
 					FacebookOperations.makeUsersFriendsWithoutToken("chrome", FacebookOperations.userFacebookPageLink, FacebookOperations.createFriendTestUser(false)[1]);
 					smoke.FreshInstallTest(i);
 					s.wait(5.0);
 					FacebookOperations.makeUsersFriends(FacebookOperations.userFacebookId, FacebookOperations.createFriendTestUser(true)[0]);
+					FacebookOperations.initiateTestUserAccount(FacebookOperations.friendFbUserInstalledDetails[0][2], FacebookOperations.friendFbUserInstalledDetails[0][3], i, true);
 					s.wait(5.0);
-					smoke.TutorialInstigates();
+					FacebookOperations.makeUsersFriends(FacebookOperations.userFacebookId, FacebookOperations.createFriendTestUser(true)[0]);
+					FacebookOperations.initiateTestUserAccount(FacebookOperations.friendFbUserInstalledDetails[1][2], FacebookOperations.friendFbUserInstalledDetails[1][3], i, true);
+					
+					smoke.TutorialInstigates();					
+					
+					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1); 
+					
+					BrowserOperations.refreshPage(true);
+					s.wait(35.0);
+					
+					smoke.DailyBonusPresent();
+					s.wait(5.0);
+					
+					smoke.CollectHourlyBonus();
+					
+					smoke.HelpFanPageOpen();
+					BrowserOperations.refreshPage(true);
+					s.wait(35.0);
+					
+					smoke.PlacedInLobby();
+					s.wait(5.0);
+								
+					smoke.BuyAllCoinPackages();
+					s.wait(5.0);
+					
+					smoke.QuickBuyFunctional();
+					s.wait(5.0);
+					
+					smoke.IngameEventsPresent(new String[]{"cabinet_clicked", "catalogue_open", "lobby_ready", "catalogue_open", "coin_package_clicked", "coins_received", "payment_complete"});
+					s.wait(5.0);
+					
+					smoke.LeaderboardDisplaysButtons();
+					s.wait(5.0);
+					//FacebookOperations.userFacebookId = "100005189688884";
+					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 0);
+					String GaId = AdminOperations.getGAID(i, FacebookOperations.userFacebookId);
+					System.out.println("GaId = "+GaId);
+					AdminOperations.addGAIDToCRM(i, GaId);
+					s.wait(2.0);
+					BrowserOperations.refreshPage(true);
+					s.wait(35.0);
+					smoke.EnabledCRMsAppear();
+					s.wait(5.0);
+					AdminOperations.removeGAIDFromCRM(i, GaId);
+					s.wait(5.0);
+					AdminOperations.setExclusionGroup(i,  FacebookOperations.userFacebookId, 1);
+					s.wait(5.0);
+					BrowserOperations.refreshPage(true);
+					s.wait(35.0);
+					smoke.SlotMachinesPresent();
+					
+					
+					
+					FacebookOperations.deleteTestUser(FacebookOperations.userFacebookId);
+					FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserNonInstalledDetails[0]);
+					FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[0][0]);
+					FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[1][0]);
+					
+					BrowserOperations.closeBrowser(i);
+				
+					
+					
+					//BELOW FOR TESTING
+					//smoke.GiftSendingCheck();
+					
+					//System.out.println(FacebookOperations.friendFbUserInstalledDetails[0][0].length());
+					/*
+					FacebookOperations.createFriendTestUser(true);
+					FacebookOperations.createFriendTestUser(true);
+					
+					for (String k : FacebookOperations.friendFbUserInstalledDetails[0])
+					{
+						System.out.println(k+"\n");
+					}
+					for (String k : FacebookOperations.friendFbUserInstalledDetails[1])
+					{
+						System.out.println(k+"\n");
+					}
+					
+					*/
+					
+					
 					/*BrowserOperations.clickSearch();
 					s.keyDown(Key.CTRL);
 					s.keyDown("c");

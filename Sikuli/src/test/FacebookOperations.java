@@ -28,7 +28,7 @@ public class FacebookOperations {
 	public static String userEmail;
 	public static String userPassword;
 	public static String[] friendFbUserNonInstalledDetails;
-	public static String[] friendFbUserInstalledDetails;
+	public static String[][] friendFbUserInstalledDetails = new String[2][5];
 	
 	static Screen screen= new Screen();
 	public static App browser;
@@ -126,7 +126,34 @@ public class FacebookOperations {
 	    else
 	    {
 	    	String[] userDetails = {(String) object.get("id"), (String) object.get("login_url"), (String) object.get("email"), (String) object.get("password"), (String) object.get("access_token")};
-	    	friendFbUserInstalledDetails = userDetails;
+	    	
+	    	try
+	    	{
+	    		if (friendFbUserInstalledDetails[0][0].equals(null))
+		    	{
+		    		friendFbUserInstalledDetails[0] = userDetails;
+		    	}
+		    	else
+		    	{
+		    		friendFbUserInstalledDetails[1] = userDetails;
+		    	}
+	    	}
+	    	catch (NullPointerException e)
+	    	{
+	    		friendFbUserInstalledDetails[0] = userDetails;
+	    	}
+	    	
+	    	
+	    	
+	    	/*
+	    	if (friendFbUserInstalledDetails[0][0].equals(null))
+	    	{
+	    		friendFbUserInstalledDetails[0] = userDetails;
+	    	}
+	    	else
+	    	{
+	    		friendFbUserInstalledDetails[1] = userDetails;
+	    	}*/
 	    	return userDetails;
 	    }
 	    
@@ -134,9 +161,9 @@ public class FacebookOperations {
 	}
 	
 	
-	public static void deleteTestUser () throws Exception {
+	public static void deleteTestUser (String userId) throws Exception {
 		
-		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userFacebookId+"?method=delete&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
+		URL deleteUrl = new URL("https://graph.facebook.com/v2.4/"+userId+"?method=delete&access_token=600712740047839|vu3RyiAd-1K5zXZN4l4pocttOEk");
 		HttpURLConnection con = (HttpURLConnection) deleteUrl.openConnection();
 
 		// optional default is GET
@@ -148,10 +175,10 @@ public class FacebookOperations {
 
 	}
 
-	public static void loginTestUser() throws Exception{
+	public static void loginTestUser(String testUserLoginLink) throws Exception{
 		BrowserOperations.clickSearch();
 		screen.wait(2.1);
-		screen.paste(userLogin.toString());
+		screen.paste(testUserLoginLink);
 		screen.type(Key.ENTER);
 		screen.wait(5.5);
 		screen.click("browser//login_as_button.png");
@@ -166,7 +193,7 @@ public class FacebookOperations {
 		userFacebookPageLink = Env.getClipboard();
 	}
 	
-	public static void loginFacebook(String browser) throws Exception
+	public static void loginFacebook(String browser, String fbLogin, String fbPassword) throws Exception
 	{
 		BrowserOperations.clickSearch();
 		screen.wait(2.1);
@@ -175,23 +202,17 @@ public class FacebookOperations {
 		screen.wait(15.0);
 		
 		if ((browser.equals("iexplore")) || (browser.equals("edge")))
-		{
-			
-			screen.click("browser//facebook_login.png");
-			screen.paste(CommonOperations.fbLogin);
-			screen.type(Key.TAB);
-			screen.paste(CommonOperations.fbPassword);
-			screen.type(Key.ENTER);
+		{			
+			screen.click("browser//facebook_login.png");			
 		}
 		else
 		{
-			screen.type(Key.TAB);
-			screen.paste(CommonOperations.fbLogin);
-			screen.type(Key.TAB);
-			screen.paste(CommonOperations.fbPassword);
-			screen.type(Key.ENTER);
+			screen.type(Key.TAB);			
 		}
-		
+		screen.paste(fbLogin);
+		screen.type(Key.TAB);
+		screen.paste(fbPassword);
+		screen.type(Key.ENTER);
 		
 	}
 	public static void changeLanguageFacebook(String browser) throws Exception
@@ -354,7 +375,7 @@ public class FacebookOperations {
 		screen.keyUp(Key.WIN);
 		screen.keyUp(Key.UP);
 		
-		loginFacebook(browser);
+		loginFacebook(browser, CommonOperations.fbLogin, CommonOperations.fbPassword);
 		
 		screen.wait(5.1);
 		
@@ -375,6 +396,7 @@ public class FacebookOperations {
 		screen.wait(5.5);
 		driver2.close();
 		
+		screen.wait(1.5);
 		BrowserOperations.clickSearch();
 		
 		screen.paste("https://www.facebook.com/?sk=ff");
@@ -382,5 +404,48 @@ public class FacebookOperations {
 		screen.wait(5.5);
 		screen.click("browser//facebook_confirmFriend_button.png");
 		
+	}
+	
+	public static void initiateTestUserAccount(String fbLogin, String fbPassword, String browser, boolean isAppInstalled) throws Exception
+	{
+		WebDriver driver;
+		
+		System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+		System.setProperty("webdriver.edge.driver", "lib\\webdriver\\MicrosoftWebDriver.exe");
+		
+		switch(browser) {
+		case "chrome": 	driver = new ChromeDriver();
+						break;
+		case "firefox": driver = new FirefoxDriver();
+						break;
+		case "iexplore":driver = new InternetExplorerDriver();
+						break;
+		case "edge":	driver = new EdgeDriver();
+						break;		
+		default:		driver = new ChromeDriver();
+						break;
+		}
+		
+		screen.keyDown(Key.WIN);
+		screen.keyDown(Key.UP);
+		screen.keyUp(Key.WIN);
+		screen.keyUp(Key.UP);
+		
+		loginFacebook(browser, fbLogin, fbPassword);
+		
+		LobbyOperations.findChangeURLAndAccessUATSocial(browser);
+		
+		if (!isAppInstalled) 
+		{
+			LobbyOperations.areFreshInstallStepsCompleted();
+		}
+		else
+		{
+			screen.wait(Double.parseDouble(CommonOperations.hov_load_time));
+		}
+		LobbyOperations.isTimeBonusTutorialStepPresentAndClick();
+		
+		driver.close();
 	}
 }

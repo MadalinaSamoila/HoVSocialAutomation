@@ -250,11 +250,12 @@ public class CommonOperations
 			System.out.println( "Some field(s) are absent in configuration file!");
 			return false;
 		}	
-		 
-		
-		
-		
+		 		
 	}
+	
+	
+	
+	
 	
 	public static String getRunIdByBrowser()
 	{

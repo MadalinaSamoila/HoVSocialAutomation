@@ -2,6 +2,11 @@ package test;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.sikuli.script.*;
 
 
@@ -847,38 +852,36 @@ public class LobbyOperations
 		
 		//UserCanSendAndreceiveGifts - start (behind)
 		
-		public static boolean isGiftViaLeaderboardSend() throws FindFailed
+		public static String sendGiftViaLeaderboard() throws FindFailed
 		{
-			try
-			{
-				s.find("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
-				
-				s.click("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
-				
-				s.wait(5.0);
-				
-				s.find("browser//facebook_Send_Button.png");
-				
-				s.click("browser//facebook_Send_Button.png");
-				
-				s.wait(5.0);
-				
-				s.find("lobby//Lobby_Gift_Sent_Button_Leaderboard.png");
-				
-				return true;
-			}
 			
-			catch (FindFailed e)
-			{
-				return false;
-			}
+			s.find("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
+			
+			s.click("lobby//Lobby_Send_Gift_Button_Leaderboard.png");
+			
+			s.wait(5.0);
+			
+			s.find("browser//facebook_Send_Button.png");
+			
+			s.click("browser//facebook_Send_Button.png");
+			
+			s.wait(5.0);
+			
+			s.find("lobby//Lobby_Gift_Sent_Button_Leaderboard.png");
+				
+				
+			
+			String res = "[testprogress]The Gift Was Sent Via The Leaderboard - OK";
+			
+			System.out.println(res);
+			
+			return res;
+			
 		}
 		
-		public static boolean isGiftViaGiftBoxSend() throws FindFailed
+		public static String sendGiftViaGiftBox() throws FindFailed
 		{
-			try
-			{
-				s.find("lobby//Lobby_Gift_Box_Tab.png");
+			    s.find("lobby//Lobby_Gift_Box_Tab.png");
 				
 				s.click("lobby//Lobby_Gift_Box_Tab.png");
 				
@@ -906,19 +909,52 @@ public class LobbyOperations
 				
 				s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
 				
-				return true;
-			}
-			
-			catch (FindFailed e)
-			{
-				return false;
-			}
+				LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+				
+				String res = "[testprogress]The Gift Was Sent Via The Gitf Box - OK";
+				
+				System.out.println(res);
+				
+				return res;
 		}
 		
-		public static boolean isGiftReseived() throws FindFailed
+		public static boolean isGiftReseivedClient(String fbLogin, String fbPassword, String browser) throws Exception
 		{
+			WebDriver driver;
+			
+			System.setProperty("webdriver.ie.driver", "lib\\webdriver\\IEDriverServer.exe");
+			System.setProperty("webdriver.chrome.driver", "lib\\webdriver\\chromedriver.exe");
+			System.setProperty("webdriver.edge.driver", "lib\\webdriver\\MicrosoftWebDriver.exe");
+			
+			switch(browser) {
+			case "chrome": 	driver = new ChromeDriver();
+							break;
+			case "firefox": driver = new FirefoxDriver();
+							break;
+			case "iexplore":driver = new InternetExplorerDriver();
+							break;
+			case "edge":	driver = new EdgeDriver();
+							break;		
+			default:		driver = new ChromeDriver();
+							break;
+			}
+			
+			s.keyDown(Key.WIN);
+			s.keyDown(Key.UP);
+			s.keyUp(Key.WIN);
+			s.keyUp(Key.UP);
 			try
 			{
+				
+				
+				FacebookOperations.loginFacebook(browser, fbLogin, fbPassword);
+				
+				LobbyOperations.findChangeURLAndAccessUATSocial(browser);
+				
+				s.wait(Double.parseDouble(CommonOperations.hov_load_time));
+				
+				LobbyOperations.closeShopInviteBoxGiftBoxPopup();				
+				
 				s.find("lobby//Lobby_Gift_Box_Tab.png");
 				
 				s.click("lobby//Lobby_Gift_Box_Tab.png");
@@ -949,11 +985,14 @@ public class LobbyOperations
 				
 				s.find("lobby//Lobby_Collect_Button_Gift_Box_Disabled.png");
 				
+				LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+				driver.close();
 				return true;
 			}
 			
 			catch (FindFailed e)
 			{
+				driver.close();
 				return false;
 			}
 		}
@@ -970,13 +1009,14 @@ public class LobbyOperations
 			
 		}
 		
-		public static boolean isInviteSend() throws FindFailed
+		public static String sendInviteViaLeaderboard() throws FindFailed
 		{
-			try
-			{
+			
 				s.find("lobby//Lobby_Invite_Button_Leaderboard.png");
 				
 				s.click("lobby//Lobby_Invite_Button_Leaderboard.png");
+				
+				s.wait(5.0);
 				
 				s.find("browser//facebook_Send_Button.png");
 				
@@ -986,12 +1026,10 @@ public class LobbyOperations
 				
 				s.find("lobby//Lobby_Invited_Button_Leaderboard.png");
 				
-				return true;
-			}
-			
-			catch (FindFailed e)
-			{
-				return false;
-			}
+				String res = "[testprogress]The Invite Was Sent Via The Leaderboard - OK";
+				
+				System.out.println(res);
+				
+				return res;
 		}
 }

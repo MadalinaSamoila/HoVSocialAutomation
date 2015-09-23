@@ -605,7 +605,7 @@ public class HoVSmokeTests {
 		{
 			testRailComment = "Required events are present - OK";
 			
-			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		else
 		{
@@ -618,16 +618,83 @@ public class HoVSmokeTests {
 	}
 	
 	
+	//INCLUDES  GiftSendingCheck()
+	@Test
+	public void LeaderboardDisplaysButtons() throws Exception
+	{
+		String testRailTitle = "Leaderboard displays most recent images of friends and displays the appropriate button "+'"'+"Send Gift"+'"'+" / "+'"'+"Gift Sent"+'"'+" / "+'"'+"Invite"+'"';
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			testRailComment += LobbyOperations.sendInviteViaLeaderboard() + "\n";
+			testRailComment += LobbyOperations.sendGiftViaLeaderboard() + "\n";
+			if (GiftSendingCheck())
+			{
+				testRailComment += "[testprogress]The Gift Was Sent Via The Leaderboard - OK";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			}
+			else
+			{
+				testRailComment += "[testres]The Gift Was Not Send Via The Leaderboard - FAILED";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			}
+		
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		
+		}
+				
+	}
+	
+	public boolean GiftSendingCheck() throws Exception
+	{
+		String testRailTitle = "User can both send and receive gifts";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		boolean isLeaderboardGiftButtonClicked = false;
+		
+		try
+		{
+			
+			testRailComment += LobbyOperations.sendGiftViaLeaderboard() + "\n";
+			isLeaderboardGiftButtonClicked = true;
+			testRailComment += LobbyOperations.sendGiftViaGiftBox() + "\n";
+			
+			
+			if (LobbyOperations.isGiftReseivedClient(FacebookOperations.friendFbUserInstalledDetails[0][2], FacebookOperations.friendFbUserInstalledDetails[0][3], CommonOperations.currentBrowser) && LobbyOperations.isGiftReseivedClient(FacebookOperations.friendFbUserInstalledDetails[1][2], FacebookOperations.friendFbUserInstalledDetails[1][3], CommonOperations.currentBrowser))
+			{ 
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+				return isLeaderboardGiftButtonClicked;
+			}
+			else
+			{
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				return isLeaderboardGiftButtonClicked;
+			}
+	
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			return isLeaderboardGiftButtonClicked;
+		}
+	}
 	
 	@BeforeSuite
 	public void beforeSuite(String browser) {
 		try {
 							
-			FacebookOperations.loginFacebook(browser);
+			FacebookOperations.loginFacebook(browser, CommonOperations.fbLogin, CommonOperations.fbPassword);
 			screen.wait(3.0);	
 			FacebookOperations.createTestUser();
 			screen.wait(3.0);
-			FacebookOperations.loginTestUser();
+			FacebookOperations.loginTestUser(FacebookOperations.userLogin.toString());
 			screen.wait(3.0);						
 			FacebookOperations.changeLanguageFacebook(browser);
 			screen.wait(3.0);
@@ -644,7 +711,11 @@ public class HoVSmokeTests {
 	@AfterSuite
 	public void afterSuite() {
 		try {
-			FacebookOperations.deleteTestUser();
+			FacebookOperations.deleteTestUser(FacebookOperations.userFacebookId);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserNonInstalledDetails[0]);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[0][0]);
+			FacebookOperations.deleteTestUser(FacebookOperations.friendFbUserInstalledDetails[1][0]);
+					
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

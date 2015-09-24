@@ -575,8 +575,62 @@ public class LobbyOperations
 			r.wait(1.5);
 			r.highlight();
 			
+			r.x += 170;
+			r.y += 50;	
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+		
+			r = s.find("lobby//DW_FriendsSymbol.png");	
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+			
+			r.y += 100;	
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+			
+			r.x -= 50;
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+			
+			r.y += 100;	
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+			
+			r.x -= 70;
+			r.y += 100;	
+			
+			r.highlight();
+			r.wait(1.5);
+			r.highlight();
+		
 			
 			res = "[testprogress] Daily Wheel's Disabled Close Button Is Present - OK";
+			
+			System.out.println(res);
+			
+			return res;
+		}
+		
+		
+		public static String spinDailyWheelWithSpam() throws FindFailed
+		{
+			s.click("lobby//DW_ClickSpin.png");
+			for (int i = 0; i < 10; i++)
+			{
+				s.click("lobby//DW_CentralRegionWheel.png");
+			}
+			
+			res = "[testprogress] Daily Wheel Was Spammed - OK";
 			
 			System.out.println(res);
 			

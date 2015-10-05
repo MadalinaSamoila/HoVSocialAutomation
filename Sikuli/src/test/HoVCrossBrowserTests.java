@@ -112,4 +112,42 @@ public class HoVCrossBrowserTests
 		
 		}
 	}
+	
+	public void TopBarAllExpectedElements(boolean isSocial) throws APIException, IOException //BALANCE == 2.030.000; level = 1; xp = 0 | Launch after adding user to the ExclusionGroup == 1
+	{
+		String testRailTitle = "All expected fields are displayed within the Top Bar without graphical defects";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+			LobbyOperations.clickCloseButtonCRM();
+		}
+		catch (FindFailed e)
+		{
+			
+		}
+		
+		try
+		{
+			testRailComment += LobbyOperations.balanceFieldIsPresent() + "\n";
+			testRailComment += LobbyOperations.shopButtonsArePresent()+ "\n";
+			testRailComment += LobbyOperations.levelBarIsPresent()+ "\n";
+			testRailComment += LobbyOperations.isTimeBonusEnabled()+ "\n";
+			testRailComment += LobbyOperations.loyaltyButtonIsPresent()+ "\n";
+			if (isSocial)
+			{
+				testRailComment += LobbyOperations.giftButtonIsPresent()+ "\n";
+			}
+			testRailComment += LobbyOperations.isLobbyReturned(0)+ "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		
+	}
 }

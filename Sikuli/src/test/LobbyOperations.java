@@ -445,7 +445,12 @@ public class LobbyOperations
 		{
 			s.find("lobby//DW_ClickSpin.png");	
 				
-			s.click("lobby//DW_ClickSpin.png");					
+			s.click("lobby//DW_ClickSpin.png");	
+			
+			for (int i = 0; i < 10; i++)
+			{
+				s.click("lobby//DW_CentralRegionWheel.png");
+			}
 	
 			s.wait(10.0);
 				
@@ -546,75 +551,53 @@ public class LobbyOperations
 		{
 			Region r = s.find("lobby//DW_ReturnsSymbol.png");	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.x += 50;
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.x += 70;
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.x += 170;
-			r.y += 50;	
+			r.y += 20;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 		
 			r = s.find("lobby//DW_FriendsSymbol.png");	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.x -= 50;
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 			
 			r.x -= 70;
 			r.y += 100;	
 			
-			r.highlight();
-			r.wait(1.5);
-			r.highlight();
+			r.click();
 		
 			
-			res = "[testprogress] Daily Wheel's Disabled Close Button Is Present - OK";
+			res = "[testprogress] Daily Wheel Was Clicked Outside - OK";
 			
 			System.out.println(res);
 			

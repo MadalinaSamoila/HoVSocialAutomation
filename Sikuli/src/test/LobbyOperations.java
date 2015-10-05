@@ -77,11 +77,17 @@ public class LobbyOperations
 			return res;
 	}
 	
-	public static String isShopOpened() throws FindFailed
+	public static String isShopOpened(boolean isLoyaltyEnabled) throws FindFailed
 	{
-			
-			s.find("lobby//Shop_general.png");
-			
+		
+			if (isLoyaltyEnabled)
+			{		
+				s.find("lobby//Shop_general_loyaltyMember.png");
+			}
+			else
+			{
+				s.find("lobby//Shop_general.png");
+			}
 			res = "[testprogress] Shop Opened - OK";
 			
 			System.out.println(res);

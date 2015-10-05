@@ -150,4 +150,30 @@ public class HoVCrossBrowserTests
 		}
 		
 	}
+	
+	public void ShopUnderVariousResolutions(boolean isLoyaltyEnabled, int[] modes) throws APIException, IOException
+	{
+		String testRailTitle = "All expected fields are displayed within the Top Bar without graphical defects";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			testRailComment += LobbyOperations.isBuyButtonPresentAndClick();
+			for (int x : modes)
+			{
+				testRailComment += CommonOperations.setDisplayResolutionMode(x, false);
+				testRailComment += LobbyOperations.isShopOpened(true);
+				testRailComment += CommonOperations.setDisplayResolutionMode(x, true);
+			}
+			/*testRailComment +=*/ LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		
+		}
+	}
 }

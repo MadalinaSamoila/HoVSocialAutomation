@@ -181,6 +181,22 @@ public class LobbyOperations
 			
 			return res;
 	}
+	
+	public static String shopCongratulationPopupPresent() throws FindFailed //initial balance = 2.030.000; After purchase 9.000.000 (30$)+ upsale
+	{
+		
+		s.find("lobby//Shop_Congratulation_top_initBalance2030000.png");
+		
+		s.find("lobby//Shop_Congratulation_youBought_9000000.png");
+		
+		s.find("lobby//Shop_Congratulation_newBalance_label.png");
+		
+		res = "[teststat] All Shop Congratulation Popup's Elements Are Present - OK";
+		
+		System.out.println(res);
+		
+		return res;
+	}
 	//SHOP_QUICKBUY
 	
 	public static String isQuickBuyPanelPresent() throws FindFailed

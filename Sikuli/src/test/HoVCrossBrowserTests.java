@@ -194,9 +194,30 @@ public class HoVCrossBrowserTests
 		catch (FindFailed e)
 		{
 			testRailComment += e.getMessage();
-			System.out.println(testRailComment);
+			
      		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		
 		}
+	}
+	
+	public void ShopCongratulationsPopup() throws APIException, IOException //initial balance = 2.030.000; After purchase 9.000.000 (30$)+ upsale
+	{
+		String testRailTitle = "Congratulation pop-up appears after closing the Upsale Wheel pop-up and is free of spelling / graphical defects";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			testRailComment += LobbyOperations.shopCongratulationPopupPresent() + "\n";
+			
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);	
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		
 	}
 }

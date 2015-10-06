@@ -273,6 +273,18 @@ public class LobbyOperations
 			return res;
 	}
 	
+	public static String quickBuyBuyBlurredClick() throws FindFailed
+	{
+			
+			s.click("lobby//Shop_quickbuy_blurrded.png");
+			
+			res = "[testprogress] QuickBuy Buy Blurred Was Clicked - OK";
+			
+			System.out.println(res);
+			
+			return res;
+	}
+	
 	//FAN PAGE
 	
 	public static String isLobbyReturned(int wheel) throws FindFailed  //Accepts 1 to PageDown, 2 for PageUp

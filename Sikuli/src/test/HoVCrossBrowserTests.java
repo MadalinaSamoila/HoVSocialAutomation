@@ -220,4 +220,36 @@ public class HoVCrossBrowserTests
 		}
 		
 	}
+	
+	public void QuickBuyDuringShopDisabled() throws APIException, IOException
+	{
+		String testRailTitle = "The user is unable to open the shop at the same time as making use of the quick buy drop down";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			testRailComment += LobbyOperations.isBuyButtonPresentAndClick() + "\n";
+			testRailComment += LobbyOperations.quickBuyBuyBlurredClick() + "\n";
+			try
+			{
+				testRailComment += LobbyOperations.isQuickBuyDropDownPresent()+ " - NOT OK - FAILED\n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+			}
+			catch (FindFailed e)
+			{
+				testRailComment += e.getMessage() + "OK \n";
+				testRailComment += LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			}
+			
+				
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+	}
 }

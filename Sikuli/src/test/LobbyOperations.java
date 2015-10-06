@@ -1111,7 +1111,7 @@ public class LobbyOperations
 		}
 	}
 	
-	public static void closeShopInviteBoxGiftBoxPopup() throws FindFailed
+	public static String closeShopInviteBoxGiftBoxPopup() throws FindFailed
 	{
 		s.find("lobby//Lobby_Close_Shop_InviteBox_GiftBox_Popup_Button.png");
 		
@@ -1119,7 +1119,11 @@ public class LobbyOperations
 		
 		s.wait(5.0);
 		
+		String res = "[testprogress]The Popup Was Closed - OK";
 		
+		System.out.println(res);
+		
+		return res;
 		
 	}
 	

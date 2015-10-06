@@ -163,16 +163,39 @@ public class HoVCrossBrowserTests
 			for (int x : modes)
 			{
 				testRailComment += CommonOperations.setDisplayResolutionMode(x, false);
-				testRailComment += LobbyOperations.isShopOpened(true);
+				testRailComment += LobbyOperations.isShopOpened(isLoyaltyEnabled);
 				testRailComment += CommonOperations.setDisplayResolutionMode(x, true);
 			}
-			/*testRailComment +=*/ LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+			testRailComment += LobbyOperations.closeShopInviteBoxGiftBoxPopup();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 		}
 		catch (FindFailed e)
 		{
 			testRailComment += e.getMessage();
 			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		
+		}
+	}
+	
+	public void ShopReturnsToLobby(boolean isLoyaltyEnabled) throws APIException, IOException
+	{
+		String testRailTitle = "User can close the shop via a relevant close button";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			testRailComment += LobbyOperations.isBuyButtonPresentAndClick() + "\n";
+			testRailComment += LobbyOperations.isShopOpened(isLoyaltyEnabled) + "\n";
+			testRailComment += LobbyOperations.closeShopInviteBoxGiftBoxPopup() + "\n";
+			testRailComment += LobbyOperations.isLobbyReturned(0) + "\n";
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);	
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			System.out.println(testRailComment);
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		
 		}
 	}

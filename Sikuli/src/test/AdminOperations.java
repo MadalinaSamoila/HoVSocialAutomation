@@ -234,8 +234,8 @@ public class AdminOperations {
 		driver.findElement(By.xpath("//div[4]/div[2]/ul/li/a")).click();
 		
 		Select droplist  = new Select(driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[2]/select")));
-		droplist.selectByValue("label=Set to");
-		
+		//droplist.selectByValue("Set to");
+		droplist.selectByIndex(1);
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[3]/input")).sendKeys(String.valueOf(balance));
 		
 		driver.findElement(By.xpath("//div[@id='game-accounts-form']/div/div/table/tbody/tr/td[3]/form/div[4]/button")).click();	

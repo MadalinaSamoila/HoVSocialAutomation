@@ -937,25 +937,25 @@ public class LobbyOperations
 	public static String findChangeURLAndAccessUATSocial(String browser)  throws FindFailed
 	{
 		
-			BrowserOperations.clickSearch();
-			s.wait(1.5);
-			s.paste("https://apps.facebook.com/hov_uat/");
-			
-			s.type(Key.ENTER);
-			
-			s.wait(10.5);
-			
-			/*s.type(Key.ENTER);
-			
-			s.wait(10.5);
-			
-			s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
-			
-			res = "[testprogress] The tab With The Game Opened - OK";
-			*/
-			System.out.println(res);
-			
-			return res;
+		BrowserOperations.clickSearch();
+		s.wait(1.5);
+		s.paste("https://apps.facebook.com/hov_uat/");
+		
+		s.type(Key.ENTER);
+		
+		s.wait(10.5);
+		
+		/*s.type(Key.ENTER);
+		
+		s.wait(10.5);
+		
+		s.find("browser//"+browser+"_Heart_of_Vegas_tab_text.png");
+		*/
+		res = "[testprogress] The tab With The Game Opened - OK";
+		
+		System.out.println(res);
+		
+		return res;
 			
 		
 		
@@ -964,27 +964,27 @@ public class LobbyOperations
 	public static String areFreshInstallStepsCompleted()  throws FindFailed
 	{
 		
-			s.wait(15.0);
-			
-			s.find("browser//facebook_Play_Now_button.png");
-			
-			s.click("browser//facebook_Play_Now_button.png");
-			
-			s.wait(15.0);
-			
-			s.find("browser//facebook_OK_button.png");
-			
-			s.click("browser//facebook_OK_button.png");
-			
-			s.wait(Double.parseDouble(CommonOperations.hov_load_time));
-			
-			s.find("lobby//Tutorial_collectBonusStep.png");
-			
-			res = "[testprogress] All Install Steps Were Completed. The User Is Placed In The Tutorial - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.wait(15.0);
+		
+		s.find("browser//facebook_Play_Now_button.png");
+		
+		s.click("browser//facebook_Play_Now_button.png");
+		
+		s.wait(15.0);
+		
+		s.find("browser//facebook_OK_button.png");
+		
+		s.click("browser//facebook_OK_button.png");
+		
+		s.wait(Double.parseDouble(CommonOperations.hov_load_time));
+		
+		s.find("lobby//Tutorial_collectBonusStep.png");
+		
+		res = "[testprogress] All Install Steps Were Completed. The User Is Placed In The Tutorial - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	// FreshInstallTest case methods - finish (above)
 	
@@ -1023,41 +1023,41 @@ public class LobbyOperations
 	
 	public static String sendGiftViaGiftBox() throws FindFailed
 	{
-		    s.find("lobby//Lobby_Gift_Box_Tab.png");
-			
-			s.click("lobby//Lobby_Gift_Box_Tab.png");
-			
-			s.wait(5.0);
-			
-			s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
-			
-			s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
-			
-			s.wait(5.0);
-			
-			s.find("browser//facebook_Send_Button.png");
-			
-			s.click("browser//facebook_Send_Button.png");
-			
-			s.wait(5.0);
-			
-			s.find("lobby//Lobby_Gift_Box_Tab.png");
-			
-			s.click("lobby//Lobby_Gift_Box_Tab.png");
-			
-			s.wait(5.0);
-			
-			s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
-			
-			s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
-			
-			LobbyOperations.closeShopInviteBoxGiftBoxPopup();
-			
-			String res = "[testprogress]The Gift Was Sent Via The Gitf Box - OK";
-			
-			System.out.println(res);
-			
-			return res;
+	    s.find("lobby//Lobby_Gift_Box_Tab.png");
+		
+		s.click("lobby//Lobby_Gift_Box_Tab.png");
+		
+		s.wait(5.0);
+		
+		s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
+		
+		s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Enabled.png");
+		
+		s.wait(5.0);
+		
+		s.find("browser//facebook_Send_Button.png");
+		
+		s.click("browser//facebook_Send_Button.png");
+		
+		s.wait(5.0);
+		
+		s.find("lobby//Lobby_Gift_Box_Tab.png");
+		
+		s.click("lobby//Lobby_Gift_Box_Tab.png");
+		
+		s.wait(5.0);
+		
+		s.find("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
+		
+		s.click("lobby//Lobby_Send_Gift_Button_Gift_Box_Disabled.png");
+		
+		LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+		
+		String res = "[testprogress]The Gift Was Sent Via The Gitf Box - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	public static boolean isGiftReseivedClient(String fbLogin, String fbPassword, String browser) throws Exception
@@ -1158,89 +1158,99 @@ public class LobbyOperations
 	public static String sendInviteViaLeaderboard() throws FindFailed
 	{
 		
-			s.find("lobby//Lobby_Invite_Button_Leaderboard.png");
-			
-			s.click("lobby//Lobby_Invite_Button_Leaderboard.png");
-			
-			s.wait(5.0);
-			
-			s.find("browser//facebook_Send_Button.png");
-			
-			s.click("browser//facebook_Send_Button.png");
-			
-			s.wait(5.0);
-			
-			s.find("lobby//Lobby_Invited_Button_Leaderboard.png");
-			
-			String res = "[testprogress]The Invite Was Sent Via The Leaderboard - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.find("lobby//Lobby_Invite_Button_Leaderboard.png");
+		
+		s.click("lobby//Lobby_Invite_Button_Leaderboard.png");
+		
+		s.wait(5.0);
+		
+		s.find("browser//facebook_Send_Button.png");
+		
+		s.click("browser//facebook_Send_Button.png");
+		
+		s.wait(5.0);
+		
+		s.find("lobby//Lobby_Invited_Button_Leaderboard.png");
+		
+		String res = "[testprogress]The Invite Was Sent Via The Leaderboard - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	
 	//Top Bar - elements are present 
+	public static String balanceFieldTenBln() throws FindFailed
+	{
+		s.find("lobby//Lobby_topBar_balance10bln.png");				
+		
+		String res = "[testprogress] The Balance Field Is Present (10.000.000.000) - OK";
+		
+		System.out.println(res);
+		
+		return res;
+	}
 	
 	public static String balanceFieldIsPresent() throws FindFailed //For balance = 2.030.000
 	{
 		
-			s.find("lobby//Lobby_topBar_balance2030000.png");				
-			
-			String res = "[testprogress] The Balance Field Is Present (2.030.000) - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.find("lobby//Lobby_topBar_balance2030000.png");				
+		
+		String res = "[testprogress] The Balance Field Is Present (2.030.000) - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	public static String levelBarIsPresent() throws FindFailed //For level = 1 (empty bar)
 	{
 		
-			s.find("lobby//Lobby_topBar_level1empty.png");				
-			
-			String res = "[testprogress] The Level Bar Is Present (1 level - empty) - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.find("lobby//Lobby_topBar_level1empty.png");				
+		
+		String res = "[testprogress] The Level Bar Is Present (1 level - empty) - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	public static String loyaltyButtonIsPresent() throws FindFailed //For level = 1 (empty bar)
 	{
 		
-			s.find("lobby//Lobby_topBar_loyaltyButton.png");				
-			
-			String res = "[testprogress] The Loyalty Button Is Present - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.find("lobby//Lobby_topBar_loyaltyButton.png");				
+		
+		String res = "[testprogress] The Loyalty Button Is Present - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	public static String shopButtonsArePresent() throws FindFailed //For level = 1 (empty bar)
 	{
+	
+		s.find("lobby//Lobby_buyButton.png");			
+		s.find("lobby//Lobby_topBar_getCoins.png");	
+		s.find("lobby//Lobby_topBar_coinsIcon.png");	
 		
-			s.find("lobby//Lobby_buyButton.png");			
-			s.find("lobby//Lobby_topBar_getCoins.png");	
-			s.find("lobby//Lobby_topBar_coinsIcon.png");	
-			
-			String res = "[testprogress] The Shop Buttons Are Present - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		String res = "[testprogress] The Shop Buttons Are Present - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 	
 	public static String giftButtonIsPresent() throws FindFailed //For level = 1 (empty bar)
 	{
 		
-			s.find("lobby//Lobby_Gift_Box_Tab.png");				
-			
-			String res = "[testprogress] The Gift Button Is Present - OK";
-			
-			System.out.println(res);
-			
-			return res;
+		s.find("lobby//Lobby_Gift_Box_Tab.png");				
+		
+		String res = "[testprogress] The Gift Button Is Present - OK";
+		
+		System.out.println(res);
+		
+		return res;
 	}
 }

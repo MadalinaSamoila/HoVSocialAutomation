@@ -252,4 +252,31 @@ public class HoVCrossBrowserTests
      		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
+	
+	public void BalanceTenBln(String GAID) throws APIException, IOException
+	{
+		String testRailTitle = "There is sufficient space within the Top Bar to display 10 billion coins";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			double previousBalance = AdminOperations.getUserBalance("chrome", GAID);
+			AdminOperations.resetUserBalance("chrome", GAID, 10000000000.0);
+			BrowserOperations.refreshPage(true);
+			s.wait(35.5);
+			testRailComment += LobbyOperations.balanceFieldTenBln();
+			AdminOperations.resetUserBalance("chrome", GAID, previousBalance);
+			BrowserOperations.refreshPage(true);
+			s.wait(35.5);
+			TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+	}
 }

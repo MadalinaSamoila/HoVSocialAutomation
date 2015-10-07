@@ -109,9 +109,9 @@ public class CommonOperations
 		       
 				else
 				{
-				mainFrame.dispose();
-				maximizeWondow();
-				s.wait(3.5);
+					mainFrame.dispose();
+					maximizeWondow();
+					s.wait(3.5);
 				}
 				return "[testprogress] Resolution was changed to "+ DISPLAY_MODES[mode].getWidth() + " x "+ DISPLAY_MODES[mode].getHeight() + " \n";
 			

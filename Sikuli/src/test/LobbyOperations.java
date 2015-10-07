@@ -31,6 +31,38 @@ public class LobbyOperations
 						
 	}
 	
+	public static String isTimeBonusDisabledAndClick(boolean click) throws FindFailed // works if time bonus is filled on approx 50%
+	{		
+		if (click)
+		{
+			s.click("lobby//TB_collectDisabled.png");
+			res = "[testprogress] Time Bonus Is Disabled And Clicked - OK";
+		}
+		else
+		{
+			s.find("lobby//TB_collectDisabled.png").mouseMove();
+			res = "[testprogress] Time Bonus Is Disabled And Hovered - OK";
+		}
+		
+		
+		System.out.println(res);
+		
+		return res; 
+						
+	}
+	
+	public static String isTimeBonusDisabledTooltipPresent() throws FindFailed // works if time bonus is filled on approx 50%
+	{		
+		s.find("lobby//TB_tooltip_returnToLobby.png");
+		
+		res = "[testprogress] Time Bonus Is Disabled Tooltip Is Present - OK";
+		
+		System.out.println(res);
+		
+		return res; 
+						
+	}
+	
 	public static String clickCollectTimeBonus() throws FindFailed
 	{	
 		

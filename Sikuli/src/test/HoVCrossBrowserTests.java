@@ -239,7 +239,7 @@ public class HoVCrossBrowserTests
 			catch (FindFailed e)
 			{
 				testRailComment += e.getMessage() + "OK \n";
-				testRailComment += LobbyOperations.closeShopInviteBoxGiftBoxPopup();
+				testRailComment += LobbyOperations.closeShopInviteBoxGiftBoxPopup() + "\n";
 				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
 			}
 			
@@ -253,7 +253,7 @@ public class HoVCrossBrowserTests
 		}
 	}
 	
-	public void BalanceTenBln(String GAID) throws APIException, IOException
+	public void BalanceTenBln() throws APIException, IOException
 	{
 		String testRailTitle = "There is sufficient space within the Top Bar to display 10 billion coins";
 		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
@@ -261,11 +261,12 @@ public class HoVCrossBrowserTests
 		
 		try
 		{
+			String GAID = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);	
 			double previousBalance = AdminOperations.getUserBalance("chrome", GAID);
 			AdminOperations.resetUserBalance("chrome", GAID, 10000000000.0);
 			BrowserOperations.refreshPage(true);
 			s.wait(35.5);
-			testRailComment += LobbyOperations.balanceFieldTenBln();
+			testRailComment += LobbyOperations.balanceFieldTenBln() + "\n";
 			AdminOperations.resetUserBalance("chrome", GAID, previousBalance);
 			BrowserOperations.refreshPage(true);
 			s.wait(35.5);
@@ -278,5 +279,61 @@ public class HoVCrossBrowserTests
 			
      		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
+	}
+	
+	public void TimeBonusOutsideLobby() throws APIException, IOException
+	{
+		String testRailTitle = "There is sufficient space within the Top Bar to display 10 billion coins";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		try
+		{
+			String GAID = AdminOperations.getGAID("chrome", FacebookOperations.userFacebookId);									
+			AdminOperations.storeOrCompareUserBalance("store", GAID);
+			
+			testRailComment += LobbyOperations.isTimeBonusEnabled() + "\n";
+			
+			
+			if ((LobbyOperations.isNextSlotComingSoon()) || (LobbyOperations.isNextSlotEarlyAccess()))
+			{				
+				LobbyOperations.skipNextEarlyAccessAndComingSoonSlots();
+			}
+			else
+			{
+				testRailComment += LobbyOperations.clickNextSlot() + "\n";
+				
+				testRailComment += LobbyOperations.clickCabinetPlayButton() + "\n";
+				
+				testRailComment += LobbyOperations.isTimeBonusDisabledAndClick(true) + "\n";
+				
+				testRailComment += LobbyOperations.isTimeBonusDisabledTooltipPresent() + "\n";
+				
+				if (AdminOperations.storeOrCompareUserBalance("compare", GAID) > 0)
+				{
+					testRailComment += "[testres] Balance Was Changed After Click On Disabled Time Bonus - FAILED" + "\n";
+					System.out.println("[testres] Balance Was Changed After Click On Disabled Time Bonus - FAILED");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+				}
+				else
+				{
+					testRailComment += "[testres] Balance Was Not Changed After Click On Disabled Time Bonus - OK" + "\n";
+					System.out.println("[testres] Balance Was Not Changed After Click On Disabled Time Bonus - OK");
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+				
+				}
+				LobbyOperations.returnToLobby();
+			}
+			
+		
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
+		
+		
 	}
 }

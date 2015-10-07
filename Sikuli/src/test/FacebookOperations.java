@@ -448,4 +448,139 @@ public class FacebookOperations {
 		
 		driver.close();
 	}
+	
+	public static boolean clickFriendButton()
+	{
+		try
+		{
+			
+			screen.wheel(-1, 5);
+			screen.click("browser//facebook_friendButton_disabled.png");
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				screen.click("browser//facebook_friendButton_recivied.png");
+				return true;
+			}
+			catch (FindFailed ex)
+			{
+				try
+				{
+					screen.click("browser//facebook_friendButton_enabled.png");
+					return false;
+				}
+				catch (FindFailed exc)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	
+	public static boolean clickMailButton()
+	{
+		try
+		{
+			screen.wheel(-1, 5);
+			screen.click("browser//facebook_mailButton_disabled.png");
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				screen.click("browser//facebook_mailButton_recivied.png");
+				return true;
+			}
+			catch (FindFailed ex)
+			{
+				try
+				{
+					screen.click("browser//facebook_mailButton_enabled.png");
+					return false;
+				}
+				catch (FindFailed exc)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	
+	public static boolean clickNotificationButton()
+	{
+		try
+		{
+			screen.wheel(-1, 5);
+			screen.click("browser//facebook_notificationButton_disabled.png");
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				screen.click("browser//facebook_notificationButton_recivied.png");
+				return true;
+			}
+			catch (FindFailed ex)
+			{
+				try
+				{
+					screen.click("browser//facebook_notificationButton_enabled.png");
+					return false;
+				}
+				catch (FindFailed exc)
+				{
+					return false;
+				}
+			}
+		}
+	}
+	
+	public static boolean clickPrivacyButton()
+	{
+		try
+		{
+			screen.wheel(-1, 5);
+			screen.click("browser//facebook_privacyButton_disabled.png");
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				screen.click("browser//facebook_privacyButton_enabled.png");
+				return false;
+			}
+			catch (FindFailed ex)
+			{			
+				return false;			
+			}
+		}
+	}
+	
+	public static boolean clickFbSearch()
+	{
+		try
+		{
+			screen.wheel(-1, 5);
+			screen.click("browser//facebook_hearofvegas_searchBar.png");
+			return true;
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				screen.click("browser//facebook_top.png");
+				return false;
+			}
+			catch (FindFailed ex)
+			{			
+				return false;			
+			}
+		}
+	}
 }

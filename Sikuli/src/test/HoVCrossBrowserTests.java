@@ -333,7 +333,78 @@ public class HoVCrossBrowserTests
 			
      		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
-		
-		
+	}
+	
+	
+	public void LobbyBlurs() throws APIException, IOException
+	{
+		String testRailTitle = "Lobby blurs when user loses app focus, and returns to normal state when user regains app focus";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		boolean isChecked = false;
+		try
+		{	
+			if (FacebookOperations.clickFbSearch())
+			{
+				s.wait(1.5);
+				testRailComment += "[testprogress] FB Search Clicked \n";
+				testRailComment += LobbyOperations.lobbyBlurred() + "\n";
+				isChecked = true;
+				FacebookOperations.clickFbSearch();
+			}
+			
+			if (FacebookOperations.clickFriendButton())
+			{
+				s.wait(1.5);
+				testRailComment += "[testprogress] FB Friends Button Clicked \n";
+				testRailComment += LobbyOperations.lobbyBlurred() + "\n";
+				isChecked = true;
+				FacebookOperations.clickFriendButton();
+			}
+			
+			if (FacebookOperations.clickMailButton())
+			{
+				s.wait(1.5);
+				testRailComment += "[testprogress] FB Mail Button Clicked \n";
+				testRailComment += LobbyOperations.lobbyBlurred() + "\n";
+				isChecked = true;
+				FacebookOperations.clickMailButton();
+			}
+			
+			if (FacebookOperations.clickNotificationButton())
+			{
+				s.wait(1.5);
+				testRailComment += "[testprogress] FB Mail Button Clicked \n";
+				testRailComment += LobbyOperations.lobbyBlurred() + "\n";
+				isChecked = true;
+				FacebookOperations.clickNotificationButton();
+			}
+			
+			if (FacebookOperations.clickPrivacyButton())
+			{
+				s.wait(1.5);
+				testRailComment += "[testprogress] FB Mail Button Clicked \n";
+				testRailComment += LobbyOperations.lobbyBlurred() + "\n";
+				isChecked = true;
+				FacebookOperations.clickPrivacyButton();
+			}
+			
+			if (isChecked)
+			{
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+			}
+			else
+			{
+				testRailComment += "[testres] The App Was Unable To Click FB Buttons - Please Retest \n";
+				TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 4, testRailComment);
+			}
+			
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage();
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+		}
 	}
 }

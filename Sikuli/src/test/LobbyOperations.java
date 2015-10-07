@@ -1045,7 +1045,7 @@ public class LobbyOperations
 			
 			
 		
-		String res = "[testprogress]The Gift Was Sent Via The Leaderboard - OK";
+		res = "[testprogress]The Gift Was Sent Via The Leaderboard - OK";
 		
 		System.out.println(res);
 		
@@ -1085,7 +1085,7 @@ public class LobbyOperations
 		
 		LobbyOperations.closeShopInviteBoxGiftBoxPopup();
 		
-		String res = "[testprogress]The Gift Was Sent Via The Gitf Box - OK";
+		res = "[testprogress]The Gift Was Sent Via The Gitf Box - OK";
 		
 		System.out.println(res);
 		
@@ -1179,7 +1179,7 @@ public class LobbyOperations
 		
 		s.wait(5.0);
 		
-		String res = "[testprogress]The Popup Was Closed - OK";
+		res = "[testprogress]The Popup Was Closed - OK";
 		
 		System.out.println(res);
 		
@@ -1204,7 +1204,7 @@ public class LobbyOperations
 		
 		s.find("lobby//Lobby_Invited_Button_Leaderboard.png");
 		
-		String res = "[testprogress]The Invite Was Sent Via The Leaderboard - OK";
+		res = "[testprogress]The Invite Was Sent Via The Leaderboard - OK";
 		
 		System.out.println(res);
 		
@@ -1217,7 +1217,7 @@ public class LobbyOperations
 	{
 		s.find("lobby//Lobby_topBar_balance10bln.png");				
 		
-		String res = "[testprogress] The Balance Field Is Present (10.000.000.000) - OK";
+		res = "[testprogress] The Balance Field Is Present (10.000.000.000) - OK";
 		
 		System.out.println(res);
 		
@@ -1229,7 +1229,7 @@ public class LobbyOperations
 		
 		s.find("lobby//Lobby_topBar_balance2030000.png");				
 		
-		String res = "[testprogress] The Balance Field Is Present (2.030.000) - OK";
+		res = "[testprogress] The Balance Field Is Present (2.030.000) - OK";
 		
 		System.out.println(res);
 		
@@ -1241,7 +1241,7 @@ public class LobbyOperations
 		
 		s.find("lobby//Lobby_topBar_level1empty.png");				
 		
-		String res = "[testprogress] The Level Bar Is Present (1 level - empty) - OK";
+		res = "[testprogress] The Level Bar Is Present (1 level - empty) - OK";
 		
 		System.out.println(res);
 		
@@ -1253,7 +1253,7 @@ public class LobbyOperations
 		
 		s.find("lobby//Lobby_topBar_loyaltyButton.png");				
 		
-		String res = "[testprogress] The Loyalty Button Is Present - OK";
+		res = "[testprogress] The Loyalty Button Is Present - OK";
 		
 		System.out.println(res);
 		
@@ -1267,7 +1267,7 @@ public class LobbyOperations
 		s.find("lobby//Lobby_topBar_getCoins.png");	
 		s.find("lobby//Lobby_topBar_coinsIcon.png");	
 		
-		String res = "[testprogress] The Shop Buttons Are Present - OK";
+		res = "[testprogress] The Shop Buttons Are Present - OK";
 		
 		System.out.println(res);
 		
@@ -1279,7 +1279,35 @@ public class LobbyOperations
 		
 		s.find("lobby//Lobby_Gift_Box_Tab.png");				
 		
-		String res = "[testprogress] The Gift Button Is Present - OK";
+		res = "[testprogress] The Gift Button Is Present - OK";
+		
+		System.out.println(res);
+		
+		return res;
+	}
+	
+	public static String lobbyBlurred() throws FindFailed //For level = 1 (empty bar)
+	{
+		
+		try
+		{
+			s.find("lobby//Lobby_topBar_blurrded.png");	
+			res = "[testprogress] The Lobby Is Blurred (Top Bar) - OK";
+		}
+		catch (FindFailed e)
+		{
+			try
+			{
+				s.find("lobby//Lobby_topBarLeft_blurrded.png");
+				res = "[testprogress] The Lobby Is Blurred (Left Part Of TopBar) - OK";
+			}
+			catch (FindFailed ex)
+			{
+				s.find("lobby//Lobby_topBarRight_blurrded.png");
+				res = "[testprogress] The Lobby Is Blurred (Right Part Of TopBar) - OK";
+			}
+		}
+		
 		
 		System.out.println(res);
 		

@@ -27,7 +27,7 @@ public class SmokeTestSet {
 				CommonOperations.currentBrowser = i;
 				try 
 				{
-					
+					/*
 					BrowserOperations.openBrowser(i);
 					s.wait(5.0);				
 					FacebookOperations.loginFacebook(i, CommonOperations.fbLogin, CommonOperations.fbPassword);
@@ -104,9 +104,11 @@ public class SmokeTestSet {
 					
 					BrowserOperations.closeBrowser(i);
 				
-					
+					*/
 					
 					//BELOW FOR TESTING
+					HoVCrossBrowserTests set = new HoVCrossBrowserTests();
+					set.ToppersPresent();
 					
 					
 				} 

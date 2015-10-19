@@ -407,4 +407,84 @@ public class HoVCrossBrowserTests
      		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
 		}
 	}
+	
+	
+	
+	public void ToppersPresent() throws APIException, IOException, FindFailed
+	{
+		String testRailTitle = "Expected machine toppers are present and correct";
+		String testRailTestId = TestRailOperations.getTestIdByTitleInRun(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,  CommonOperations.getRunIdByBrowser(),  testRailTitle);
+		String testRailComment = "";
+		
+		
+		boolean[] toppersStatus = {false, false, false}; // newGame, sneakPreview, jackpotProgressive
+		try
+		{
+			LobbyOperations.saveCentralSlotRegion();
+		
+			while (true)
+			{				
+				switch (LobbyOperations.findTopperCentralCabinet())
+				{
+					case "newGame":
+					{
+						
+						if (!toppersStatus[0])
+						{
+							testRailComment += "[testprogress] newGame Topper Is Present \n";
+							toppersStatus[0] = true;
+						}
+						break;
+					}
+					case "sneakPreview":
+					{
+						if (!toppersStatus[1])
+						{
+							testRailComment += "[testprogress] sneakPreview Topper Is Present \n";
+							toppersStatus[1] = true;
+						}
+						break;
+					}
+					case "jackpotProgressive":
+					{
+						if (!toppersStatus[2])
+						{
+							testRailComment += "[testprogress] jackpotProgressive Topper Is Present \n";
+							toppersStatus[2] = true;
+							break;
+						}
+					}
+				}
+				
+				if (!toppersStatus[0] || !toppersStatus[1] || !toppersStatus[2])
+				{
+					LobbyOperations.clickNextSlot();
+					s.wait(2.5);
+					LobbyOperations.clickCloseGameInfoPopup();
+					if (LobbyOperations.isCentralSlotInitial())
+					{
+						testRailComment += "[testeres] Some Of Toppers Are Absent Or Displayed Incorrectly";
+						
+						TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 5, testRailComment);
+						break; // failed
+					}
+				}
+				if (toppersStatus[0] && toppersStatus[1] && toppersStatus[2])
+				{
+					testRailComment += "[testeres] All Expected Toppers Are Present";
+					System.out.println(testRailComment);
+					TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 1, testRailComment);
+					break; // passed
+				}
+				
+			}
+		}
+		catch (FindFailed e)
+		{
+			testRailComment += e.getMessage() + "\n Please retest \n";
+			
+     		TestRailOperations.setResultToTest(CommonOperations.testRailHostAdress,  CommonOperations.testRailLogin,  CommonOperations.testRailPassword,testRailTestId, 4, testRailComment);
+		}
+		
+	}
 }

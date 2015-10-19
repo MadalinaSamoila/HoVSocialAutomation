@@ -1313,4 +1313,46 @@ public class LobbyOperations
 		
 		return res;
 	}
+	
+	public static String findTopperCentralCabinet()
+	{
+		try
+		{	
+			Region r = s.find("lobby//Lobby_HR_Button.png");
+			//r.y += 100;
+			r.h += 300;		
+			//r.highlight();
+			try 
+			{
+				r.find("lobby//Lobby_topper_newGame.png");
+				return "newGame";
+			}
+			catch (FindFailed e)
+			{
+				try 
+				{
+					r.find("lobby//Lobby_topper_sneakPreview.png");
+					return "sneakPreview";
+				}
+				catch (FindFailed ex)
+				{
+					try 
+					{
+						r.find("lobby//Lobby_topper_jackpotProgressive.png");
+						return "jackpotProgressive";
+					}
+					catch (FindFailed exp)
+					{
+						return "noToppers";
+					}
+				}
+			}
+			
+		}
+		catch (FindFailed e)
+		{
+			return e.getMessage();
+		}
+	}
+	
 }

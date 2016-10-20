@@ -1,10 +1,10 @@
 [
 	{
-		"fb_email":"a1qa_test@mail.ru",
-		"fb_password":"qwaszx@1",
-		"tr_host":"https://productmadness.testrail.com/",
-		"tr_email":"a.hilchuk@a1qa.com",
-		"tr_password":"G6K8vVfKaAECBiAChQGU",
+		"fb_email":"",
+		"fb_password":"",
+		"tr_host":"",
+		"tr_email":"",
+		"tr_password":"",
 		"tr_run_id_chrome":"27485",
 		"tr_run_id_firefox":"27485",
 		"tr_run_id_iexplore":"27485",

@@ -8,6 +8,20 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Key;
+import org.sikuli.script.Screen;
+
+import java.awt.Color;
+import java.awt.DisplayMode;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.image.BufferStrategy;
+
 
 public class CommonOperations 
 {
@@ -28,11 +42,95 @@ public class CommonOperations
 	
 	//for internal
 	public static String currentBrowser;
+	private static Frame mainFrame;
+	
+	private static void maximizeWondow()
+	{
+		Screen s = new Screen();
+		s.keyDown(Key.WIN);
+		s.keyDown(Key.UP);
+		s.keyUp(Key.WIN);
+		s.keyUp(Key.UP);
+		
+        s.keyDown(Key.WIN);
+		s.keyDown(Key.DOWN);
+		s.keyUp(Key.WIN);
+		s.keyUp(Key.DOWN);
+		
+		s.keyDown(Key.WIN);
+		s.keyDown(Key.LEFT);
+		s.keyUp(Key.WIN);
+		s.keyUp(Key.LEFT);
+		
+		s.keyDown(Key.WIN);
+		s.keyDown(Key.UP);
+		s.keyUp(Key.WIN);
+		s.keyUp(Key.UP);
+	}
+	
+	public static String setDisplayResolutionMode(int mode, boolean returnOldResolution)
+	{
+		
+		Screen s = new Screen();
+		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice device = env.getDefaultScreenDevice();
+		GraphicsConfiguration gc = device.getDefaultConfiguration();
+		DisplayMode oldMode = device.getDisplayMode();
+		DisplayMode[] DISPLAY_MODES = new DisplayMode[]
+		{
+	        new DisplayMode(1024, 768, oldMode.getBitDepth(),oldMode.getRefreshRate()),
+	        new DisplayMode(1366, 768, oldMode.getBitDepth(),oldMode.getRefreshRate()),
+	        new DisplayMode(1600, 900, oldMode.getBitDepth(),oldMode.getRefreshRate()), 
+	        new DisplayMode(1920, 1080, oldMode.getBitDepth(),oldMode.getRefreshRate())
+	    };
+		
+		
+			try
+			{
+				if (!returnOldResolution)
+				{
+					mainFrame = new Frame(gc);
+		            mainFrame.setUndecorated(true);
+		            mainFrame.setIgnoreRepaint(true);
+		            device.setFullScreenWindow(mainFrame);
+					device.setDisplayMode(DISPLAY_MODES[mode]);
+					
+			        mainFrame.hide();
+			        maximizeWondow();
+			        s.wait(1.5);
+			        try 
+			        {
+			      	    s.click("externalPages//System_notify_closePopup.png");
+			        }
+			        catch (FindFailed ex)
+			        {}
+			        s.wait(5.5);
+				}
+		       
+				else
+				{
+					mainFrame.dispose();
+					maximizeWondow();
+					s.wait(3.5);
+				}
+				return "[testprogress] Resolution was changed to "+ DISPLAY_MODES[mode].getWidth() + " x "+ DISPLAY_MODES[mode].getHeight() + " \n";
+			
+		}
+		catch (Exception e)
+		{
+			mainFrame.dispose();
+			maximizeWondow();
+			s.wait(3.5);
+			return "[testprogress] Can't change screen resolution to "+ DISPLAY_MODES[mode].getWidth() + " x "+ DISPLAY_MODES[mode].getHeight()+ "  \n" + e.getMessage()+"\n";
+		}
+	}
+	
 	
 	public static JSONArray getJsonArrayFromFile(String path) throws ParseException, IOException, FileNotFoundException 
 	{
 		try
 		{
+			
 			JSONParser parser = new JSONParser();
 			
 			JSONArray a = (JSONArray) parser.parse(new FileReader(path));
@@ -73,90 +171,6 @@ public class CommonOperations
 		return res;				
 	}
 	
-	
-	/*public static String areFieldsPresentInConfigurationFile(String path) throws ParseException, IOException, FileNotFoundException, NullPointerException
-	{
-		String res = "";
-		try
-		{
-			JSONParser parser = new JSONParser();
-			
-			JSONArray a = (JSONArray) parser.parse(new FileReader(path));
-			
-			if (getFieldFromJsonArray(a, "fb_email").equals(null))
-			{
-				res += "fb_email field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "fb_password").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "tr_host").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "tr_email").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "tr_password").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "tr_run_id").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "chrome_path").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "firefox_path").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "iexplore_path").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "hov_load_time").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (getFieldFromJsonArray(a, "hov_slot_load_time").equals(null))
-			{
-				res += "fb_password field is absent \n";
-			}
-			if (res.equals(""))
-			{
-				res = "ok";
-			}
-			return res;
-			
-		}
-		catch (FileNotFoundException e)
-		{
-			
-			return "Configuration file not found!";
-		}
-		catch (IOException e)
-		{
-			
-			return "Unable to read/write the configuration file!";
-		}
-		catch (ParseException e)
-		{
-			
-			return "It is not a complete JSON file (configuration file)!";
-		}	
-		catch (NullPointerException e)
-		{
-			
-			return "Some field(s) are absent in configuration file!";
-		}	
-		
-	}
-	*/
 	public static boolean fillFieldsFromConfigFile(String path) throws ParseException, IOException, FileNotFoundException, NullPointerException
 	{
 		try
@@ -215,18 +229,7 @@ public class CommonOperations
 			if (!(getFieldFromJsonArray(a, "hov_slot_load_time").equals(null)))
 			{
 				hov_slot_load_time = CommonOperations.getFieldFromJsonArray(CommonOperations.getJsonArrayFromFile(path), "hov_slot_load_time");
-			}
-			
-			
-			
-			
-			
-			
-				
-					
-					
-			
-			
+			}		
 			
 			return true;
 		}
@@ -250,10 +253,7 @@ public class CommonOperations
 			System.out.println( "Some field(s) are absent in configuration file!");
 			return false;
 		}	
-		 
-		
-		
-		
+		 		
 	}
 	
 	public static String getRunIdByBrowser()
@@ -278,4 +278,8 @@ public class CommonOperations
 			}
 		}
 	}
+	
+	
+	
+	
 }

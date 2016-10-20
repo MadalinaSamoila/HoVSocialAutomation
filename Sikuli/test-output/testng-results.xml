@@ -1,11 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="0" passed="0">
+<testng-results skipped="9" failed="1" total="10" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Muddy Test Suite" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
+  <suite name="Default suite" duration-ms="24" started-at="2015-09-23T09:34:33Z" finished-at="2015-09-23T09:34:33Z">
     <groups>
     </groups>
-    <test name="Youtube test" duration-ms="4" started-at="2015-08-10T17:01:08Z" finished-at="2015-08-10T17:01:08Z">
-    </test> <!-- Youtube test -->
-  </suite> <!-- Muddy Test Suite -->
+    <test name="Default test" duration-ms="24" started-at="2015-09-23T09:34:33Z" finished-at="2015-09-23T09:34:33Z">
+      <class name="test.testng.HoVSmokeTestsSuite">
+        <test-method status="FAIL" signature="beforeSuite(java.lang.String)[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="beforeSuite" is-config="true" duration-ms="0" started-at="2015-09-23T12:34:33Z" finished-at="2015-09-23T12:34:33Z">
+          <exception class="org.testng.TestNGException">
+            <message>
+              <![CDATA[
+Parameter 'browser' is required by @Configuration on method beforeSuite but has not been marked @Optional or defined
+in C:\Users\a.hilchuk\AppData\Local\Temp\testng-eclipse--945425345\testng-customsuite.xml]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by @Configuration on method beforeSuite but has not been marked @Optional or defined
+in C:\Users\a.hilchuk\AppData\Local\Temp\testng-eclipse--945425345\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParameters(Parameters.java:155)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:358)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:86)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:199)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:277)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestNGException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="FAIL" signature="FreshInstallTest(java.lang.String)[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="FreshInstallTest" duration-ms="0" started-at="2015-09-23T12:34:33Z" finished-at="2015-09-23T12:34:33Z">
+          <exception class="org.testng.TestNGException">
+            <message>
+              <![CDATA[
+Parameter 'browser' is required by @Test on method FreshInstallTest but has not been marked @Optional or defined
+in C:\Users\a.hilchuk\AppData\Local\Temp\testng-eclipse--945425345\testng-customsuite.xml]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by @Test on method FreshInstallTest but has not been marked @Optional or defined
+in C:\Users\a.hilchuk\AppData\Local\Temp\testng-eclipse--945425345\testng-customsuite.xml
+	at org.testng.internal.Parameters.createParameters(Parameters.java:155)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:358)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:450)
+	at org.testng.internal.Invoker.handleParameters(Invoker.java:1383)
+	at org.testng.internal.Invoker.createParameters(Invoker.java:1075)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1180)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestNGException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FreshInstallTest -->
+        <test-method status="SKIP" signature="TutorialInstigates()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="TutorialInstigates" duration-ms="1" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.FreshInstallTest" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TutorialInstigates -->
+        <test-method status="SKIP" signature="DailyBonusPresent()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="DailyBonusPresent" duration-ms="1" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.TutorialInstigates" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DailyBonusPresent -->
+        <test-method status="SKIP" signature="CollectHourlyBonus()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="CollectHourlyBonus" duration-ms="1" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.DailyBonusPresent" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CollectHourlyBonus -->
+        <test-method status="SKIP" signature="HelpFanPageOpen()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="HelpFanPageOpen" duration-ms="0" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.CollectHourlyBonus" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HelpFanPageOpen -->
+        <test-method status="SKIP" signature="PlacedInLobby()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="PlacedInLobby" duration-ms="1" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.HelpFanPageOpen" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PlacedInLobby -->
+        <test-method status="SKIP" signature="BuyAllCoinPackages()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="BuyAllCoinPackages" duration-ms="0" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.PlacedInLobby" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyAllCoinPackages -->
+        <test-method status="SKIP" signature="QuickBuyFunctional()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="QuickBuyFunctional" duration-ms="0" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.BuyAllCoinPackages" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- QuickBuyFunctional -->
+        <test-method status="SKIP" signature="EnabledCRMsAppear()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="EnabledCRMsAppear" duration-ms="0" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.QuickBuyFunctional" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EnabledCRMsAppear -->
+        <test-method status="SKIP" signature="SlotMachinesPresent()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="SlotMachinesPresent" duration-ms="0" started-at="2015-09-23T12:34:33Z" depends-on-methods="test.testng.HoVSmokeTestsSuite.EnabledCRMsAppear" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SlotMachinesPresent -->
+        <test-method status="SKIP" signature="afterSuite()[pri:0, instance:test.testng.HoVSmokeTestsSuite@3c5a99da]" name="afterSuite" is-config="true" duration-ms="0" started-at="2015-09-23T12:34:33Z" finished-at="2015-09-23T12:34:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- test.testng.HoVSmokeTestsSuite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
